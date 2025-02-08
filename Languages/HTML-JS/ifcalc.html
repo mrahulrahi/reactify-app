@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+</head>
+<body>
+<input type="number" name="user" placeholder="Enter Number one" id="user_one">
+<input type="number" name="user" placeholder="Enter Number two" id="user_two">
+<select  id="xp">
+<option value="1">+</option>
+<option value="2">*</option>
+<option value="3">-</option>
+</select>
+
+<button onclick="A();">Click</button>
+<p>
+Answer:<div id="result"></div></p>
+<script>
+
+function A()
+{
+var user_one=parseInt(document.getElementById("user_one").value);
+var user_two=parseInt(document.getElementById("user_two").value);
+var xp=document.getElementById("xp").value;
+if(xp=='1'){
+document.getElementById("result").innerText=(user_one+user_two);
+}
+else if(xp=='2')
+{
+document.getElementById("result").innerText=(user_one*user_two);
+}
+else if(xp=='3')
+{
+document.getElementById("result").innerText=(user_one-user_two);
+}
+}
+
+</script>
+
+</body>
+</html>

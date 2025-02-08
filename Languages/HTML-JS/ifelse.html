@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+</head>
+<body>
+<input type="text" name="user" placeholder="Enter User Name" id="user_name">
+<input type="password" name="password" placeholder="Enter Password" id="Password">
+
+<button type="button" onclick="A();">Click</button>
+<script>
+
+function A()
+{
+var user_name=document.getElementById("user_name").value;
+var Password=document.getElementById("Password").value;
+if(user_name=='manjeet')
+{
+
+if(Password=='123456')
+{
+alert("You Are Logged In Successfully");
+}
+else{
+alert("Sorry Your Password Is Wrong");
+}
+
+}
+else
+{
+alert("Sorry Your User Name Is Wrong");
+}
+}
+
+</script>
+
+</body>
+</html>
