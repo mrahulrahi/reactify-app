@@ -1,4 +1,4 @@
-
+import React, { JSX } from "react";
 
 interface Props {
   title: string;
