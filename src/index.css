@@ -87,7 +87,7 @@
     }
 
     .btn-primary {
-        @apply bg-[var(--third-color)] text-white border-2 border-[var(--third-color)] hover:bg-opacity-80;
+        @apply bg-[var(--third-color)] text-white border-2 border-[var(--third-color)] hover:bg-[var(--third-color)]/80;
     }
 
     .btn-secondary {
@@ -129,7 +129,7 @@
     }
 
     .nav-link {
-        @apply text-lg font-bold text-[var(--second-color)] transition-colors duration-200 hover:text-yellowgreen;
+        @apply text-lg font-bold text-[var(--second-color)] transition-colors duration-200 hover:text-[#9acd32];
     }
 }
 

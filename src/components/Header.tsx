@@ -1,10 +1,11 @@
 'use client'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const NavBar = () => {
-    const currentPath = usePathname();
+
+    const location = useLocation();
+    const currentPath = location.pathname;
 
     const links = [
         { label: 'Home', href: '/' },
@@ -15,21 +16,21 @@ const NavBar = () => {
     return (
         <header>
             <div className="container-fluid">
-                <div className="navbar d-flex align-items-center justify-content-between">
+                <div className="navbar flex items-center justify-between">
                     <a className="navbar-title" href="#">OLMS APP</a>
-                    <ul className="nav-menu d-flex gap-4">
+                    <ul className="nav-menu flex gap-4">
                         {links.map(link =>
                             <li key={link.href} className="nav-item">
-                                <Link 
-                                    className={`${link.href === currentPath ? 'active' : ''} nav-link`} 
-                                    href={link.href} 
+                                <a
+                                    className={`${link.href === currentPath ? 'active' : ''} nav-link`}
+                                    href={link.href}
                                 >
                                     {link.label}
-                                </Link>
+                                </a>
                             </li>
                         )}
                     </ul>
-                    <div className="navbar-logo"><Image src="/logo.png" alt="logo" width={300} height={100} quality={100} /></div>
+                    <div className="navbar-logo"><img src="/logo.png" alt="logo" width={300} height={100} /></div>
                 </div>
             </div>
         </header>
