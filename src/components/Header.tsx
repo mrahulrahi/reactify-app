@@ -1,11 +1,9 @@
 'use client'
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-const NavBar = () => {
-
-    const location = useLocation();
-    const currentPath = location.pathname;
+const Header = () => {
+    const pathname = usePathname()
 
     const links = [
         { label: 'Home', href: '/' },
@@ -17,24 +15,26 @@ const NavBar = () => {
         <header>
             <div className="container-fluid">
                 <div className="navbar flex items-center justify-between">
-                    <a className="navbar-title" href="#">OLMS APP</a>
+                    <Link className="navbar-title" href="/">OLMS APP</Link>
                     <ul className="nav-menu flex gap-4">
                         {links.map(link =>
                             <li key={link.href} className="nav-item">
-                                <a
-                                    className={`${link.href === currentPath ? 'active' : ''} nav-link`}
+                                <Link
+                                    className={`${link.href === pathname ? 'active' : ''} nav-link`}
                                     href={link.href}
                                 >
                                     {link.label}
-                                </a>
+                                </Link>
                             </li>
                         )}
                     </ul>
-                    <div className="navbar-logo"><img src="/logo.png" alt="logo" width={300} height={100} /></div>
+                    <div className="navbar-logo">
+                        <img src="/logo.png" alt="logo" width={300} height={100} />
+                    </div>
                 </div>
             </div>
         </header>
     )
 }
 
-export default NavBar
+export default Header
