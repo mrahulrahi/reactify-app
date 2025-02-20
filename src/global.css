@@ -1,8 +1,5 @@
 @import "tailwindcss";
 @import "tailwindcss/preflight";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* ================= Tailwind CSS Variables ================= */
 :root {
@@ -14,7 +11,7 @@
 }
 
 /* ================= Reset & Core Styles ================= */
-@layer base {
+/* @layer base {
     * {
         @apply m-0 p-0 box-border;
     }
@@ -80,10 +77,10 @@
     p {
         @apply mb-4;
     }
-}
+} */
 
 /* ================= Buttons ================= */
-@layer components {
+/* @layer components {
     .btn {
         @apply inline-block min-w-[160px] px-5 py-3 text-lg font-medium rounded-lg transition-all duration-200;
     }
@@ -107,10 +104,10 @@
     .btn-sm {
         @apply min-w-auto px-2 py-1;
     }
-}
+} */
 
 /* ================= Forms ================= */
-@layer components {
+/* @layer components {
     .form-control {
         @apply block w-full px-4 py-2 text-[var(--first-color)] border border-gray-300 rounded-md focus:ring-2 focus:ring-[var(--third-color)] focus:border-[var(--third-color)];
     }
@@ -118,10 +115,10 @@
     .form-label {
         @apply block text-lg font-medium text-[var(--first-color)];
     }
-}
+} */
 
 /* ================= Navbar ================= */
-@layer components {
+/* @layer components {
     .navbar {
         @apply fixed top-0 left-0 w-full h-[80px] bg-[var(--first-color)] z-50 flex items-center px-4;
     }
@@ -160,10 +157,10 @@
     .main-container {
         @apply w-full h-[calc(100vh-80px)] pt-20;
     }
-}
+} */
 
 /* ================= Cards & Badges ================= */
-@layer components {
+/* @layer components {
     .card {
         @apply p-8 border border-gray-300 rounded-lg;
     }
@@ -171,10 +168,10 @@
     .badge {
         @apply px-3 py-1 text-sm font-medium bg-[var(--third-color)] text-white rounded-full;
     }
-}
+} */
 
 /* ================= Blog List ================= */
-@layer components {
+/* @layer components {
     .blog-list {
         @apply flex flex-wrap gap-4;
     }
@@ -194,10 +191,10 @@
     .blog-box h2 {
         @apply text-2xl capitalize mb-4;
     }
-}
+} */
 
 /* ================= Pagination ================= */
-@layer components {
+/* @layer components {
     .pagination {
         @apply flex justify-center items-center my-10;
     }
@@ -209,4 +206,4 @@
     .page-item.active .page-link {
         @apply bg-[var(--first-color)] text-[var(--second-color)];
     }
-}
+} */
