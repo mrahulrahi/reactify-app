@@ -1,5 +1,5 @@
 'use client'
-import Link from 'next/link'
+import React from 'react';
 import Button from "./components/Button";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
@@ -13,13 +13,15 @@ import ListItemTable from "./components/ListItemTable";
 import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 import Form from "./components/Form";
 
-export default function Home() {
+
+
+function App() {
   const cards = [
     { title: 'User', href: '/users' },
     { title: 'Blog', href: '/blog' },
   ]
 
-  const [cities, setNewCity] = useState([{ id: 1, name: 'Lucknow', distance: 200 }, { id: 2, name: 'Delhi', distance: 600 }, { id: 3, name: 'Kolkata', distance: 900 }, { id: 4, name: 'Mumbai', distance: 1400 }, { id: 5, name: 'Lakhimpur', distance: 100 }])
+  const [cities, setCities] = useState([{ id: 1, name: 'Lucknow', distance: 200 }, { id: 2, name: 'Delhi', distance: 600 }, { id: 3, name: 'Kolkata', distance: 900 }, { id: 4, name: 'Mumbai', distance: 1400 }, { id: 5, name: 'Lakhimpur', distance: 100 }])
   const [foods, setNewFood] = useState([{ id: 1, name: 'Pizza', price: 20 }, { id: 2, name: 'Burger', price: 15 }, { id: 3, name: 'Chilli Potato', price: 10 }, { id: 4, name: 'Momos', price: 5 }])
 
   const [city, setCity] = useState({});
@@ -28,11 +30,11 @@ export default function Home() {
   let [likeBtn1, setLikedBtn1] = useState({ title: 'Like', icon: <FaRegHeart /> })
   let [likeBtn2, setLikedBtn2] = useState({ title: 'Follow', icon: <SlUserFollow /> })
 
-  const handleSelectCity = (item: Item,) => {
+  const handleSelectCity = (item : Item) => {
     setCity(item);
   }
 
-  const handleSelectFood = (item: Item) => {
+  const handleSelectFood = (item : Item) => {
     setFood(item);
   }
 
@@ -46,6 +48,38 @@ export default function Home() {
 
   return (
     <>
+      <div className="min-h-screen bg-gradient-to-r from-red-400 to-amber-300 flex flex-col items-center justify-center">
+
+        <main className="flex flex-col items-center">
+          <section className="mb-8">
+            <h2 className="text-3xl font-semibold text-white">Our Features</h2>
+            <ul className="mt-4 space-y-2">
+              <li className="text-white">Feature 1: Description of feature 1</li>
+              <li className="text-white">Feature 2: Description of feature 2</li>
+              <li className="text-white">Feature 3: Description of feature 3</li>
+            </ul>
+          </section>
+          <section className="mb-8">
+            <h2 className="text-3xl font-semibold text-white">Our Services</h2>
+            <ul className="mt-4 space-y-2">
+              <li className="text-white">Service 1: Description of service 1</li>
+              <li className="text-white">Service 2: Description of service 2</li>
+              <li className="text-white">Service 3: Description of service 3</li>
+            </ul>
+          </section>
+        </main>
+
+      </div>
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          Welcome to Reactify App
+        </h1>
+        <p className="text-gray-600">
+          This is a React application with Tailwind CSS
+        </p>
+      </div>
+      <h1>Home Page</h1>
+      <a href="#!" className="btn btn-primary">Button</a>
 
       <div className="content-container">
         <div className="container">
@@ -55,7 +89,7 @@ export default function Home() {
                 <div className="card">
                   <h2 className="card-title mb-4">{card.title}</h2>
                   <div className="card-actions">
-                    <Link className='btn btn-primary' href={card.href}>Open</Link>
+                    <a className='btn btn-primary' href={card.href}>Open</a>
                   </div>
                 </div>
               </div>
@@ -125,6 +159,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
     </>
   )
 }
+
+export default App

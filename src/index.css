@@ -1,73 +1,134 @@
 @import "tailwindcss";
-@import "tailwindcss/preflight";
 
-/* ================= Tailwind CSS Variables ================= */
 :root {
     --white: #fff;
     --first-color: #242c2e;
     --second-color: #d9eddf;
     --third-color: #2ecc71;
     --fourth-color: #7edca4;
-}
-
-/* ================= Reset & Core Styles ================= */
-@layer base {
-    * {@apply m-0 p-0 box-border;}
-    html {@apply scroll-smooth; scroll-padding-top: 70px;}
-    body {@apply text-base leading-[1.5] font-medium bg-[var(--second-color)] text-[var(--first-color)];}
-    a {@apply no-underline transition-all duration-200 ease-in;}
-    a:hover {@apply text-[var(--first-color)];}
-    ul {@apply list-none;}
-    img {@apply max-w-full h-auto;}
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {@apply font-bold leading-[1.3] mb-4;}
-    h1 {@apply text-[58px] font-extrabold;}
-    h2 {@apply text-[48px];}
-    h3 {@apply text-[40px];}
-    h4 {@apply text-[30px];}
-    h5 {@apply text-[24px];}
-    h6 {@apply text-[20px];}
-    p {@apply mb-4;}
-}
-/* ================= Buttons ================= */
-
-    .btn {@apply inline-block min-w-[160px] px-5 py-3 text-lg font-medium rounded-lg transition-all duration-200;}
-    .btn-primary {@apply bg-[var(--third-color)] text-white border-2 border-[var(--third-color)] hover:bg-[var(--third-color)]/80;}
-    .btn-secondary {@apply bg-[var(--first-color)] text-white border-2 border-[var(--first-color)] hover:bg-gray-800;}
-    .btn-outline {@apply border-2 border-[var(--first-color)] text-[var(--first-color)] bg-transparent hover:bg-[var(--first-color)] hover:text-white;}
-    .btn-lg {@apply min-w-[240px] px-10 py-3;}
-    .btn-sm {@apply min-w-auto px-2 py-1;}
-
-
-/* ================= Forms ================= */
-    .form-control {@apply block w-full px-4 py-2 text-[var(--first-color)] border border-gray-300 rounded-md focus:ring-2 focus:ring-[var(--third-color)] focus:border-[var(--third-color)];}
-    .form-label {@apply block text-lg font-medium text-[var(--first-color)];}
-
-/* ================= Navbar ================= */
-    .navbar {@apply fixed top-0 left-0 w-full h-[80px] bg-[var(--first-color)] z-50 flex items-center px-4;}
-    .navbar-title {@apply text-4xl font-bold text-[var(--second-color)];}
-    .nav-link {@apply text-lg font-bold text-[var(--second-color)] transition-colors duration-200 hover:text-[#9acd32];}
-/* ================= Layout & Utilities ================= */
-    .container {@apply w-[calc(100%-36px)] max-w-[1320px] mx-auto;}
-    .gap-20 {@apply gap-5;}
-    .line-clamp-2 {@apply line-clamp-2;}
-    .line-clamp-3 {@apply line-clamp-3;}
-    .content-container {@apply py-20;}
-    .main-container {@apply w-full h-[calc(100vh-80px)] pt-20;}
-/* ================= Cards & Badges ================= */
-    .card {@apply p-8 border border-gray-300 rounded-lg;}
-    .badge {@apply px-3 py-1 text-sm font-medium bg-[var(--third-color)] text-white rounded-full;}
-/* ================= Blog List ================= */
-    .blog-list {@apply flex flex-wrap gap-4;}
-    .blog-item {@apply w-1/3 p-2 md:w-1/2 sm:w-full;}
-    .blog-box {@apply w-full p-5 border border-gray-400 rounded-lg;}
-    .blog-box h3 {@apply w-10 h-10 flex items-center justify-center text-lg font-bold bg-blue-200 rounded-full mb-4;}
-    .blog-box h2 {@apply text-2xl capitalize mb-4;}
-/* ================= Pagination ================= */
-    .pagination {@apply flex justify-center items-center my-10;}
-    .page-link {@apply px-3 py-2 border border-gray-300 rounded-md text-gray-700 transition hover:bg-gray-200;}
-    .page-item.active .page-link {@apply bg-[var(--first-color)] text-[var(--second-color)];}
+  }
+  
+  /* =================reset css starts here=================  */
+  *{margin:0;padding:0;}
+  html{scroll-behavior: smooth;scroll-padding-top: 70px;}
+  h1,h2,h3,h4,h5,h6,p,ul,li,body,html,form,fieldset{margin:0;padding:0;outline:none;border:0}
+  a{text-decoration:none;border:0;outline:0;}
+  ul{list-style:none;}
+  a:focus,input:focus,textarea:focus,*:focus{outline:0!important;}
+  /* =================reset css ends here================= */
+  /* =================core css starts here================= */
+  body{font-family: var(--font-varelaRound);font-size:16px;line-height:1.5;font-weight:500;color: inherit;background: var(--second-color);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+  .container{width: calc(100% - 36px);max-width:1320px;}
+  a,input,button{display:inline-block;text-decoration:none;color:inherit;outline:none;transition:all 0.2s ease-in;-webkit-transition:all 0.2s ease-in;}
+  a img{border:0px none;}
+  a:hover{outline:none;color:var(--first-color);text-decoration:none;}
+  a:active{outline:none;text-decoration:none;}
+  a:focus{outline:none;outline-offset:0px;text-decoration:none;color:inherit;}
+  ::-webkit-input-placeholder{color:var(--first-color);opacity:0.5;}
+  ::-moz-placeholder{color:var(--first-color);opacity:0.5;}
+  :-moz-placeholder{color:var(--first-color);opacity:0.5;}
+  :-ms-input-placeholder{color:var(--first-color);opacity:0.5;}
+  img{max-width:100%;border:0;height:auto;}
+  h1,h2,h3,h4,h5,h6{margin:0px;padding:0px;margin-bottom:16px;font-family: var(--font-oswald);line-height:1.3;font-weight:600;color:inherit;}
+  h1{font-size:58px;font-weight:800;}
+  h2{font-size:48px;}
+  h3{font-size:40px;}
+  h4{font-size:30px;}
+  h5{font-size:24px;}
+  h6{font-size:20px;}
+  p{margin:0px;padding:0px;margin-bottom:16px;}
+  strong{font-weight:700;}
+  b{font-weight:400;}
+  p:last-child{margin-bottom:0;}
+  
+  .btn {min-width: 160px;padding: 10px 20px;font-family: var(--font-varelaRound);font-size: 18px;font-weight: 500;line-height: 1;border: solid 2px transparent;border-radius: 10px;}
+  .btn-primary {background: var(--third-color);border-color: var(--third-color);color: var(--white);}
+  .btn-primary:hover {border-color: var(--third-color);background: var(--third-color);color: var(--white);}
+  .btn-secondary {background: var(--first-color);border-color: var(--first-color);color: var(--white);}
+  .btn-secondary:hover {border-color: #333;background: #333;color: var(--white);}
+  .btn-outline {background: transparent;border-color: var(--first-color);color: var(--first-color);}
+  .btn-outline:hover {border-color: var(--first-color);background: var(--first-color);color: var(--white);}
+  .btn-green {background: var(--first-color);color: var(--second-color);}
+  .btn-green:hover {border-color: var(--first-color);background: var(--first-color);color: var(--second-color);}
+  .btn.btn-sm {padding: 10px 10px;min-width: auto;}
+  .btn.btn-lg {padding: 10px 40px;min-width: 240px;}
+  .btn-icon{display: flex;align-items: center;justify-content: center;}
+  .btn.has-icon {display: flex;gap: 10px;align-items: center;justify-content: center;}
+  
+  .gap-20{gap: 20px;}
+  .line-clamp-2{display: -webkit-box;line-clamp: 2;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;}
+  .line-clamp-3 {display: -webkit-box;line-clamp: 3;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;}
+  
+  .content-container{padding: 80px 0;}
+  .content-container + .content-container{padding-top: 0;}
+  .main-container{width: 100%;height: calc(100dvh - 80px);padding-top: 80px;}
+  /* =================core css ends here================= */
+  /* =================navbar css starts here================= */
+  
+  header{width: 100%;position: fixed;font-family: var(--font-oswald);background: var(--first-color);z-index: 99;}
+  .navbar {height: 80px;}
+  .navbar-title {font-size: 40px;font-weight: 700;line-height: 1;color: var(--second-color);}
+  .navbar-logo {width: 200px;border-radius: 50px;overflow: hidden;}
+  
+  .nav-link {font-size: 22px;font-weight: bolder;font-family: var(--font-varelaRound);color: var(--second-color);}
+  .nav-link:hover, .nav-link.active {color: yellowgreen;}
+  /* =================navbar css ends here================= */
+  
+  .heading{font-size: 32px;font-weight: 700;line-height: 1;margin-bottom: 24px;}
+  
+  .list-group-item{border-color: var(--first-color);}
+  .list-group-item.active{background: var(--third-color);border-color: var(--third-color);}
+  
+  .form-label{width: 140px;}
+  form span {height: 40px;float: left;display: inline-flex;align-items: center;color: var(--first-color);}
+  input.form-control {float: right;width: 100%;height: 40px;border-radius: 10px;border: 1px solid;font-size: 14px;text-align: center;}
+  .errorcss {font-size: 14pt;color: red;}
+  input.form-control:focus{box-shadow: none;border-color: #C20E0E;}
+  
+  
+  .content h1 {color: var(--third-color);font-size: 60pt;line-height: 1;}
+  .content h2 {font-size: 20pt;color: var(--first-color);}
+  
+  footer {font-size: 18px;width: 100%;color: var(--second-color);background: var(--first-color);justify-content: center;}
+  
+  .custom-table{min-width: 767px;}                                    
+  .custom-table .table > :not(caption) > * > * {border: 2px solid var(--second-color);}
+  .custom-table table thead th {color: var(--second-color);background: var(--first-color);}
+  .custom-table table tbody tr:nth-child(even) td {color: var(--second-color);background: var(--first-color);}
+  .custom-table table tbody tr:nth-child(odd) td{color: var(--first-color);background: var(--fourth-color);}
+  
+  .card{padding: 32px;border: 1px solid #ccc;}
+  .badge{font-size: 16px;font-weight: 500;background: var(--third-color);color: var(--white);}
+  
+  .blog-list{width: calc(100% + 20px);margin-left: -10px;margin-bottom: -20px;}
+  .blog-item{width: 33.33%;padding: 0 10px;margin-bottom: 20px;}
+  .blog-box{width: 100%;height: 100%;padding: 20px;border: 1px solid grey;font-size: 16px;border-radius: 20px;text-transform: capitalize;}
+  .blog-box h3{font-size: 18px;border-radius: 50%;background: lightblue;width: 30px;height: 30px;margin-bottom: 20px;}
+  .blog-box h2{font-size: 22px;text-transform: capitalize;margin-bottom: 20px;}
+  
+  
+  .pagination {display: flex;justify-content: center;align-items: center;margin: 40px 0;}
+  .pagination .page-link {display: block;padding: 0.5rem 1rem;text-decoration: none;color: #333;border: 1px solid #ccc;border-radius: 0.25rem;}
+  .pagination .page-link:hover {background: var(--second-color);border-color: var(--second-color);color: var(--first-color);}
+  .pagination .page-item.active .page-link {background: var(--first-color);border-color: var(--first-color);color: var(--second-color);}
+  
+  @media (max-width:991.98px){
+    .blog-item{width: 50%;}
+  }
+  
+  @media (max-width:767.98px){
+    .sidebar{width: fit-content;height: max-content;position: fixed;bottom: 20px;right: 20px;z-index: 1000;transform: translateX(calc(100% + 40px));transition: all 0.3s ease-in-out;border-radius: 6px;overflow: hidden;margin-bottom: 70px;}
+    .sidebar.open{transform: translateX(0);}
+  
+    .sidebar-toggler{width: 60px;min-width: 60px;height: 60px; position: fixed;bottom: 20px;right: 20px;z-index: 1000;}
+    .main-body{width: 100%;}
+  }
+  
+  @media (max-width:575.98px){
+    .blog-item{width: 100%;}
+  }
+  
+  
+  
+  
+  

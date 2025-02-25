@@ -1,7 +1,6 @@
-import { useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router'
 
 const Header = () => {
-    const { pathname } = useLocation();
 
     const links = [
         { label: 'Home', href: '/' },
@@ -17,17 +16,17 @@ const Header = () => {
                     <ul className="nav-menu flex gap-4">
                         {links.map(link =>
                             <li key={link.href} className="nav-item">
-                                <a
-                                    className={`${link.href === pathname ? 'active' : ''} nav-link`}
-                                    href={link.href}
+                                <NavLink
+                                    className={({ isActive }) => `${isActive ? 'active' : ''} nav-link`}
+                                    to={link.href}
                                 >
                                     {link.label}
-                                </a>
+                                </NavLink>
                             </li>
                         )}
                     </ul>
                     <div className="navbar-logo">
-                        <img src="/logo.png" alt="logo" width={300} height={100} />
+                        <img src="/vite.svg" alt="logo" />
                     </div>
                 </div>
             </div>

@@ -1,9 +1,3 @@
-import React from "react";
-
-interface FormData {
-    name :string;
-    distance : number;
-}
 
 const Form = () => {
 
