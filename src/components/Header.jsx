@@ -26,7 +26,7 @@ const Header = () => {
                         )}
                     </ul>
                     <div className="navbar-logo">
-                        <img src="/vite.svg" alt="logo" />
+                        <img src="/vercel.svg" alt="logo" />
                     </div>
                 </div>
             </div>

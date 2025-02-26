@@ -28,7 +28,7 @@ const ListGroup = ({ items, heading, onSelectItem }: Props) => {
           }, []);
 
     return (
-        <div className='w-50'>
+        <div className='w-1/2'>
             <div className='fs-4 fw-bold mb-2'>{heading}</div>
             <ul className="list-group">
                 {items.map((item) => <li key={item.id} className={selectedIndex === item.id ? 'list-group-item active' : 'list-group-item'} onClick={() => {

@@ -10,7 +10,7 @@ const ListItemTable = ({ data }: Props) => {
     const keysArr = Object.keys(data);
     return (
 
-        <table className="table table-dark rounded overflow-hidden">
+        <table className="table table-auto table-dark rounded overflow-hidden">
             <thead>
                 <tr>
                     {keysArr.map((item, index) =>

@@ -50,8 +50,8 @@ function App() {
     <>
       <div className="min-h-screen bg-gradient-to-r from-red-400 to-amber-300 flex flex-col items-center justify-center">
 
-        <main className="flex flex-col items-center">
-          <section className="mb-8">
+        <main className="w-10/12 flex flex-row items-center">
+          <section className="w-1/2 mb-8">
             <h2 className="text-3xl font-semibold text-white">Our Features</h2>
             <ul className="mt-4 space-y-2">
               <li className="text-white">Feature 1: Description of feature 1</li>
@@ -59,7 +59,7 @@ function App() {
               <li className="text-white">Feature 3: Description of feature 3</li>
             </ul>
           </section>
-          <section className="mb-8">
+          <section className="w-1/2 mb-8">
             <h2 className="text-3xl font-semibold text-white">Our Services</h2>
             <ul className="mt-4 space-y-2">
               <li className="text-white">Service 1: Description of service 1</li>
@@ -70,6 +70,7 @@ function App() {
         </main>
 
       </div>
+      <div className="content-container">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Welcome to Reactify App
@@ -77,10 +78,11 @@ function App() {
         <p className="text-gray-600">
           This is a React application with Tailwind CSS
         </p>
+        <h1>Home Page</h1>
+        <a href="#!" className="btn btn-primary">Button</a>
       </div>
-      <h1>Home Page</h1>
-      <a href="#!" className="btn btn-primary">Button</a>
 
+</div>
       <div className="content-container">
         <div className="container">
           <div className="row g-5">
@@ -103,7 +105,7 @@ function App() {
           <div className="row">
             <div className="col-12">
               <div className="heading">All Button Type</div>
-              <div className="d-flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-20">
                 <Button title="Primary SM" style="primary" size="sm" />
                 <Button title="Primary" style="primary" />
                 <Button title="Primary LG" style="primary" size="lg" />
@@ -121,7 +123,7 @@ function App() {
 
             <div className="col-12 mt-5">
               <div className="heading">Like Button</div>
-              <div className="d-flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-20">
                 <LikeButton title={likeBtn1.title} style="secondary" size="sm" hasIcon={likeBtn1.icon} onLikeItem={handleLikeItem1} />
                 <LikeButton title={likeBtn2.title} style="secondary" size="sm" hasIcon={likeBtn2.icon} onLikeItem={handleLikeItem2} />
               </div>
@@ -129,22 +131,22 @@ function App() {
 
             <div className="col-12 mt-5">
               <div className="heading">Form</div>
-              <div className="d-flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-20">
                 <Form />
               </div>
             </div>
 
             <div className="col-12 mt-5">
               <div className="heading">List Group</div>
-              <div className="d-flex gap-20">
+              <div className="flex gap-20">
                 <ListGroup items={cities} heading="Cities" onSelectItem={handleSelectCity} />
                 <ListGroup items={foods} heading="Foods" onSelectItem={handleSelectFood} />
               </div>
-              <div className="d-flex gap-20 mt-5">
-                <div className="w-50">
+              <div className="flex gap-20 mt-5">
+                <div className="w-1/2">
                   <ListItemTable data={city} />
                 </div>
-                <div className="w-50">
+                <div className="w-1/2">
                   <ListItemTable data={food} />
                 </div>
               </div>
@@ -152,7 +154,7 @@ function App() {
 
             <div className="col-12 mt-5">
               <div className="heading">Counter</div>
-              <div className="d-flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-20">
                 <Counter />
               </div>
             </div>
