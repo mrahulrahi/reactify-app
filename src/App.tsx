@@ -30,11 +30,11 @@ function App() {
   let [likeBtn1, setLikedBtn1] = useState({ title: 'Like', icon: <FaRegHeart /> })
   let [likeBtn2, setLikedBtn2] = useState({ title: 'Follow', icon: <SlUserFollow /> })
 
-  const handleSelectCity = (item : Item) => {
+  const handleSelectCity = (item: Item) => {
     setCity(item);
   }
 
-  const handleSelectFood = (item : Item) => {
+  const handleSelectFood = (item: Item) => {
     setFood(item);
   }
 
@@ -48,41 +48,44 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-r from-red-400 to-amber-300 flex flex-col items-center justify-center">
-
-        <main className="w-10/12 flex flex-row items-center">
-          <section className="w-1/2 mb-8">
-            <h2 className="text-3xl font-semibold text-white">Our Features</h2>
-            <ul className="mt-4 space-y-2">
-              <li className="text-white">Feature 1: Description of feature 1</li>
-              <li className="text-white">Feature 2: Description of feature 2</li>
-              <li className="text-white">Feature 3: Description of feature 3</li>
-            </ul>
-          </section>
-          <section className="w-1/2 mb-8">
-            <h2 className="text-3xl font-semibold text-white">Our Services</h2>
-            <ul className="mt-4 space-y-2">
-              <li className="text-white">Service 1: Description of service 1</li>
-              <li className="text-white">Service 2: Description of service 2</li>
-              <li className="text-white">Service 3: Description of service 3</li>
-            </ul>
-          </section>
+      <div className="min-h-[400px] bg-gradient-to-r from-red-400 to-amber-300 flex flex-col items-center justify-center !pt-20">
+        <main className="w-10/12 flex flex-col">
+          <h4 className="!mb-2">Home</h4>
+          <h1 className="!mb-0">Home Page</h1>
         </main>
-
       </div>
+
       <div className="content-container">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Welcome to Reactify App
-        </h1>
-        <p className="text-gray-600">
-          This is a React application with Tailwind CSS
-        </p>
-        <h1>Home Page</h1>
-        <a href="#!" className="btn btn-primary">Button</a>
+        <div className="container mx-auto px-4 py-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Welcome to Reactify App
+          </h1>
+          <p className="text-gray-600">
+            This is a React application with Tailwind CSS
+          </p>
+          <section className="flex flex-row !mb-5">
+            <div className="w-1/2 mb-8">
+              <h2 className="text-3xl font-semibold text-white">Our Features</h2>
+              <ul className="mt-4 space-y-2">
+                <li className="text-white">Feature 1: Description of feature 1</li>
+                <li className="text-white">Feature 2: Description of feature 2</li>
+                <li className="text-white">Feature 3: Description of feature 3</li>
+              </ul>
+            </div>
+            <div className="w-1/2 mb-8">
+              <h2 className="text-3xl font-semibold text-white">Our Services</h2>
+              <ul className="mt-4 space-y-2">
+                <li className="text-white">Service 1: Description of service 1</li>
+                <li className="text-white">Service 2: Description of service 2</li>
+                <li className="text-white">Service 3: Description of service 3</li>
+              </ul>
+            </div>
+          </section>
+
+          <a href="#!" className="btn btn-primary">Button</a>
+        </div>
       </div>
 
-</div>
       <div className="content-container">
         <div className="container">
           <div className="row g-5">
