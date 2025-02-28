@@ -9,7 +9,6 @@ const UserPage = async ({ searchParams: { sortOrder } }: Props) => {
 
   return (
     <>
-
       <div className="content-container">
         <div className="container">
           <div className="row">
@@ -29,7 +28,7 @@ const UserPage = async ({ searchParams: { sortOrder } }: Props) => {
                     <label className="form-label flex-shrink-0">Phone No.</label>
                     <input type="text" className="form-control flex-grow-1" id="phone" name="phone" placeholder='Enter your phone number' />
                   </div>
-          
+
                   <div className="form-group d-flex align-items-center justify-content-between mb-4">
                     <label className="form-label flex-shrink-0">No. of Books</label>
                     <input type="text" className="form-control flex-grow-1" id="noOfBooks" name="noOfBooks" placeholder='Enter no. of books' />

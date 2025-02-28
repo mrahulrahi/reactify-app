@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react'
 import { sort } from 'fast-sort';
 
@@ -31,13 +30,13 @@ const UserTable = async ({ sortOrder }: Props) => {
                                 <thead>
                                     <tr>
                                         <th style={{ width: '30%' }}>
-                                            <Link href="/users?sortOrder=name">Name of Members</Link>
+                                            <a href="/users?sortOrder=name">Name of Members</a>
                                         </th>
                                         <th style={{ width: '30%' }}>
-                                            <Link href="/users?sortOrder=email">Email</Link>
+                                            <a href="/users?sortOrder=email">Email</a>
                                         </th>
-                                        <th style={{ width: '25%' }}><Link href="/users?sortOrder=mobile">Mobile No.</Link></th>
-                                        <th style={{ width: '15%' }}><Link href="/users?sortOrder=books">No. of Books Issued</Link></th>
+                                        <th style={{ width: '25%' }}><a href="/users?sortOrder=mobile">Mobile No.</a></th>
+                                        <th style={{ width: '15%' }}><a href="/users?sortOrder=books">No. of Books Issued</a></th>
 
                                     </tr>
                                 </thead>
