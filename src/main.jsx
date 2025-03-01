@@ -6,6 +6,8 @@ import App from './App.jsx'
 import About from './pages/About.jsx'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import UsersHome from './components/users/page'
+import User from './components/users/page/[id]'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -14,6 +16,10 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/about" element={<About />} />
+        <Route path="projects">
+          <Route index element={<UsersHome />} />
+          <Route path=":uid" element={<User />} />
+        </Route>
       </Routes>
       <Footer />
     </StrictMode>
