@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import Link from 'next/link';
-import Image from 'next/image';
 
 interface Blog {
   slice(arg0: number, arg1: number): unknown;
@@ -74,7 +72,7 @@ const BlogPage = ({params : {slug}} : Props) => {
               <div className="col-md-6 col-lg-4" key={product.id}>
                 <div className="card d-flex flex-column h-100 shadow-xl">
                   <figure className='w-100 ratio ratio-1x1'>
-                    <Image className="card-img-top object-fit-contain" src={product.image} alt="Shoes" fill />
+                    <img className="card-img-top object-fit-contain" src={product.image} alt="Shoes" />
                   </figure>
                   <div className='badge text-bg-dark'>{product.id}</div>
                   <h3 className="card-title line-clamp-3">{product.title}</h3>
@@ -84,7 +82,7 @@ const BlogPage = ({params : {slug}} : Props) => {
                     <div className="badge text-bg-dark">{product.price} $</div>
                   </div>
                   <div className="card-actions mt-auto">
-                    <Link href={'/products/' + product.id} className="btn btn-primary">open</Link>
+                    <a href={'/products/' + product.id} className="btn btn-primary">open</a>
                   </div>
                 </div>
               </div>
@@ -103,7 +101,7 @@ const BlogPage = ({params : {slug}} : Props) => {
                   <h3 className="card-title line-clamp-2">{blog.title}</h3>
                   <p className='card-text line-clamp-3'>{blog.body}</p>
                   <div className="card-actions justify-start mt-auto">
-                    <Link href={'/blog/' + blog.id} className="btn btn-primary">open</Link>
+                    <a href={'/blog/' + blog.id} className="btn btn-primary">open</a>
                   </div>
                 </div>
               </div>
