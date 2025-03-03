@@ -1,5 +1,4 @@
-
-const footer = () => {
+const Footer = () => {
     return (
         <>
             <footer className="footer py-4 mt-auto">
@@ -19,4 +18,4 @@ const footer = () => {
     )
 }
 
-export default footer
+export default Footer

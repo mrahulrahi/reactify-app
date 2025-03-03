@@ -1,12 +1,11 @@
-'use client'
-import React from 'react';
+/* eslint-disable no-unused-vars */
 import Button from "./components/Button";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { FaRegFaceGrinHearts } from "react-icons/fa6";
 import { FaHeartPulse } from "react-icons/fa6";
 import LikeButton from "./components/LikeButton";
-import ListGroup, { Item } from "./components/ListGroup";
+import ListGroup from "./components/ListGroup";
 import Counter from "./components/Counter";
 import { useState } from "react";
 import ListItemTable from "./components/ListItemTable";
@@ -30,11 +29,11 @@ function App() {
   let [likeBtn1, setLikedBtn1] = useState({ title: 'Like', icon: <FaRegHeart /> })
   let [likeBtn2, setLikedBtn2] = useState({ title: 'Follow', icon: <SlUserFollow /> })
 
-  const handleSelectCity = (item: Item) => {
+  const handleSelectCity = (item) => {
     setCity(item);
   }
 
-  const handleSelectFood = (item: Item) => {
+  const handleSelectFood = (item) => {
     setFood(item);
   }
 

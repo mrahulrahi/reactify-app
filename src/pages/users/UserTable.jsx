@@ -1,20 +1,9 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
 import { sort } from 'fast-sort';
 
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
-
-interface Props {
-    sortOrder: string
-}
-
-
-const UserTable = async ({ sortOrder }: Props) => {
+const UserTable = async ({ sortOrder }) => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users', { cache: 'no-store' });
-    const users: User[] = await res.json();
+    const users = await res.json();
 
     const sortedUsers = sort(users).asc(sortOrder === 'email' ? user => user.email : user => user.name)
 

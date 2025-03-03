@@ -1,20 +1,11 @@
-// Url: /blog/:id
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-}
+/* eslint-disable react/prop-types */
 
-interface Props {
-    params: { id: number }
-}
-
-const BlogPage = async ({ params: { id } }: Props) => {
+const BlogPage = async ({ params: { id } }) => {
 
     const res = await fetch(
         `https://jsonplaceholder.typicode.com/posts/${id}`
     );
-    const post: Post = await res.json();
+    const post = await res.json();
     return (
         <>
             <h1>{post.id} <br />{post.title}</h1>

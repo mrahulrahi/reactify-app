@@ -1,24 +1,9 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+/* eslint-disable react/prop-types */
+import  { useEffect, useState } from 'react'
 
-interface Props {
-    items: ListArray;
-    heading: string;
-    onSelectItem: (item: Item) => void;
-}
-
-export type ListArray = Item[];
-
-export interface Item {
-    id?: number;
-    name?: string;
-    price?: number;
-    distance?: number;
-}
-
-const ListGroup = ({ items, heading, onSelectItem }: Props) => {
+const ListGroup = ({ items, heading, onSelectItem }) => {
     const initial = items[0];
-    let [selectedIndex , setSelectedIndex] = useState<any | null>(0);
+    let [selectedIndex , setSelectedIndex] = useState(0);
 
     const onStart = () =>{setSelectedIndex(initial.id);
         onSelectItem(initial);}

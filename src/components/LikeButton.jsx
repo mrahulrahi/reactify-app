@@ -1,15 +1,6 @@
-'use client'
-import React from 'react'
+/* eslint-disable react/prop-types */
 
-interface Props {
-    title: string;
-    style: 'primary' | 'secondary' | 'outline';
-    size?: 'sm' | 'lg';
-    hasIcon?: JSX.Element;
-    onLikeItem: () => void;
-}
-
-const LikeButton = ({ title, style, size, hasIcon, onLikeItem }: Props) => {
+const LikeButton = ({ title, style, size, hasIcon, onLikeItem }) => {
     return (
         <div>
             <button type="button" className={`btn btn-${style} ${size ? `btn-${size}` : ''} ${hasIcon ? `has-icon` : ''}`} onClick={onLikeItem}>

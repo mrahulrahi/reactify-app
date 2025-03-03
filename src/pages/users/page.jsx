@@ -1,11 +1,8 @@
+/* eslint-disable react/prop-types */
 import UserTable from './UserTable';
 import { Suspense } from 'react';
 
-interface Props {
-  searchParams: { sortOrder: String }
-}
-
-const UserPage = async ({ searchParams: { sortOrder } }: Props) => {
+const UserPage = async ({ searchParams: { sortOrder } }) => {
 
   return (
     <>
@@ -46,7 +43,7 @@ const UserPage = async ({ searchParams: { sortOrder } }: Props) => {
       </div>
 
       <Suspense fallback={<p>Loading...</p>}>
-        <UserTable sortOrder={sortOrder as string} />
+        <UserTable sortOrder={sortOrder} />
       </Suspense>
     </>
   )

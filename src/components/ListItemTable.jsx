@@ -1,11 +1,6 @@
-import React from 'react'
-import { Item } from './ListGroup'
+/* eslint-disable react/prop-types */
 
-interface Props {
-    data: Item;
-}
-
-const ListItemTable = ({ data }: Props) => {
+const ListItemTable = ({ data }) => {
 
     const keysArr = Object.keys(data);
     return (
@@ -21,7 +16,7 @@ const ListItemTable = ({ data }: Props) => {
             <tbody>
                 <tr>
                     {keysArr.map((item) =>
-                        <td key={item} scope='row'>{data[item as keyof typeof data]}</td>
+                        <td key={item} scope='row'>{data}</td>
                     )}
                 </tr>
             </tbody>
