@@ -11,6 +11,7 @@ import { useState } from "react";
 import ListItemTable from "./components/ListItemTable";
 import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 import Form from "./components/Form";
+import Hero from "./components/Hero";
 
 
 
@@ -47,12 +48,7 @@ function App() {
 
   return (
     <>
-      <div className="min-h-[400px] bg-gradient-to-r from-red-400 to-amber-300 flex flex-col items-center justify-center !pt-20">
-        <main className="w-10/12 flex flex-col">
-          <h4 className="!mb-2">Home</h4>
-          <h1 className="!mb-0">Home Page</h1>
-        </main>
-      </div>
+      <Hero title="Home Page" subTitle="Home" />
 
       <div className="content-container">
         <div className="container mx-auto px-4 py-8">
