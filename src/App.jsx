@@ -48,12 +48,12 @@ function App() {
 
   return (
     <>
-      <Hero title="Home Page" subTitle="Home" />
+      <Hero title="Welcome to Reactify App" subTitle="Home" />
 
       <div className="content-container">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Welcome to Reactify App
+            Home Page
           </h1>
           <p className="text-gray-600">
             This is a React application with Tailwind CSS
@@ -83,9 +83,9 @@ function App() {
 
       <div className="content-container">
         <div className="container">
-          <div className="row g-5">
+          <div className="flex flex-wrap">
             {cards.map((card, index) => (
-              <div className="col" key={index}>
+              <div className="w-1/2" key={index}>
                 <div className="card">
                   <h2 className="card-title mb-4">{card.title}</h2>
                   <div className="card-actions">
