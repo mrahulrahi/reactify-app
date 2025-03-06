@@ -51,17 +51,17 @@ const BlogPage = () => {
 
       <div className="content-container">
         <div className="container">
-          <div className="row g-4">
+          <div className="flex flex-wrap">
             {products.map((product) => (
-              <div className="col-md-6 col-lg-4" key={product.id}>
-                <div className="card d-flex flex-column h-100 shadow-xl">
-                  <figure className="w-100 ratio ratio-1x1">
-                    <img className="card-img-top object-fit-contain" src={product.image} alt="Product" />
+              <div className="w-4/12 px-4" key={product.id}>
+                <div className="card flex flex-col h-full shadow-xl">
+                  <figure className="w-100 aspect-square">
+                    <img className="w-hull h-hull object-contain" src={product.image} alt="Product" />
                   </figure>
                   <div className="badge text-bg-dark">{product.id}</div>
                   <h3 className="card-title line-clamp-3">{product.title}</h3>
                   <p className="card-text line-clamp-3">{product.description}</p>
-                  <div className="d-flex justify-content-between mb-5">
+                  <div className="flex justify-content-between mb-5">
                     <div className="badge text-bg-dark">{product.category}</div>
                     <div className="badge text-bg-dark">{product.price} $</div>
                   </div>
@@ -80,7 +80,7 @@ const BlogPage = () => {
           <div className="row g-3">
             {items.slice(0, 10).map((blog) => (
               <div className="col-md-6" key={blog.id}>
-                <div className="card d-flex flex-column h-100">
+                <div className="card flex flex-col h-full">
                   <div className="badge text-bg-dark">{blog.id}</div>
                   <h3 className="card-title line-clamp-2">{blog.title}</h3>
                   <p className="card-text line-clamp-3">{blog.body}</p>

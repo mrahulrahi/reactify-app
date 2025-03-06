@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 
 const ListItemTable = ({ data }) => {
-
     const keysArr = Object.keys(data);
-    return (
 
+    return (
         <table className="table table-auto table-dark rounded overflow-hidden">
             <thead>
                 <tr>
@@ -16,12 +15,12 @@ const ListItemTable = ({ data }) => {
             <tbody>
                 <tr>
                     {keysArr.map((item) =>
-                        <td key={item} scope='row'>{data}</td>
+                        <td key={item} scope='row'>{data[item]}</td>  
                     )}
                 </tr>
             </tbody>
         </table >
-    )
+    );
 }
 
-export default ListItemTable
+export default ListItemTable;
