@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import Hero from "../../components/Hero"; // Assuming you have a Hero component
 
 
@@ -26,7 +26,7 @@ const BlogPage = () => {
 
   return (
     <>
-      <Hero title={post.title} subTitle={`Blog ${post.id}`} />
+      <Hero title={post.title} subTitle={`Blog ${post.id}`}  gradientColor1="red-400" gradientColor2="amber-300" />
 
 
       <div className="content-container">
