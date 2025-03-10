@@ -1,10 +1,8 @@
-/* eslint-disable react/prop-types */
+import { useParams } from 'react-router';
 
+const Product = () => {
+  const { uid, pid } = useParams();
+  return <div>Product Page - User: {uid}, Product: {pid}</div>;
+};
 
-const ProductPage = ({params: {id, productId}}) => {
-  return (
-    <div>ProductPage {id} {productId}</div>
-  )
-}
-
-export default ProductPage
+export default Product;

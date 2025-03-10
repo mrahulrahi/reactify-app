@@ -11,6 +11,7 @@ import User from './pages/users/userSingle.jsx';
 import Product from './pages/users/productSingle.jsx';
 import Blog from './pages/blog/blogs.jsx';
 import BlogPost from './pages/blog/blogSingle.jsx';
+import NotFound from './pages/NotFound.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
@@ -23,28 +24,32 @@ createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
 
       <BrowserRouter>
-        <Header />
-        <Routes>
-          {/* Home Route */}
-          <Route path="/" element={<App />} />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <Routes>
+            {/* Home Route */}
+            <Route path="/" element={<App />} />
 
-          {/* About Route */}
-          <Route path="/about" element={<About />} />
+            {/* About Route */}
+            <Route path="/about" element={<About />} />
 
-          {/* Users Routes */}
-          <Route path="users">
-            <Route index element={<UsersHome />} />  {/* Default Users route */}
-            <Route path=":uid" element={<User />} />  {/* Dynamic user page route */}
-            <Route path=":uid/products/:pid" element={<Product />} />  {/* Dynamic product page route */}
-          </Route>
+            {/* Users Routes */}
+            <Route path="users">
+              <Route index element={<UsersHome />} />  {/* Default Users route */}
+              <Route path=":uid" element={<User />} />  {/* Dynamic user page route */}
+              <Route path=":uid/products/:pid" element={<Product />} />  {/* Dynamic product page route */}
+            </Route>
 
-          {/* Blog Routes */}
-          <Route path="blog">
-            <Route index element={<Blog />} />  {/* Default Blog route */}
-            <Route path=":blogId" element={<BlogPost />} />  {/* Dynamic BlogPost route */}
-          </Route>
-        </Routes>
-        <Footer />
+            {/* Blog Routes */}
+            <Route path="blog">
+              <Route index element={<Blog />} />  {/* Default Blog route */}
+              <Route path=":blogId" element={<BlogPost />} />  {/* Dynamic BlogPost route */}
+            </Route>
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </div>
       </BrowserRouter>
     </QueryClientProvider>
   </StrictMode>

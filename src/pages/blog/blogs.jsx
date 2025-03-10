@@ -45,8 +45,8 @@ const BlogPage = () => {
       <Hero 
         title="From the blog" 
         subTitle="Blog" 
-        gradientColor1="(--color-third)" 
-        gradientColor2="(--color-fourth)" 
+        gradientColor1="from-third" 
+        gradientColor2="to-fourth" 
       />
 
       <div className="content-container">

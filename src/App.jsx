@@ -48,7 +48,7 @@ function App() {
 
   return (
     <>
-      <Hero title="Welcome to Reactify App" subTitle="Home" gradientColor1="red-400" gradientColor2="amber-300" />
+      <Hero title="Welcome to Reactify App" subTitle="Home" gradientColor1="from-red-400" gradientColor2="to-amber-300" />
 
       <div className="content-container">
         <div className="container mx-auto px-4 py-8">
