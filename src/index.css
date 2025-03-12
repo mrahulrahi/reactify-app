@@ -27,26 +27,26 @@
   /* =================core css starts here================= */
   body{@apply min-h-screen font-varelaRound text-sm font-normal leading-normal text-white bg-gradient-to-b from-[#111827] to-[#1F2937];-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
   a,input,button{@apply inline-block no-underline text-inherit outline-0 transition-all duration-200 ease-in;}
-  a img{@apply border-0;}
-  a:hover{outline:none;color:var(--color-first);text-decoration:none;}
-  a:active{outline:none;text-decoration:none;}
-  a:focus{outline:none;outline-offset:0px;text-decoration:none;color:inherit;}
-  ::-webkit-input-placeholder{color:var(--color-first);opacity:0.5;}
-  ::-moz-placeholder{color:var(--color-first);opacity:0.5;}
-  :-moz-placeholder{color:var(--color-first);opacity:0.5;}
-  :-ms-input-placeholder{color:var(--color-first);opacity:0.5;}
-  img{max-width:100%;border:0;height:auto;}
-  h1,h2,h3,h4,h5,h6{margin:0px;padding:0px;margin-bottom:24px;font-family: var(--font-oswald);line-height:1.2;font-weight:600;color:inherit;}
-  h1{font-size:58px;font-weight:800;}
-  h2{font-size:48px;}
-  h3{font-size:40px;}
-  h4{font-size:30px;}
-  h5{font-size:24px;}
-  h6{font-size:20px;}
-  p{margin:0px;padding:0px;margin-bottom:24px;color: var(--color-grey);}
-  strong{font-weight:700;}
-  b{font-weight:400;}
-  p:last-child{margin-bottom:0;}
+  a img{@apply border-0}
+  a:hover{@apply outline-0 text-first no-underline}
+  a:active{@apply outline-0 no-underline}
+  a:focus{@apply outline-0 outline-offset-0 no-underline text-inherit}
+  ::-webkit-input-placeholder{@apply text-first/50}
+  ::-moz-placeholder{@apply text-first/50}
+  :-moz-placeholder{@apply text-first/50}
+  :-ms-input-placeholder{@apply text-first/50}
+  img{@apply max-w-full border-0 h-auto}
+  h1,h2,h3,h4,h5,h6{@apply m-0 p-0 mb-6 font-oswald leading-[1.2] font-semibold text-inherit}
+  h1{@apply text-[58px] font-extrabold}
+  h2{@apply text-5xl}
+  h3{@apply text-[40px]}
+  h4{@apply text-3xl}
+  h5{@apply text-2xl}
+  h6{@apply text-xl}
+  p{@apply m-0 p-0 mb-6 text-grey}
+  strong{@apply font-bold}
+  b{@apply font-normal}
+  p:last-child{@apply mb-0}
  
 }
 
@@ -61,8 +61,8 @@
   .btn-primary:hover {border-color: var(--color-third);background: var(--color-third);color: var(--color-white);}
   .btn-secondary {background: var(--color-first);border-color: var(--color-first);color: var(--color-white);}
   .btn-secondary:hover {border-color: #333;background: #333;color: var(--color-white);}
-  .btn-outline {background: transparent;border-color: var(--color-first);color: var(--color-first);}
-  .btn-outline:hover {border-color: var(--color-first);background: var(--color-first);color: var(--color-white);}
+  .btn-outline {background: transparent;border-color: var(--color-white);color: var(--color-white);}
+  .btn-outline:hover {border-color: var(--color-white);background: var(--color-white);color: var(--color-black);}
   .btn-green {background: var(--color-first);color: var(--color-second);}
   .btn-green:hover {border-color: var(--color-first);background: var(--color-first);color: var(--color-second);}
   .btn.btn-sm {padding: 14px 16px;min-width: auto;}
@@ -72,10 +72,6 @@
 
   .btn{font-size: 16px;font-weight:700;line-height: 1;box-shadow:none;transition:all 0.2s ease-in;text-align: left;border-radius:8px;cursor: pointer;}
   .btn:has(.btn-icon){display: flex;align-items: center;justify-content: space-between;gap: 16px;}
-  .btn-black,.btn-black:focus{color:var(--color-white);background-color:var(--color-black);border:solid 2px var(--color-black);}
-  .btn-black:hover,.btn-black:active{color:var(--color-white);background-color:transparent;border-color:var(--color-white);}
-  .btn-white,.btn-white:focus{color:var(--color-black);background-color:var(--color-white);border:solid 2px var(--color-white);}
-  .btn-white:hover,.btn-white:active{color:var(--color-white);background-color:transparent;border-color:var(--color-white);}
   .btn:focus{box-shadow:none;}
   .btn.btn-block:has(.btn-icon){min-width:100%;justify-content: center;}  
   .btn-link{color: var(--color-white);text-decoration: underline;}
