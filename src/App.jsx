@@ -55,7 +55,7 @@ function App() {
           <h1 className="text-4xl font-bold text-white mb-4">
             Home Page
           </h1>
-          <p className="text-gray-600">
+          <p>
             This is a React application with Tailwind CSS
           </p>
           <section className="flex flex-row !mb-5">
@@ -103,7 +103,7 @@ function App() {
           <div className="row">
             <div className="col-12">
               <div className="heading">All Button Type</div>
-              <div className="flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-5">
                 <Button title="Primary SM" style="primary" size="sm" />
                 <Button title="Primary" style="primary" />
                 <Button title="Primary LG" style="primary" size="lg" />
@@ -121,7 +121,7 @@ function App() {
 
             <div className="col-12 mt-5">
               <div className="heading">Like Button</div>
-              <div className="flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-5">
                 <LikeButton title={likeBtn1.title} style="secondary" size="sm" hasIcon={likeBtn1.icon} onLikeItem={handleLikeItem1} />
                 <LikeButton title={likeBtn2.title} style="secondary" size="sm" hasIcon={likeBtn2.icon} onLikeItem={handleLikeItem2} />
               </div>
@@ -129,18 +129,18 @@ function App() {
 
             <div className="col-12 mt-5">
               <div className="heading">Form</div>
-              <div className="flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-5">
                 <Form />
               </div>
             </div>
 
             <div className="col-12 mt-5">
               <div className="heading">List Group</div>
-              <div className="flex gap-20">
+              <div className="flex gap-5">
                 <ListGroup items={cities} heading="Cities" onSelectItem={handleSelectCity} />
                 <ListGroup items={foods} heading="Foods" onSelectItem={handleSelectFood} />
               </div>
-              <div className="flex gap-20 mt-5">
+              <div className="flex gap-5 mt-5">
                 <div className="w-1/2">
                   <ListItemTable data={city} />
                 </div>
@@ -152,7 +152,7 @@ function App() {
 
             <div className="col-12 mt-5">
               <div className="heading">Counter</div>
-              <div className="flex flex-wrap gap-20">
+              <div className="flex flex-wrap gap-5">
                 <Counter />
               </div>
             </div>
