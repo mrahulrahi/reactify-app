@@ -51,10 +51,10 @@ const BlogPage = () => {
 
       <div className="content-container">
         <div className="container">
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap -mb-6">
             {blogs.map((blog) => (
-              <div className="w-1/2 px-3" key={blog.id}>
-                <div className="card flex flex-col h-full">
+              <div className="w-1/2 px-3 mb-6" key={blog.id}>
+                <div className="card flex flex-col h-full p-8 border border-[#ccc]">
                   <div className="badge text-bg-dark">{blog.id}</div>
                   <h3 className="card-title line-clamp-2">{blog.title}</h3>
                   <p className="card-text line-clamp-3">{blog.body}</p>
@@ -72,7 +72,7 @@ const BlogPage = () => {
           marginPagesDisplayed={2}
           pageRangeDisplayed={2}
           onPageChange={handlePageClick}
-          containerClassName={"pagination justify-content-center"}
+          containerClassName={"pagination justify-center"}
           pageClassName={"page-item"}
           pageLinkClassName={"page-link"}
           previousClassName={"page-item"}

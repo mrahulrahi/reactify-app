@@ -29,7 +29,7 @@ const UserTable = ({ sortOrder }) => {
     <div className="content-container">
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div className="w-full">
             <h3>Member List</h3>
             <div className="custom-table table-responsive">
               <table className="table">

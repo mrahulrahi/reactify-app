@@ -7,7 +7,7 @@ const Counter = () => {
     return (
         <>
             <div>
-                <ul className="pagination pagination-lg">
+                <ul className="pagination">
                     <li className="page-item"><span className="page-link btn-secondary" onClick={() => setCounter(counter === 0 ? counter : counter - 1)}><FaMinus /></span></li>
                     <li className="page-item"><span className="page-link btn-secondary" >{counter}</span></li>
                     <li className="page-item"><span className="page-link btn-secondary" onClick={() => setCounter(counter + 1)}><FaPlus /></span></li>
