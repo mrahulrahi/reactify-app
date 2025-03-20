@@ -85,8 +85,8 @@ function App() {
         <div className="container">
           <div className="flex flex-wrap">
             {cards.map((card, index) => (
-              <div className="w-1/2" key={index}>
-                <div className="card">
+              <div className="w-1/2 px-3" key={index}>
+                <div className="card p-8 border border-[#ccc]">
                   <h2 className="card-title mb-4">{card.title}</h2>
                   <div className="card-actions">
                     <a className='btn btn-primary' href={card.href}>Open</a>

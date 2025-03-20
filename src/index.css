@@ -110,7 +110,6 @@
   .content h1 {color: var(--color-third);font-size: 60pt;line-height: 1;}
   .content h2 {font-size: 20pt;color: var(--color-first);}
   
-  footer {font-size: 18px;width: 100%;color: var(--color-second);background: var(--color-first);justify-content: center;}
   
   .custom-table{min-width: 767px;}                                    
   .custom-table .table > :not(caption) > * > * {border: 2px solid var(--color-second);}
@@ -127,7 +126,6 @@
   .blog-box h3{font-size: 18px;border-radius: 50%;background: lightblue;width: 30px;height: 30px;margin-bottom: 20px;}
   .blog-box h2{font-size: 22px;text-transform: capitalize;margin-bottom: 20px;}
   
-  
   .pagination {display: flex;justify-content: center;align-items: center;margin: 40px 0;}
   .pagination .page-link {display: block;height: 40px;padding: 0.5rem 1rem;text-decoration: none;color: #fff;border: 1px solid #ccc;cursor: pointer;display: flex;align-items: center;}
   .pagination .page-link:hover {background: var(--color-second);color: var(--color-first);}
@@ -135,29 +133,10 @@
   .pagination .page-item:first-child .page-link {border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;border-right: 0;}
   .pagination .page-item:last-child .page-link {border-top-right-radius: 0.25rem;border-bottom-right-radius: 0.25rem;}
 
-  .table {
-    width: 100%;
-    margin-bottom: 1rem;
-    vertical-align: top;
-    border-color: #4d5154;
-}
-
-.table-dark {
-  color: var(--color-white);
-  border-color: #4d5154;
-}
-
-  .table>:not(caption)>*>* {
-    padding: .5rem .5rem;
-    color: var(--color-white);
-    background-color: #212529;
-    border-bottom-width: 1px;
-    box-shadow: inset 0 0 0 9999px transparent;
-}
-
-.table>thead {
-  vertical-align: bottom;
-}
+  .table {width: 100%;margin-bottom: 1rem;vertical-align: top;border-color: #4d5154;}
+  .table-dark {color: var(--color-white);border-color: #4d5154;}
+  .table>:not(caption)>*>* {padding: .5rem .5rem;color: var(--color-white);background-color: #212529;border-bottom-width: 1px;box-shadow: inset 0 0 0 9999px transparent;}
+  .table>thead {border-top-width: 1px;vertical-align: bottom;}
   
 
   @media (max-width:767.98px){

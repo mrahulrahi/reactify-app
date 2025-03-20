@@ -8,14 +8,14 @@ const ListItemTable = ({ data }) => {
             <thead>
                 <tr>
                     {keysArr.map((item, index) =>
-                        <th className='text-capitalize' key={index} scope="col">{item}</th>
+                        <th className='capitalize w-1/3' key={index} scope="col">{item}</th>
                     )}
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     {keysArr.map((item) =>
-                        <td key={item} scope='row'>{data[item]}</td>  
+                        <td key={item} scope='row' className="text-center">{data[item]}</td>  
                     )}
                 </tr>
             </tbody>
