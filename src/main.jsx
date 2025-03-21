@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router'; // Make sure to import from react-router-dom
 import './index.css';
 import App from './App.jsx';
-import About from './pages/About.jsx';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import UsersHome from './pages/users/users.jsx';
@@ -29,9 +28,6 @@ createRoot(document.getElementById('root')).render(
           <Routes>
             {/* Home Route */}
             <Route path="/" element={<App />} />
-
-            {/* About Route */}
-            <Route path="/about" element={<About />} />
 
             {/* Users Routes */}
             <Route path="users">

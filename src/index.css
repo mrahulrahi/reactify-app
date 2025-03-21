@@ -83,32 +83,28 @@
   .main-container{@apply w-full h-[calc(100dvh-80px)] pt-20;}
   /* =================core css ends here================= */
   
-  .heading{@apply text-[32px] font-bold leading-none mb-6}
+  .heading{@apply font-oswald text-[32px] font-bold leading-none mb-6}
 
   
-  .form-label{@apply w-[140px]}
-  form span {height: 40px;float: left;display: inline-flex;align-items: center;color: var(--color-first);}
-  input.form-control {float: right;width: 100%;height: 40px;border-radius: 10px;border: 1px solid;font-size: 14px;text-align: center;}
-  .errorcss {font-size: 14pt;color: red;}
-  input.form-control:focus{box-shadow: none;border-color: #C20E0E;}
+  .form-label{@apply w-[140px] mb-2}
+  form span {@apply h-10 float-left inline-flex items-center text-first}
+  input.form-control {@apply float-right w-full h-10 rounded-[10px] border text-sm text-center}
+  .errorcss {@apply text-sm text-[red]}
+  input.form-control:focus{@apply shadow-none border-[#C20E0E]}
 
   .brand-head{font-size: 48px;font-weight: 700;line-height: 1.2;margin-bottom: 32px;}
   .landing-content-box h3{font-weight: 500;margin-bottom: 40px;}  
   .landing-btn-wrap{margin-bottom: 32px;}
   
-
   .form-group{position: relative;}
   .form-group+.form-group{margin-top: 16px;}
   .form-control, .form-control:focus{padding: 12px 16px;font-size: 16px;font-weight: 500;line-height: 1;color: var(--color-white);background-color: rgba(255, 255, 255, 0.1);border-color: rgba(255, 255, 255, 0.25);box-shadow: none;}
   .form-control::placeholder {color: var(--color-grey);opacity: 1;}
   .form-control:focus{background-color: rgba(255, 255, 255, 0.2);border-color: var(--color-white);color: var(--color-white);}
-  .member-form-btn{margin-top: 32px;}
-  .member-form-footer{margin-top: 16px;}
   
   
   .content h1 {color: var(--color-third);font-size: 60pt;line-height: 1;}
   .content h2 {font-size: 20pt;color: var(--color-first);}
-  
   
   .custom-table{min-width: 767px;}                                    
   .custom-table .table > :not(caption) > * > * {border: 2px solid var(--color-second);}
@@ -116,7 +112,6 @@
   .custom-table table tbody tr:nth-child(even) td {color: var(--color-second);background: var(--color-first);}
   .custom-table table tbody tr:nth-child(odd) td{color: var(--color-first);background: var(--color-fourth);}
   
-
   .badge{font-size: 16px;font-weight: 500;background: var(--color-third);color: var(--color-white);padding: 6px 12px;border-radius: 6px;}
   
   .blog-list{width: calc(100% + 20px);margin-left: -10px;margin-bottom: -20px;}
@@ -126,7 +121,7 @@
   .blog-box h2{font-size: 22px;text-transform: capitalize;margin-bottom: 20px;}
   
   .pagination {display: flex;justify-content: center;align-items: center;margin: 40px 0;}
-  .pagination .page-link {display: block;height: 40px;padding: 0.5rem 1rem;text-decoration: none;color: #fff;border: 1px solid #ccc;cursor: pointer;display: flex;align-items: center;}
+  .pagination .page-link {display: flex;align-items: center;height: 40px;padding: 0.5rem 1rem;color: #fff;border: 1px solid #ccc;cursor: pointer;}
   .pagination .page-link:hover {background: var(--color-second);color: var(--color-first);}
   .pagination .page-item.active .page-link {background: var(--color-white);color: var(--color-first);}
   .pagination .page-item:first-child .page-link {border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;border-right: 0;}
@@ -136,18 +131,6 @@
   .table-dark {color: var(--color-white);border-color: #4d5154;}
   .table>:not(caption)>*>* {padding: .5rem .5rem;color: var(--color-white);background-color: #212529;border-bottom-width: 1px;box-shadow: inset 0 0 0 9999px transparent;}
   .table>thead {border-top-width: 1px;vertical-align: bottom;}
-  
-
-  @media (max-width:767.98px){
-    .sidebar{width: fit-content;height: max-content;position: fixed;bottom: 20px;right: 20px;z-index: 1000;transform: translateX(calc(100% + 40px));transition: all 0.3s ease-in-out;border-radius: 6px;overflow: hidden;margin-bottom: 70px;}
-    .sidebar.open{transform: translateX(0);}
-  
-    .sidebar-toggler{width: 60px;min-width: 60px;height: 60px; position: fixed;bottom: 20px;right: 20px;z-index: 1000;}
-    .main-body{width: 100%;}
-  }
-  
-
-  
   
 }
   

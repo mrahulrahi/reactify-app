@@ -86,7 +86,7 @@ function App() {
           <div className="flex flex-wrap">
             {cards.map((card, index) => (
               <div className="w-1/2 px-3" key={index}>
-                <div className="card p-8 border border-[#ccc]">
+                <div className="card p-8 bg-white/10 border border-[#ccc] rounded-xl">
                   <h2 className="card-title mb-4">{card.title}</h2>
                   <div className="card-actions">
                     <a className='btn btn-primary' href={card.href}>Open</a>
@@ -100,47 +100,67 @@ function App() {
 
       <div className="content-container" id='styleguide'>
         <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="heading">All Button Type</div>
-              <div className="flex flex-wrap gap-5">
-                <Button title="Primary SM" style="primary" size="sm" />
-                <Button title="Primary" style="primary" />
-                <Button title="Primary LG" style="primary" size="lg" />
-                <Button title="Secondary SM" style="secondary" size="sm" />
-                <Button title="Secondary" style="secondary" />
-                <Button title="Secondary LG" style="secondary" size="lg" />
-                <Button title="Outline SM" style="outline" size="sm" />
-                <Button title="Outline" style="outline" />
-                <Button title="Like" style="primary" size="sm" hasIcon={<FaRegHeart />} />
-                <Button title="Like" style="secondary" size="sm" hasIcon={<FaHeart />} />
-                <Button title="Like" style="primary" size="sm" hasIcon={<FaRegFaceGrinHearts />} />
-                <Button title="Like" style="secondary" size="sm" hasIcon={<FaHeartPulse />} />
+          <div className="flex flex-wrap">
+            <div className="w-8/12 px-3">
+              <div className="bg-white/10 p-8 rounded-xl h-full">
+                <div className="heading">All Button Type</div>
+                <div className="flex flex-wrap gap-5">
+                  <Button title="Primary SM" style="primary" size="sm" />
+                  <Button title="Primary" style="primary" />
+                  <Button title="Primary LG" style="primary" size="lg" />
+                  <Button title="Secondary SM" style="secondary" size="sm" />
+                  <Button title="Secondary" style="secondary" />
+                  <Button title="Secondary LG" style="secondary" size="lg" />
+                  <Button title="Outline SM" style="outline" size="sm" />
+                  <Button title="Outline" style="outline" />
+                  <Button title="Like" style="primary" size="sm" hasIcon={<FaRegHeart />} />
+                  <Button title="Like" style="secondary" size="sm" hasIcon={<FaHeart />} />
+                  <Button title="Like" style="primary" size="sm" hasIcon={<FaRegFaceGrinHearts />} />
+                  <Button title="Like" style="secondary" size="sm" hasIcon={<FaHeartPulse />} />
+                </div>
               </div>
             </div>
 
-            <div className="col-12 mt-5">
-              <div className="heading">Like Button</div>
-              <div className="flex flex-wrap gap-5">
-                <LikeButton title={likeBtn1.title} style="secondary" size="sm" hasIcon={likeBtn1.icon} onLikeItem={handleLikeItem1} />
-                <LikeButton title={likeBtn2.title} style="secondary" size="sm" hasIcon={likeBtn2.icon} onLikeItem={handleLikeItem2} />
+            <div className="w-4/12 px-3">
+              <div className="flex flex-col gap-5">
+                <div className="bg-white/10 p-8 rounded-xl">
+                  <div className="heading">Like Button</div>
+                  <div className="flex flex-wrap gap-5">
+                    <LikeButton title={likeBtn1.title} style="secondary" size="sm" hasIcon={likeBtn1.icon} onLikeItem={handleLikeItem1} />
+                    <LikeButton title={likeBtn2.title} style="secondary" size="sm" hasIcon={likeBtn2.icon} onLikeItem={handleLikeItem2} />
+                  </div>
+                </div>
+
+
+                <div className="bg-white/10 p-8 rounded-xl">
+                  <div className="heading">Counter</div>
+                  <div className="flex flex-wrap gap-5">
+                    <Counter />
+                  </div>
+                </div>
               </div>
+
             </div>
 
-            <div className="col-12 mt-5">
-              <div className="heading">Form</div>
-              <div className="flex flex-wrap gap-5">
-                <Form />
+            <div className="w-6/12 px-3 mt-10">
+              <div className="bg-white/10 p-8 rounded-xl">
+                <div className="heading">Form</div>
+                <div className="flex flex-wrap gap-5">
+                  <Form />
+                </div>
               </div>
+
             </div>
 
-            <div className="col-12 mt-5">
+
+
+            <div className="w-full mt-10">
               <div className="heading">List Group</div>
               <div className="flex gap-5">
                 <ListGroup items={cities} heading="Cities" onSelectItem={handleSelectCity} />
                 <ListGroup items={foods} heading="Foods" onSelectItem={handleSelectFood} />
               </div>
-              <div className="flex gap-5 mt-5">
+              <div className="flex gap-5 mt-10">
                 <div className="w-1/2">
                   <ListItemTable data={city} />
                 </div>
@@ -150,12 +170,7 @@ function App() {
               </div>
             </div>
 
-            <div className="col-12 mt-5">
-              <div className="heading">Counter</div>
-              <div className="flex flex-wrap gap-5">
-                <Counter />
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

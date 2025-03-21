@@ -1,8 +1,8 @@
 const Form = () => {
 
   return (
-    <form>
-        <div className="from-row-group">
+    <form className="w-full">
+        <div className="from-row-group flex flex-col">
             <div className="form-group">
                 <div className="form-label">Name</div>
                 <input type="text" className="form-control" />

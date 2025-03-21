@@ -33,7 +33,7 @@ const BlogPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="card w-full bg-base-100 p-8 border border-[#ccc]">
+              <div className="card w-full bg-base-100 p-8 bg-white/10 border border-[#ccc] rounded-xl">
                 <div className="card-body">
                   <div className='badge badge-primary badge-lg'>{post.id}</div>
                   <h2 className="card-title">{post.title}</h2>

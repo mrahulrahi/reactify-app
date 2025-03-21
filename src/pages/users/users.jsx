@@ -74,7 +74,7 @@ const UserPage = () => {
           <div className="flex flex-wrap -mb-6">
             {products.map((product) => (
               <div className="w-4/12 px-3 mb-6" key={product.id}>
-                <div className="card flex flex-col h-full border border-[#ccc]">
+                <div className="card flex flex-col h-full bg-white/10 border border-[#ccc] rounded-xl">
                   <div className="w-full h-[406px] aspect-square bg-white p-6">
                     <img className="w-full h-full object-contain" src={product.image} alt="Product" />
                   </div>
