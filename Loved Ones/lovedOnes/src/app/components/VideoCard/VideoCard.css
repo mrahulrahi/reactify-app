@@ -1,0 +1,5 @@
+.video-card-box{position: relative;padding: 16px 14px;border-radius: 12px;box-shadow: 0px 4.69px 29.34px 0px #0000001A;background: var(--lo-white);}
+.video-card-media{width: 100%;margin-bottom: 18px;aspect-ratio: 4/3;border-radius: 8px;overflow: hidden;}
+.video-del-btn{width: 24px;height: 24px;position: absolute;top: 32px;right: 32px;background: transparent;border: 0;padding: 0;}
+.video-card-content{font-size: 14px;color: var(--lo-grey);}
+.video-card-content h5{font-size: 17px;color: var(--lo-black);margin-bottom: 3px;}

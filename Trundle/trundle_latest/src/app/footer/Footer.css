@@ -1,0 +1,43 @@
+footer#footer{background: #100820;color: rgba(255, 255, 255, 0.6);}
+.footer-upper{padding: 44px 0;line-height: 1.5;}
+.footer-upper-left{padding-right: 2%;}
+.footer-logo{display: inline-block; height: 36px;margin-bottom: 14px;}
+.footer-logo img{width: 100%; height: 100%; object-fit: contain; object-position: left;}
+.footer-upper-right{padding-left: 8%;margin-top: 10px;}
+.footer-heading{font-size: 16px;font-weight: 600;line-height: 1.25;color: var(--white);margin-bottom: 14px;}
+.footer-nav-link:hover{color: var(--white);}
+.footer-social-links{margin-top: -5px;}
+.footer-social-links a{color: var(--black);width: 30px;height: 30px;background: #CFCFCF;border-radius: 50%;}
+.footer-social-links a:hover{background: var(--white);}
+.footer-lower{padding: 26px 0 35px;border-top: 1px solid rgba(255, 255, 255, 0.1);font-size: 13px;line-height: 1.4;color: rgba(255, 255, 255, 0.5);}
+
+.footer-social-links a:focus{
+  color: var(--black) !important;
+}
+
+/* ========================================== 
+! Large devices (desktops, less than 1200px)
+=========================================== */
+@media (max-width: 1199.98px) {
+}
+
+/*==========================================
+! Medium devices (tablets, less than 992px)
+========================================== */
+@media (max-width: 991.98px) {
+}
+
+/* =================================================  
+! Small devices (landscape phones, less than 768px)
+================================================= */
+@media (max-width: 767.98px) {
+.footer-upper-left{padding-right: 0;margin-bottom: 30px;}
+.footer-upper-right{padding-left: 0;margin-top: 0;}
+}
+
+/* ======================================================
+! Extra small devices (portrait phones, less than 576px)
+====================================================== */   
+@media (max-width: 575.98px) {
+.fur-col{width: 100%;}
+}

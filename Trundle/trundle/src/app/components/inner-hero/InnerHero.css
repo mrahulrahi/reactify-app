@@ -1,0 +1,42 @@
+.inner-hero-container{padding: 45px 0 120px;min-height: 245px;background:#421699;color:var(--white);margin-bottom:-94px; font-size: 15px;line-height: 1.4;}
+.inner-hero-container h1{font-size: 36px;line-height: 1.2;margin-bottom: 4px;}
+.inner-hero-container h4{font-size: 24px;line-height: 1.33;margin-bottom: 4px;}
+.inner-hero-bg{position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+
+
+
+
+/* ========================================== 
+! Large devices (desktops, less than 1200px)
+=========================================== */
+@media (max-width:1199.98px){
+  
+}
+
+/*==========================================
+! Medium devices (tablets, less than 992px)
+========================================== */
+@media (max-width:991.98px){
+  
+}
+
+/* =================================================  
+! Small devices (landscape phones, less than 768px)
+================================================= */
+@media (max-width:767.98px){
+
+    .inner-hero-container{padding: 30px 0 120px;min-height: 215px;}
+
+.inner-hero-container h1{font-size: 28px;}
+
+  
+  
+}
+
+/* ======================================================
+! Extra small devices (portrait phones, less than 576px)
+====================================================== */
+@media (max-width:575.98px){
+
+  
+}

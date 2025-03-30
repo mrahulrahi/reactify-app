@@ -1,0 +1,5 @@
+.video-frame{position: relative;width: 100%;height: 100%;}
+.video-frame video{width: 100%;height: 100%;}
+.video-frame.playing::before{display: none;}
+.video-frame::before{content: '';width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: rgba(0, 0, 0, 0.2);z-index: 9;}
+.play-btn{width: auto;height: 15%;min-height: 60px; aspect-ratio: 1/1;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);background: var(--lo-black);background-image: url(/images/play-icon.svg);background-size: 35% auto;background-position: center;background-repeat: no-repeat;border-radius: 50%;z-index: 10;border: 2px solid var(--lo-white);} 

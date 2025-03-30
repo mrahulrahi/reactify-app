@@ -1,0 +1,11 @@
+.hero-search-container{padding: 5px;gap: 10px;border-radius: 55px;border: 1px solid #EBEBEB;background: var(--white);width: 100%;max-width: 500px;}
+.hero-search-box{padding-left: 12px;}
+.hero-search-btn .btn{padding: 12px;padding-right: 20px;height: 48px;min-width: 161px;border-radius: 0 50px 50px 0;}
+.hero-search-icon{width: 18px;height: 18px;}
+.hs-arrow{font-size: 14px;line-height: 1;opacity: 0.5;position: absolute; right: 0;top: 20%;}
+.hero-search-box .form-select-container.select-2{padding-left: 8px;padding-right: 10px;}
+
+@media (max-width:575.98px){
+.hero-search-container{max-width: 90%;}
+.hero-search-btn .btn{min-width: 100px;}
+}

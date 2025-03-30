@@ -1,0 +1,11 @@
+.upload-file-box{width: 100%;height: 171px;padding: 23px;background: #F5F7FA;border: 2px dashed var(--lo-blue);border-radius: 8px;}
+.upload-file-box input{width: 100%;height: 100%;position: absolute;top: 0;right: 0;bottom: 0;left: 0;opacity: 0;z-index: 1;cursor: pointer;}
+.upload-file-text{font-size: 14px;font-weight: 500;color: var(--lo-blue);}
+.upload-file-text > h6{font-size: 16px;font-weight: 500;margin-bottom: 0;color: var(--lo-blue);}
+.upload-file-icon{width: 50px;height: 50px;}
+.upload-file-text.file-uploaded{color: #306C36;}
+
+.upload-preview-btn{margin-top: 10px;}
+.upload-preview-modal .modal-dialog{max-width: 600px;}
+.upload-preview-modal .modal-body{padding: 56px 38px 28px;}
+.upload-preview-media{width: 100%;height: 100%;aspect-ratio: 2/1;}

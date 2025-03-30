@@ -1,0 +1,250 @@
+
+.page-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Inter';
+    font-size: 14px;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.left-side, .right-side {
+    width: 50%;
+    flex: 1;
+    display: flex;
+}
+/* 
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content:center;
+    text-align: left;
+    position: relative;
+    left: 10%;
+    top: -12%;
+} */
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.suggest{
+    width: 110px;
+    font-size: 16px;
+}
+
+.price {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.price-input-container {
+    display: flex; /* Use flexbox to align items side by side */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px;
+    width: 100%; /* Ensure the container uses available width */
+    max-width: 300px; /* Adjust as needed */
+}
+
+.price-label {
+    margin-right: 10px; /* Space between label and input */
+    white-space: nowrap; /* Prevents label from wrapping to the next line */
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows the input group to expand */
+}
+.label-width {
+    min-width: 10px; /* Adjust the width as needed */
+    display: inline-block; /* Ensure it doesn't stretch to full width */
+}
+
+.input-group-text {
+    background-color: transparent; /* Ensure the background is transparent */
+    border: 1px solid #ced4da; /* Optional: match border color */
+    border-radius: 0.375rem; /* Match the border radius */
+}
+
+.input-height {
+    height: 40px; /* Match the height of the span */
+}
+
+.input-container{
+    background-color: #fff;
+   
+}
+
+.invalid-feedback {
+    display: block;
+    color: #dc3545; /* Bootstrap's default invalid feedback color */
+    font-size: 13px;
+    margin-top: -0.92rem;
+    position: relative;
+    left: 120px;
+  }
+
+.input-container:focus-within {
+    border: 1px solid #007bff; /* Change border color when input is focused */
+}
+.input-box{
+    border: none;
+    text-align: right; 
+}
+
+.input-box::placeholder {
+    text-align: right; /* Align placeholder text to the right */
+  }
+
+.input-box:focus{
+    outline: none;
+  
+}
+
+.price-input {
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    height: 40px; /* Increase height of input field */
+    width: 100%; /* Ensures the input field uses available space */
+}
+
+.perks-text {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.perks-list {
+    padding-left: 20px; /* Add padding for list alignment */
+}
+
+.custom-list-item {
+    font-size: 16px; 
+   
+}
+.perks-list li {
+    margin-bottom: 10px;
+}
+
+.thank-you {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.limited-text {
+    color: #999;
+    margin-top: 20px;
+}
+
+.limited-number {
+    font-weight: bold;
+}
+
+.page-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Inter';
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.left-side, .right-side {
+    width: 50%;
+    flex: 1;
+    display: flex;
+}
+
+.left-side {
+    background-color: rgb(247, 247, 247);
+}
+
+/* .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+    left: 10%;
+    top: -12%;
+} */
+
+/* Adjustments for medium screens */
+@media (max-width: 992px) {
+    
+    .price-input-container, .input-box, .price-label {
+        max-width: 100%; 
+        width: 100%;
+        margin-bottom: 15px; 
+    }
+
+    .title {
+        font-size: 20px; /* Reduce the title font size */
+    }
+
+    .suggest {
+        width: 100px; /* Adjust the suggest box width */
+        font-size: 14px; /* Slightly reduce the font size */
+    }
+
+    .price {
+        font-size: 18px; /* Slightly reduce the font size */
+        margin-bottom: 15px; /* Reduce margin */
+    }
+
+    .input-height {
+        height: 36px; /* Slightly reduce input height */
+    }
+}
+
+@media (min-width: 768px) {
+.position-sticky-md{
+    position: sticky;
+    top: 114px;
+    height: calc(100dvh - 120px)
+}}
+
+/* Further adjustments for small screens */
+@media (max-width: 768px) {
+    .left-side, .right-side {
+        width: 100%; 
+        flex: 1;
+    }
+
+    .title {
+        font-size: 18px; /* Further reduce title size */
+        text-align: center; /* Center align the title */
+    }
+
+    .suggest {
+        width: auto; /* Auto width for better adaptability */
+        font-size: 16px; /* Reduce font size */
+    }
+
+    .price {
+        font-size: 16px; /* Further reduce font size */
+    }
+
+    .input-group, .input-box, .price-label {
+        flex-direction: column; /* Stack label and input vertically */
+        align-items: flex-start; /* Align label and input to the left */
+        width: 100%; /* Ensure full width usage */
+        height: 12px;
+    }
+
+    .input-box::placeholder {
+        text-align: right; 
+        padding-top: 70px;
+        
+    }
+
+    .price-input-container {
+        max-width: 100%; /* Allow full width */
+     
+    }
+}

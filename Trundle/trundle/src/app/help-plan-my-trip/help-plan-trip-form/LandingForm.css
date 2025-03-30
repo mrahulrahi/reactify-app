@@ -1,0 +1,38 @@
+.landing-inner-hero-container{padding: 145px 0 130px;min-height: 360px;background:#6602F2;color:var(--white);margin-bottom:-94px; font-size: 15px;line-height: 1.4;}
+.landing-inner-hero-container h1{font-size: 24px;line-height: 1.1;margin-bottom: 0;}
+.lih-blur-img{position: absolute; left: 50%; bottom: -3px; margin-left: 289px; width: 211px; height: 255px;}
+.lih-blur-img img{width: 100%; height: 100%;object-fit: contain;}
+.lih-line{position: absolute; left: 50%; bottom: -3px; transform: translateX(-50%);margin-left: -241px; width: 236px; height: 106px;}
+.lih-line img{width: 100%; height: 100%;object-fit: contain;}
+.lih-star{position: absolute; left: 50%; bottom: 147px; margin-left: 583px; width: 14px; height: 14px;}
+.lih-star img{width: 100%; height: 100%;object-fit: contain;}
+
+.landing-page-content-box{width: 100%; max-width: 512px; padding: 30px; margin: 0 auto; background: var(--white); border-radius:30px; box-shadow: 0 4px 36px rgba(101, 101, 101, 0.15);}
+
+/* ========================================== 
+! Large devices (desktops, less than 1200px)
+=========================================== */
+@media (max-width:1199.98px){
+  
+}
+
+/*==========================================
+! Medium devices (tablets, less than 992px)
+========================================== */
+@media (max-width:991.98px){
+  
+}
+
+/* =================================================  
+! Small devices (landscape phones, less than 768px)
+================================================= */
+@media (max-width:767.98px){
+  
+}
+
+/* ======================================================
+! Extra small devices (portrait phones, less than 576px)
+====================================================== */
+@media (max-width:575.98px){
+  
+}

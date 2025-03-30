@@ -1,0 +1,217 @@
+.itenerary-details-hero {
+   width: 100%;
+   border-radius: 15px;
+   background: var(--white);
+   border: solid 1px #ebebeb;
+   padding: 15px;
+}
+.itenerary-details-hero-img {
+   width: 100%;
+   padding-bottom: 35.8%;
+   position: relative;
+   background: var(--light-purple);
+}
+.itenerary-details-hero-img img {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   left: 0;
+   top: 0;
+   object-fit: cover;
+}
+.itenerary-details-hero-details {
+   margin-top: 20px;
+   position: relative;
+   font-size: 15px;
+   line-height: 1.2;
+   padding-left: 5px;
+}
+.id-hero-options {
+   position: absolute;
+   top: 0;
+   right: 0;
+}
+.id-head {
+   padding-right: 50%;
+}
+.id-title {
+   font-size: 24px;
+   line-height: 1.2;
+   margin-bottom: 5px;
+}
+.id-country {
+   font-size: 15px;
+   line-height: 1.2;
+   margin-bottom: 5px;
+   color: var(--light-black);
+}
+.id-body {
+   font-size: 15px;
+   line-height: 1.5;
+   color: var(--light-black);
+   padding-top: 12px;
+}
+.id-text {
+   margin-bottom: 12px;
+}
+.id-info-list {
+   font-size: 13px;
+   line-height: 1;
+   color: var(--light-black);
+}
+.id-info-text strong {
+   color: var(--black);
+   font-weight: 600;
+}
+.id-info-item + .id-info-item {
+   margin-left: 14px;
+   border-left: solid 1px #eee;
+   padding-left: 10px;
+}
+.id-options {
+   width: 36px;
+   height: 36px;
+   background: var(--light-purple);
+   border: solid 1px var(--mid-purple);
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 20px;
+   line-height: 1;
+   color: var(--purple) !important;
+}
+.id-options-price {
+   font-size: 18px;
+   line-height: 1;
+   min-width: 80px;
+}
+
+.card-box {
+   width: 100%;
+   border-radius: 15px;
+   background: var(--white);
+   border: solid 1px #ebebeb;
+}
+.card-box-head {
+   border-bottom: solid 1px #ebebeb;
+   padding: 15px;
+   position: relative;
+}
+.card-box-head h3 {
+   font-size: 17px;
+   line-height: 1.25;
+   margin: 0;
+   display: flex;
+   align-items: center;
+   padding-right: 100px;
+}
+.card-box-close {
+   position: absolute;
+   top: 15px;
+   right: 12px;
+   color: var(--light-black);
+   font-size: 20px;
+   line-height: 1;
+   cursor: pointer;
+}
+.card-box-close:hover {
+   color: var(--purple);
+}
+.card-box-body {
+   padding: 20px 30px;
+}
+
+.unlock-login-container {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   padding: 0 40px;
+   backdrop-filter: blur(2px);
+   background: rgba(255, 255, 255, 0.7);
+}
+.unlock-login-inside {
+   padding: 30px;
+   border-radius: 15px;
+   border: 1px solid #d8d8d8;
+   background: var(--white);
+}
+.unlock-login-head {
+   color: var(--light-black);
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 1.43;
+   text-align: center;
+}
+.unlock-login-head h5 {
+   color: var(--black);
+   font-size: 20px;
+   font-weight: 700;
+   line-height: 1.6;
+   margin-bottom: 2px;
+}
+.unlock-login.card-box-body {
+   min-height: 500px;
+}
+
+/* ========================================== 
+! Large devices (desktops, less than 1200px)
+=========================================== */
+@media (max-width: 1199.98px) {
+}
+
+/*==========================================
+! Medium devices (tablets, less than 992px)
+========================================== */
+@media (max-width: 991.98px) {
+}
+
+/* =================================================  
+! Small devices (landscape phones, less than 768px)
+================================================= */
+@media (max-width: 767.98px) {
+   .id-info-list {
+      flex-flow: column;
+   }
+   .id-info-item + .id-info-item {
+      margin-left: 0;
+      border-left: 0;
+      padding-left: 0;
+      margin-top: 6px;
+   }
+   .id-hero-options {
+      position: relative;
+      inset: auto;
+      margin-bottom: 20px;
+   }
+   .id-head {
+      padding: 0;
+   }
+   .id-info-icon {
+      width: 28px;
+      text-align: center;
+   }
+   .id-options-price {
+      margin-top: 10px;
+   }
+   .card-box-body {
+      padding: 15px;
+   }
+   .itenerary-details-hero-details {
+      padding: 0;
+   }
+}
+
+/* ======================================================
+! Extra small devices (portrait phones, less than 576px)
+====================================================== */
+@media (max-width: 575.98px) {
+   .unlock-login-container {
+      padding: 0 10px;
+   }
+   .unlock-login-inside {
+      padding: 30px 20px;
+   }
+}

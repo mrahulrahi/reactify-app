@@ -1,0 +1,6 @@
+.pagination-wrapper{margin-top: 58px;}
+.pagination-wrapper .pagination{gap: 10px;}
+.pagination-wrapper .pagination .pagination-link{width: 45px;height: 45px;font-size: 18px;font-weight: 600;line-height: 1;color: var(--lo-black);background: var(--lo-white);border: 2px solid var(--lo-border-color);border-radius: 12px;}
+.pagination-wrapper .pagination .pagination-icon{width: 10px;}
+.pagination-wrapper .pagination .pagination-link:hover{background: var(--lo-border-color);color: var(--lo-black);}
+.pagination-wrapper .pagination .pagination-item.active .pagination-link{background: var(--lo-blue);color: var(--lo-white);border-color: var(--lo-blue);}

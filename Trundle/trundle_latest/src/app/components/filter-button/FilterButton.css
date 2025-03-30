@@ -1,0 +1,22 @@
+.filter-btn{color: #111;font-size: 14px;font-weight: 600;line-height: 1.4;padding: 6px 11px;border: 0;background: transparent;}
+.filter-btn-icon{width: 16px;height: 16px;margin-right: 6px;}
+.filter-btn-icon img{width: 100%;height: 100%;object-fit: cover;}
+
+.filter-modal-wrapper{border-radius: 15px;border: 1px solid var(--mid-purple);background: var(--white);box-shadow: 0px 4px 8px 0px rgba(132, 112, 176, 0.10);}
+.filter-modal-wrapper.offcanvas.offcanvas-end{left: 5px;top: 5px;bottom: 5px;max-width: 391px;width: calc(100% - 10px);}
+.filter-modal-head{padding: 18px 15px;border-bottom: 1px solid var(--mid-purple);}
+.filter-title-box{color: var(--black);font-size: 17px;font-weight: 500;line-height: 1.2;}
+.ftb-icon{width: 20px;height: 20px;}
+.ftb-icon img{width: 100%;height: 100%;object-fit: contain;}
+.fmb-close-btn{font-size: 20px;line-height: 1;color: var(--light-black);border: 0;background: transparent;}
+.fmb-close-btn:hover{cursor: pointer;color: var(--purple);}
+
+.filter-modal-body{padding: 0 20px;margin: 20px 0 30px; overflow-y: auto;}
+.ig-left-icon{position: absolute;left: 15px;top: 50%;transform: translateY(-50%);font-size: 20px;color: var(--light-black);z-index: 9;}
+.ig-right-icon{position: absolute;right: 15px;top: 50%;transform: translateY(-50%);font-size: 20px;color: var(--light-black);z-index: 9;}
+.form-search-box .input-group .form-control{border-radius: 15px!important;background: rgba(118, 118, 128, 0.12);}
+.filter-modal-body .form-label{font-weight: 600;}
+.filter-modal-body .custom-checkbox-list{gap: 12px;height: 168px;}
+.filter-modal-body .custom-checkbox .form-check-input{width: 24px;height: 24px;margin-left: 0;}
+.filter-modal-body .custom-checkbox .form-check-label{padding: 0;padding-left: 36px;font-size: 17px;min-height: auto;}
+.filter-modal-body .custom-checkbox .form-check-input:checked[type=checkbox]{background-size: 12px!important;}

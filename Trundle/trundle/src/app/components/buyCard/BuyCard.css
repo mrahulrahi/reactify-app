@@ -1,0 +1,3 @@
+.buy-card-box{padding: 20px;border-radius: 15px;border: 1px solid var(--mid-purple);background: var(--white);}
+.buy-card-text h6{color: var(--light-black);font-size: 13px;font-weight: 500;line-height: 1.2;margin-bottom: 2px;}
+.buy-card-text h3{color: var(--black);font-size: 24px;font-weight: 700;line-height: 1.2;margin-bottom: 25px;}

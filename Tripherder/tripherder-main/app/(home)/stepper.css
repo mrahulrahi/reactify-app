@@ -1,0 +1,17 @@
+.preferences-modal #RFS-StepButton.completed{background-color: var(--primary-color);}
+.preferences-modal #RFS-StepButton.active{background-color: var(--primary-color);}
+.preferences-modal #RFS-StepButton{width: 35px !important;height: 35px !important;}
+.preferences-modal .StepperContainer-0-2-1{padding: 0px !important;}
+
+.preferences-modal.modal{z-index: 99999;}
+.fade.modal-backdrop{z-index: 1;}
+.preferences-modal .modal-dialog{max-width: 950px;}
+.preferences-modal .modal-content{height: 100%;max-height: calc(100vh - 56px);background: #F6FEFF;}
+.preferences-modal .modal-content .modal-body{border-radius: 35px 35px 0px 0px;overflow: auto;height: 100%;}
+.preferences-modal .modal-content .modal-body::-webkit-scrollbar{width: 5px;}
+.preferences-modal .modal-content .modal-body::-webkit-scrollbar-track{border-radius: 30px;background:rgba(0,0,0,.1);}
+.preferences-modal .modal-content .modal-body::-webkit-scrollbar-thumb{border-radius:30px;background: var(--primary-color);;}
+
+@media (max-width:767.98px){
+    .preferences-modal .modal-dialog{max-height: calc(100dvh - 20px);margin: 10px auto;}
+}

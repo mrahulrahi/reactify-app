@@ -1,0 +1,51 @@
+.amount-content a img {width: 7px;height: 13px;margin-right: 3px;margin-bottom: 3px;}
+.profile-container{ margin-top: 55px; }
+.amount-content a {text-decoration: none;color: #000;font-weight: 600;font-size: 13px;}
+
+.succeeded-content a {color: #77C539 !important;font-weight: 600;font-size: 13px;text-decoration: none;}
+
+.details-content a {padding: 5px 16px;font-weight: 600;font-size: 13px;text-decoration: none;border-radius: 4px;border: 1px solid #C0C0C0;color: #000;}
+
+.block-content a {display: block;}
+
+.transaction-table-content th {padding: 25px;font-weight: 600;font-size: 13px;border: none;background-color: #ECECEC !important;}
+
+.transaction-table-data td {padding: 25px;color: #1D2026;border: none;}
+
+.transaction-id-content {color: #6E7485;margin-top: 8px;font-weight: 600;font-size: 13px;text-decoration: none;}
+
+.transaction-id-text {font-weight: 600;font-size: 13px;text-decoration: none;color: #1D2026;}
+
+.transaction-table-container {min-width: 800px;border: 1px solid #ECECEC;}
+
+.failed-content a {color: #CC0000 !important;font-weight: 600;font-size: 13px;text-decoration: none;}
+
+.pending-content a {color: #F1C232 !important;font-weight: 600;font-size: 13px;text-decoration: none;}
+
+.logout-name-text {font-size: var(--fs-500);font-weight: 700;}
+
+.cancel-name-text {border: 1px solid #F04722;padding: 10px 62px;color: #F04722 !important;}
+
+.logout-content-text {background: #F04722;padding: 10px 62px;color: #FFF !important;}
+
+.logout-modal-content {padding: 20px;}
+
+.logout-modal-header {display: flex;justify-content: center;align-items: center;position: relative;}
+
+.logout-modal-close {position: absolute;right: 1rem;}
+
+.cancel-name-text:hover {border: 1px solid #F04722;color: #F04722 !important;}
+
+.logout-content-text:hover {background-color: #F04722 !important;color: #FFF !important;}
+
+.billing-a-text {text-decoration: none;color: #6E7485;font-size: 14px;}
+
+.checkout-container {margin-top: 23px;}
+
+.checkout-container img {height: 22px;margin-left: 8px;margin-right: 8px;}
+
+.check-text {text-decoration: none;color: #1D2026;font-size: 14px;}
+
+.checkout-text {font-size: var(--fs-500);font-weight: 700;}
+
+.checkout-header {background-color: #EEF6FF;padding: 35px;}

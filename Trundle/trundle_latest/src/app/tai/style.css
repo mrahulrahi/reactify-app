@@ -1,0 +1,395 @@
+/* @font-face {
+  font-family: "Quicksand";
+  src: url("../../../public/fonts/Quicksand-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../../../public//fonts//Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../../../public//fonts//Figtree-Regular.ttf") format("truetype");
+} */
+
+.page-container {
+  margin-top: -74px !important;
+  display: flex;
+  flex-direction: row;
+  background-image: url("/images/landing-page-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Left Half Styles */
+.left-half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.left-half .LandingPage {
+  color: white;
+  text-align: center;
+  /* height: 100vh; */
+}
+
+.LandingPage h5 {
+  margin-left: 30px;
+  height: 29px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.LandingPage h3 {
+  margin-top: 20px;
+  /* width: 355px; */
+  height: 29px;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 28.75px;
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 0px;
+  margin-left: 54px;
+}
+
+.LandingPage span {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.LandingPage .input-container {
+  margin-top: 40px;
+}
+
+.LandingPage .input-email {
+  width: 333px;
+  height: 48px;
+  border-radius: 30px;
+  padding: 10px 105px 14px 20px;
+  outline: none;
+  border: none;
+  margin-left: 45px;
+}
+
+.LandingPage .btn-landing {
+  width: 172px;
+  height: 48px;
+  border-radius: 30px;
+  padding: 10px 20px 14px 20px;
+  outline: none;
+  border: none;
+  background-color: #6c27ff;
+  margin-left: -100px;
+}
+
+.LandingPage .line1 {
+  position: absolute;
+  bottom: 30px; /* Adjust the space from the bottom as needed */
+  left: 47%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 18px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18.2px;
+}
+
+.logo {
+  width: 361.5px;
+  height: 185.25px;
+  margin-bottom: 20px;
+}
+
+/* Right Half Styles */
+.page-container .right-half {
+  flex: 1; /* Allow the container to adjust based on content */
+  background-color: #181724;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.right-half .iphone {
+  width: 90%; /* Responsive width */
+  max-width: 341.55px;
+  height: auto;
+  height: 200%;
+}
+
+.right-half .line2 {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  font-size: 13px;
+  line-height: 18.2px;
+  color: #ffffff;
+  z-index: 1;
+  left: 30%;
+}
+
+.arrow-image {
+  position: absolute;
+  right: 0;
+  transform: translateY(-20%);
+  top: 50%;
+  width: 100px; /* Adjust the size as needed */
+  height: 250px; /* Adjust the size as needed */
+}
+
+/* Media Queries for Mobile */
+@media screen and (max-width: 550px) {
+  .page-container {
+    flex-direction: column;
+    background-size: cover;
+  }
+
+  .left-half,
+  .right-half {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+  }
+
+  .left-half {
+    order: 1;
+    margin-bottom: 20px;
+    padding: 5%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 90px;
+  }
+
+  .left-half .input-container {
+    margin-left: 10px;
+  }
+  .left-half .input-email,
+  .left-half .btn-landing {
+    width: calc(100% - 110px); /* Adjusted for mobile */
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .left-half .input-email {
+    background-color: #fbf9ff;
+    color: black;
+  }
+
+  .left-half h5 {
+    font-size: 20px;
+  }
+
+  .left-half h3 {
+    font-size: 20px;
+    margin-left: -1px;
+  }
+
+  .left-half .line1 {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    font-size: 10px;
+  }
+
+  .left-half .btn-landing {
+    margin-top: 10px;
+  }
+
+  .right-half {
+    order: 2;
+  }
+
+  .logo {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .right-half {
+    text-align: center;
+  }
+
+  .right-half .iphone {
+    width: 60%;
+    height: 100%;
+    /* height: auto; */
+    position: relative;
+  }
+
+  .right-half .arrow-image {
+    display: none;
+  }
+
+  .right-half .line2 {
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    font-size: 7px;
+  }
+}
+
+@media screen and (min-width: 551px) and (max-width: 767px) {
+  .page-container {
+    flex-direction: row;
+    background-size: cover;
+  }
+
+  .left-half,
+  .right-half {
+    height: auto;
+    background-size: cover;
+  }
+
+  .left-half {
+    order: 1;
+    width: 60%;
+    padding: 5%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .left-half .input-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .left-half .input-email,
+  .left-half .btn-landing {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 10px;
+    height: 40px;
+  }
+
+  .left-half .input-email {
+    background-color: #fbf9ff;
+    color: black;
+  }
+
+  .left-half h5 {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .left-half .line1 {
+    font-size: 10px;
+  }
+  .left-half h3 {
+    font-size: 17px;
+    margin-left: 10px;
+    width: 100%;
+  }
+
+  .left-half span {
+    font-size: 12px;
+  }
+
+  .left-half .btn-landing {
+    margin-top: 10px;
+  }
+
+  .right-half {
+    order: 2;
+    width: 40%;
+  }
+
+  .logo {
+    width: 180px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .right-half .iphone {
+    width: 70%;
+    height: auto;
+    margin-left: 50px;
+    position: relative;
+  }
+
+  .right-half .arrow-image {
+    display: none;
+  }
+
+  .right-half .line2{
+    font-size: 10px;
+    bottom: 20px;
+    left: 25%;
+  }
+
+  .LandingPage .line1{
+    font-size: 10px;
+    bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .page-container {
+    flex-direction: row;
+  }
+
+  .left-half h3,
+  .left-half h5 {
+    font-size: 20px;
+  }
+
+  .left-half .input-email,
+  .left-half .btn-landing {
+    width: calc(100% - 100px);
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 40px;
+  }
+
+  .left-half .line1 {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+
+  .left-half .input-email {
+    margin-bottom: 10px;
+  }
+
+  .left-half .input-container {
+    margin-top: 40px;
+  }
+
+  .logo {
+    width: 50%;
+    height: 25%;
+  }
+
+  .right-half {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right-half .iphone {
+    width: 70%;
+    height: 100%;
+    margin-left: 60px;
+  }
+
+  .right-half .arrow-image {
+    width: 60px;
+    height: 150px;
+  }
+
+  .right-half .line2 ,
+  .LandingPage .line1{
+    font-size: 12px;
+    bottom: 20px;
+  }
+}
