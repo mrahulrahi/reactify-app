@@ -19,13 +19,13 @@ export default async function Page() {
 
    const role = session?.user?.user_role;
 
-   if (session) {
-      if (role === 1) {
-         redirect('/influencer/my-profile');
-      } else {
-         redirect('/travellers')
-      }
-   }
+   // if (session) {
+   //    if (role === 1) {
+   //       redirect('/influencer/my-profile');
+   //    } else {
+   //       redirect('/travellers')
+   //    }
+   // }
 
    const countriesList = await getAllCountriesList();
 

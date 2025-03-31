@@ -33,17 +33,20 @@ export default function HeaderContent({
                 priority
               />
             </Link>
-            <>
-              {role === 1 ? (
-                <DropDown />
-              ) : (
-                <NavList
-                  countriesList={fromCountriesOptions}
-                  session={session}
-                  notificationList={notificationList}
-                />
-              )}
-            </>
+            {pathname === "/successful-submission" ? null
+              :
+              <>
+                {role === 1 ? (
+                  <DropDown />
+                ) : (
+                  <NavList
+                    countriesList={fromCountriesOptions}
+                    session={session}
+                    notificationList={notificationList}
+                  />
+                )}
+              </>
+            }
           </div>
         </div>
       </nav>

@@ -1,0 +1,40 @@
+# Expo-generated ignore patterns
+expo-env.d.ts
+
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# Metro bundler cache
+.expo/
+
+# Expo and React Native build artifacts
+.expo-shared/
+dist/
+build/
+android/app/build/
+ios/Pods/
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Mac system files
+.DS_Store

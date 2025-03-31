@@ -50,7 +50,7 @@ export default function UpdateItineraryForm({
       generic_discount_code: Yup.string(),
       affiliate_title: Yup.string().when("generic_discount_code", (genericDiscountCode, schema) => {
          if (genericDiscountCode?.[0]?.trim().length > 0) {
-            return schema.required("Affiliate title is required when affiliate link is provided");
+            return schema.required("Affiliate hyperlink title is required when affiliate link is provided");
          }
          return schema.notRequired();
       }),
@@ -88,6 +88,8 @@ export default function UpdateItineraryForm({
    }));
 
    const [prevItitnerariesItems, setPrevItinerariesItems] = useState(addedItineraryList);
+
+   const [deletedItineraries, setDeletedItineraries] = useState([]);
 
    const formik = useFormik({
       initialValues: {
@@ -198,27 +200,49 @@ export default function UpdateItineraryForm({
 
          formData.append("itinerary_count", changedItems?.length);
 
+         formData.append("deleted_itineraries", JSON.stringify(deletedItineraries));
+
          // for (var pair of formData.entries()) {
          //    console.log(pair[0] + ", " + pair[1]);
          // }
 
-         setLoading(true);
+         if (!itineraryListErr) {
+            setLoading(true);
+            const id = itinerary?.itinerary?.id;
+            const res = await dispatch(
+               updateItinerary({ access_token, formData, id })
+            );
 
-         const id = itinerary?.itinerary?.id;
-         const res = await dispatch(
-            updateItinerary({ access_token, formData, id })
-         );
-
-         if (res?.payload?.status === true) {
-            // setLoading(false);
-            toast.success(res?.payload?.message);
-            router.push("/influencer/my-profile");
-            router.refresh();
+            if (res?.payload?.status === true) {
+               // setLoading(false);
+               toast.success(res?.payload?.message);
+               router.push("/influencer/my-profile");
+               router.refresh();
+            } else {
+               setLoading(false);
+            }
          } else {
-            setLoading(false);
+            setAddedItineraryListErr(true);
          }
       },
    });
+
+   const deleteOnClick = (id) => {
+      // console.log(typeof id);
+
+      if (typeof id === "number") {
+         setDeletedItineraries(prev => {
+            if (!prev.includes(id)) {
+               return [...prev, id]; // Append only if not already present
+            }
+            return prev; // Return unchanged state if ID exists
+         });
+
+      }
+      const updatedAddedItinerariesList = addedItineraryList.filter(user => user.id !== id);
+      setAddedItineraryList(updatedAddedItinerariesList);
+      dispatch(_setAddedItineraryItemList(updatedAddedItinerariesList));
+   }
 
    const handleUpdateAnItinerary = (data) => {
       setEditableItineraryItem(data);
@@ -438,7 +462,7 @@ export default function UpdateItineraryForm({
                                  <div className="form-group d-flex align-items-center justify-content-center">
                                     <div className="form-group-left">
                                        <label className="form-label type2">
-                                          Affiliate title
+                                          Affiliate hyperlink title
                                        </label>
                                     </div>
                                     <div className="form-group-right d-flex flex-column">
@@ -465,7 +489,7 @@ export default function UpdateItineraryForm({
                                  <div className="form-group d-flex align-items-center justify-content-center">
                                     <div className="form-group-left">
                                        <label className="form-label type2">
-                                          Affiliate link
+                                          Affiliate hyperlink address
                                        </label>
                                     </div>
                                     <div className="form-group-right d-flex flex-column">
@@ -561,7 +585,6 @@ export default function UpdateItineraryForm({
                                        <li
                                           className="place-item position-relative"
                                        >
-                                          {console.log(data, "KKKKKKKKKKKKKK")}
                                           <ItineraryItemCard
                                              affiliateTitle={data?.affiliate_title}
                                              discountCode={data?.discount_code}
@@ -580,6 +603,7 @@ export default function UpdateItineraryForm({
                                              isFromUpdateIitinerary
                                              countryName={formik?.values?.selected_country_id?.label}
                                              handleUpdateAnItinerary={() => handleUpdateAnItinerary(data)}
+                                             deleteOnClick={() => deleteOnClick(data?.id)}
                                           />
                                        </li>
                                        {addedItineraryList?.length ===
@@ -608,11 +632,49 @@ export default function UpdateItineraryForm({
                                  </div>
                               );
                            })}
+                        {addedItineraryList?.length === 0 && (
+                           <div
+                              className="add-item-btn-box"
+                              onClick={() => {
+                                 setEditableItineraryItem({});
+                                 setShow(true);
+                              }}
+                           >
+                              <button
+                                 type="button"
+                                 className="add-btn d-flex align-items-center justify-content-center"
+                              >
+                                 <div className="add-btn-icon d-flex align-items-center justify-content-center">
+                                    <Image
+                                       src="/images/add-button-icon.svg"
+                                       alt=""
+                                       width={20}
+                                       height={20}
+                                    />
+                                 </div>
+                                 Add item
+                              </button>
+                           </div>
+                        )}
+                        {itineraryListErr && (
+                           <p
+                              className="text-danger mt-2 ms-2"
+                              style={{ fontSize: "13px" }}
+                           >
+                              Minimum one itinerary item is required
+                           </p>
+                        )}
                         <div className="col-lg-6 mx-auto mt-4">
                            <button
                               type="button"
                               disabled={loading}
-                              onClick={formik.handleSubmit}
+                              onClick={() => {
+                                 if (addedItineraryList?.length === 0) {
+                                    setAddedItineraryListErr(true);
+                                 }
+                                 formik.handleSubmit();
+                              }}
+                              // onClick={formik.handleSubmit}
                               className="btn btn-default btn-block"
                            >
                               Update

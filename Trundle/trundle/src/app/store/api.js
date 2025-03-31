@@ -20,6 +20,7 @@ export default class Config {
    static TRAVELLER_REGISTER = `${this.BASE_API_URL}/account/register-traveler`;
    static TRAVELLER_SIGNIN = `${this.BASE_API_URL}/account/traveler-login`;
    static GET_TRAVELLER_DETAILS = `${this.BASE_API_URL}/account/get-traveller-details`;
+   static GET_TRAVELLING_WITH_LIST_API = `${this.BASE_API_URL}/account/get-travel-choices`;
    static UPDATE_TRAVELLER_DETAILS = `${this.BASE_API_URL}/account/traveller-update`;
    static POST_HELP_PLAN_MY_TRIP = `${this.BASE_API_URL}/account/create-travel-plans`;
    static FOLLOW_TRUNDLER = `${this.BASE_API_URL}/account/create-subscribe`;

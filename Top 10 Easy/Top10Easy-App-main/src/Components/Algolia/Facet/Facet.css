@@ -1,0 +1,10 @@
+span.ais-RefinementList-labelText{
+    margin-left: 3em;
+    margin-right: 1em;
+}
+label.ais-RefinementList-label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

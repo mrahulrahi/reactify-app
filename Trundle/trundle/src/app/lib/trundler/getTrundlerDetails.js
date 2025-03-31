@@ -25,13 +25,13 @@ export const getTrundlerDetails = async ({ access_token, userId }) => {
    return data;
 };
 
-export const updateTrundlerDetails = async ({ access_token, formData }) => {
+export const updateTrundlerDetails = async ({ accessToken, formData }) => {
    try {
       const response = await fetch(Config.UPDATE_TRUNDLER_PROFILE, {
          cache: "no-store",
          method: "POST",
          headers: {
-            Authorization: `Bearer ${access_token}`,
+            Authorization: `Bearer ${accessToken}`,
          },
          body: formData,
       });

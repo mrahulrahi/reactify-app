@@ -88,7 +88,7 @@ export default function CreateItineraryForm({
       generic_discount_code: Yup.string(),
       affiliate_title: Yup.string().when("generic_discount_code", (genericDiscountCode, schema) => {
          if (genericDiscountCode?.[0]?.trim().length > 0) {
-            return schema.required("Affiliate title is required when affiliate link is provided");
+            return schema.required("Affiliate hyperlink title is required when affiliate link is provided");
          }
          return schema.notRequired();
       }),
@@ -477,7 +477,7 @@ export default function CreateItineraryForm({
                                  <div className="form-group d-flex align-items-center justify-content-center">
                                     <div className="form-group-left">
                                        <label className="form-label type2">
-                                          Affiliate title
+                                          Affiliate hyperlink title
                                        </label>
                                     </div>
                                     <div className="form-group-right d-flex flex-column">
@@ -506,7 +506,7 @@ export default function CreateItineraryForm({
                                  <div className="form-group d-flex align-items-center justify-content-center">
                                     <div className="form-group-left">
                                        <label className="form-label type2">
-                                          Affiliate link
+                                          Affiliate hyperlink address
                                        </label>
                                     </div>
                                     <div className="form-group-right d-flex flex-column">

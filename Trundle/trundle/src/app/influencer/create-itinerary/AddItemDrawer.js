@@ -35,7 +35,7 @@ export default function AddItemDrawer({
       discount_code: Yup.string(),
       affiliate_title: Yup.string().when("discount_code", (discount_code, schema) => {
          if (discount_code?.[0]?.trim().length > 0) {
-            return schema.required("Affiliate title is required when affiliate link is provided");
+            return schema.required("Affiliate hyperlink title is required when affiliate link is provided");
          }
          return schema.notRequired();
       }),
@@ -464,7 +464,7 @@ export default function AddItemDrawer({
                <div className="col-6">
                   <div className="form-group px-1 mb-4">
                      <label className="form-label">
-                        Affiliate title{" "}
+                        Affiliate hyperlink title{" "}
                      </label>
                      <input
                         type="text"
@@ -484,7 +484,7 @@ export default function AddItemDrawer({
                <div className="col-6">
                   <div className="form-group px-1 mb-4">
                      <label className="form-label">
-                        Affiliate link{" "}
+                        Affiliate hyperlink address{" "}
                      </label>
                      <input
                         type="text"

@@ -125,7 +125,7 @@ export default function ItineraryItemCard({
               <li>
                 <div className="place-box-desc-text mt-1"
                 >
-                  Affiliate link
+                  Affiliate hyperlink address
                   <Link
                     style={{ color: "#6F27FF" }}
                     href={discountCode} target='_blank'>
@@ -239,17 +239,17 @@ export default function ItineraryItemCard({
       </div>
       {!isFromItinerary &&
         <>
-          {isFromUpdateIitinerary ?
-            <div className="place-btn-group d-flex">
-              <button onClick={handleUpdateAnItinerary} className="btn btn-primary w-100">Edit details</button>
-            </div> :
-            <div className="place-btn-group d-flex">
-              <button onClick={handleUpdateAnItinerary} className="btn btn-primary w-100">Edit details</button>
-              {deleteOnClick &&
-                <button className="btn btn-default btn-del" onClick={() => deleteOnClick()}>Delete</button>
-              }
-            </div>
-          }
+          {/* {isFromUpdateIitinerary ? */}
+          {/* <div className="place-btn-group d-flex">
+            <button onClick={handleUpdateAnItinerary} className="btn btn-primary w-100">Edit details</button>
+          </div> : */}
+          <div className="place-btn-group d-flex">
+            <button onClick={handleUpdateAnItinerary} className="btn btn-primary w-100">Edit details</button>
+            {deleteOnClick &&
+              <button className="btn btn-default btn-del" onClick={() => deleteOnClick()}>Delete</button>
+            }
+          </div>
+          {/* } */}
         </>
       }
     </div>)

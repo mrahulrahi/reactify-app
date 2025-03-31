@@ -52,8 +52,6 @@ export default async function MyProfile() {
 
    const trundlerProfile = await getTrundlerDetails({ userId });
 
-
-
    return (
       <Suspense fallback={<Loading />}>
          <InnerHero heading="" subHeading="" />

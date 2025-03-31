@@ -4,7 +4,6 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ErrorMessage from "../error-message/ErrorMessage";
 import SelectField from "../select-field/SelectField";
-import Select from "react-select";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
@@ -14,6 +13,10 @@ import { updateTrundlerDetails } from "../../lib/trundler/getTrundlerDetails";
 import toast from "react-hot-toast";
 import moment from "moment";
 import { signIn } from "next-auth/react";
+// import PhoneNumberForm from "./PhoneNumberForm";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { getCountryCallingCode } from 'libphonenumber-js';
 
 const countryIcon = (iconUrl) => ({
    alignItems: 'center',
@@ -42,10 +45,18 @@ const validationSchema = Yup.object().shape({
    // email: Yup.string()
    //    .email("Invalid email address")
    //    .required("Email is required"),
+
+   // phone: Yup.string()
+   //    .matches(/^[0-9]{10}$/, "Invalid phone number")
+   //    .required("Phone number is required"),
    phone: Yup.string()
-      .matches(/^[0-9]{10}$/, "Invalid phone number")
-      .required("Phone number is required"),
-   phone_code: Yup.object().required("Phone code is required"),
+      .required("Phone number is required")
+      .test("is-valid-phone-number", "Please enter a valid phone number", (value, context) => {
+         if (!value) return false;
+         const countryCode = context.parent.countryCode || "";
+         return isValidPhoneNumber(value, countryCode);
+      }),
+   // phone_code: Yup.object().required("Phone code is required"),
    // content_covers: Yup.array()
    //    .min(1, "At least one content cover must be selected")
    //    .required("Content cover is required"),
@@ -136,8 +147,6 @@ export const TrundlerProfileForm = ({
 
    const { profileNotVerfiedToken } = useSelector((state) => state?.authData);
 
-   const access_token = profileNotVerfiedToken;
-
    const genderOptions = [
       { id: 1, name: "Male" },
       { id: 2, name: "Female" },
@@ -154,13 +163,6 @@ export const TrundlerProfileForm = ({
    const coverCountriesListOptions = availableCountries?.map((data, _) => ({
       value: convertToTitleCase(data?.name),
       label: convertToTitleCaseTwo(data?.name),
-      id: data?.id,
-   }));
-
-
-   const countriestOptions = countriesList?.data?.map((data, _) => ({
-      value: data?.phone_code,
-      label: `+${data?.phone_code}`,
       id: data?.id,
    }));
 
@@ -190,10 +192,6 @@ export const TrundlerProfileForm = ({
       id: data?.id,
       flag: data?.flag
    }));
-
-   const defaultCountryCodeIndex = countriesList?.data?.findIndex(
-      (data) => data?.id == trundlerProfile?.data?.phone_code?.id
-   );
 
    const defaultCoveredCountries = trundlerProfile?.data?.covered_country?.map(
       ({ id, name }) => ({
@@ -239,16 +237,19 @@ export const TrundlerProfileForm = ({
             ? 2
             : trundlerProfile?.data?.gender === "Others" ? 3 : null;
 
+
+   const countryCode = getCountryCallingCode(trundlerProfile ? trundlerProfile?.data?.phone_code : "IN");
+
    const formik = useFormik({
       initialValues: {
          first_name: trundlerProfile?.data?.first_name || "",
          last_name: trundlerProfile?.data?.last_name || "",
          middle_name: trundlerProfile?.data?.middle_name || "",
-         phone_code: trundlerProfile?.data?.phone_code || "",
+         phone_code: trundlerProfile?.data?.phone_code || "IN",
          // email: trundlerProfile?.data?.email || "",
          username: trundlerProfile?.data?.username || "",
          gender: defaultGender || "",
-         phone: trundlerProfile?.data?.mobile_no || "",
+         phone: `+${countryCode}${trundlerProfile?.data?.mobile_no}` || "",
          about_myself: trundlerProfile?.data?.about_myself || "",
          job_role: trundlerProfile?.data?.job_role || "",
          generic_discount_codes: trundlerProfile?.data?.discount_code || "",
@@ -256,9 +257,9 @@ export const TrundlerProfileForm = ({
             extractIds(trundlerProfile?.data?.content_covers) || [],
          country:
             defaultCountry || null,
-         day: trundlerProfile ? { id: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").date(), label: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").date() } : "",
-         year: trundlerProfile ? { id: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").year(), label: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").year() } : "",
-         month: trundlerProfile ? { id: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").month() + 1, label: months[moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").month()]?.label } : "",
+         day: trundlerProfile?.data?.dob ? { id: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").date(), label: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").date() } : null,
+         year: trundlerProfile?.data?.dob ? { id: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").year(), label: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").year() } : null,
+         month: trundlerProfile?.data?.dob ? { id: moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").month() + 1, label: months[moment(trundlerProfile?.data?.dob, "YYYY-MM-DD").month()]?.label } : null,
          covered_country: defaultCoveredCountries || "",
          youtube_link: trundlerProfile?.data?.youtube_link || "",
          instagram_link: trundlerProfile?.data?.instagram_link || "",
@@ -268,6 +269,10 @@ export const TrundlerProfileForm = ({
       },
       validationSchema,
       onSubmit: async (event) => {
+         // Parse phone number to get only the national number
+         const phoneNumber = parsePhoneNumberFromString(event?.phone);
+         const nationalNumber = phoneNumber ? phoneNumber.nationalNumber : '';
+
          const formData = new FormData();
          if (imagePreview) {
             formData.append("photo", uploadedProfile);
@@ -279,8 +284,8 @@ export const TrundlerProfileForm = ({
          formData.append("username", event?.username);
          formData.append("gender", parseInt(event?.gender));
          formData.append("country", parseInt(event?.country?.id));
-         formData.append("mobile_no", parseInt(event?.phone));
-         formData.append("phone_code", parseInt(event?.phone_code?.id));
+         formData.append("mobile_no", nationalNumber);
+         formData.append("phone_code", event?.phone_code);
 
          if (event?.languages) {
             event?.languages?.map((item) =>
@@ -309,6 +314,11 @@ export const TrundlerProfileForm = ({
          formData.append("x_link", event?.x_link);
          formData.append("instagram_link", event?.instagram_link);
          formData.append("twitch_link", event?.twitch_link);
+
+         // // Display the key/value pairs
+         // for (var pair of formData.entries()) {
+         //    console.log(pair[0] + ', ' + pair[1]);
+         // }
 
          const access_token = profileNotVerfiedToken;
 
@@ -347,9 +357,10 @@ export const TrundlerProfileForm = ({
             }
          } else {
             setLoading(true);
+            const accessToken = session?.user?.access_token;
             try {
                const res = await updateTrundlerDetails({
-                  access_token,
+                  accessToken,
                   formData,
                   event,
                });
@@ -401,8 +412,6 @@ export const TrundlerProfileForm = ({
 
    const years = range(startYear, endYear);
 
-   console.log(years);
-
    const [dates, setDates] = useState([]);
 
    const isLeapYear = (year) => {
@@ -448,7 +457,7 @@ export const TrundlerProfileForm = ({
                   type="file"
                   id="upload-profile"
                   name="upload-profile"
-                  accept="image/jpeg"
+                  accept="image/jpeg, image/png, image/jpg"
                   onChange={handleImageChange}
                   style={{ display: "none" }}
                />
@@ -560,28 +569,6 @@ export const TrundlerProfileForm = ({
                </div>
             </div>
          </div>
-         {/* <div className="row g-3">
-            <div className="col-lg-12">
-               <div className="form-group mb-4">
-                  <label className="form-label">Email*</label>
-                  <input
-                     type="text"
-                     name="email"
-                     id="email"
-                     onBlur={formik.handleBlur}
-                     value={formik.values.email}
-                     placeholder="johndoe@example.com"
-                     className="form-control"
-                     disabled={formType === 'update'}
-                     onChange={formik.handleChange}
-                  />
-                  <ErrorMessage
-                     touched={formik.touched?.email}
-                     error={formik.errors?.email}
-                  />
-               </div>
-            </div>
-         </div> */}
          <div className="row g-3">
             <div className="col-lg-12">
                <div className="form-group mb-4">
@@ -607,38 +594,24 @@ export const TrundlerProfileForm = ({
          <div className="row g-3">
             <div className="col-lg-12">
                <div className="form-group mb-4">
-                  <label className="form-label">Phone no*</label>
-                  <div className="phone-select-group">
-                     <Select
-                        placeholder="+1"
-                        onChange={(e) => formik.setFieldValue("phone_code", e)}
-                        defaultValue={
-                           countriestOptions?.[defaultCountryCodeIndex]
-                        }
-                        options={countriestOptions}
-                        className="phone-select-container"
-                        classNamePrefix="phone-select"
-                     />
-                     <input
-                        type="number"
-                        name="phone"
-                        id="phone"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.phone}
-                        placeholder="999 999 1010"
-                        className="form-control"
-                     />
-                  </div>
-                  {formik?.touched.phone_code && formik.errors?.phone_code && (
-                     <p className="text-danger mt-2">
-                        {formik.errors?.phone_code}
-                     </p>
-                  )}
-                  <ErrorMessage
-                     touched={formik.touched?.phone}
-                     error={formik.errors?.phone}
+                  <label className="form-label">Country*</label>
+                  <PhoneInput
+                     className="form-control"
+                     value={formik?.values?.phone}
+                     // countryCallingCodeEditable={false}
+                     onChange={(value) => {
+                        formik?.setFieldValue("phone", value);
+                     }}
+                     defaultCountry={formik?.values?.phone_code}
+                     international
+                     placeholder="999 999 1010"
+                     onCountryChange={(newCountry) => {
+                        formik?.setFieldValue("phone_code", newCountry);
+                     }}
                   />
+                  {formik?.touched?.phone && formik?.errors?.phone && (
+                     <div style={{ color: "red" }}>{formik?.errors?.phone}</div>
+                  )}
                </div>
             </div>
          </div>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Top 10 Easy Site for searching businesses in 3 clicks" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="rcast" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script data-token="NXWROJFEO50E" crossorigin async src="https://cdn.splitbee.io/sb.js"></script>
+    <title>Top10easy</title>
+    <script>
+        var ALGOLIA_INSIGHTS_SRC = "https://cdn.jsdelivr.net/npm/search-insights@2.0.3";
+        !function (e, a, t, n, s, i, c) {
+            e.AlgoliaAnalyticsObject = s, e[s] = e[s] || function () {
+                (e[s].queue = e[s].queue || []).push(arguments)
+            }, i = a.createElement(t), c = a.getElementsByTagName(t)[0],
+            i.async = 1, i.src = n, c.parentNode.insertBefore(i, c)
+        }(window, document, "script", ALGOLIA_INSIGHTS_SRC, "aa");
+    </script>
+
+</head>
+
+<body>
+    <noscript>
+        <div className="unsupported">
+            <div className="unsupported_title">LWC app can't be loaded!</div>
+            <div className="unsupported_message">
+                This application requires javascript to work properly.
+            </div>
+        </div>
+    </noscript>
+    
+    <div id="outdated" style="display: none">
+        <div className="unsupported">
+            <div className="unsupported_title">App can't be loaded!</div>
+            <div className="unsupported_message"></div>
+        </div>
+    </div>
+
+    <div id="offline-support" style="display: none">
+        <div className="unsupported">
+            <div className="unsupported_title">App can't be loaded!</div>
+            <div className="unsupported_message"></div>
+        </div>
+    </div>
+
+    <script nomodule>
+        const { outdated } = window;
+        outdated.style.display = 'unset';
+        outdated.querySelector('.unsupported_message').textContent =
+            'This application requires a more recent version of your browser';
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').then(reg => {
+                    console.log('SW registered: ', reg);
+
+                    reg.addEventListener('updatefound', () => {
+                        console.log('an updated service worker has appeared in reg.installing!')
+                        newWorker = reg.installing;
+
+                        newWorker.addEventListener('statechange', () => {
+                            console.log(`new state: ${newWorker.state}`);
+                            // Has service worker state changed?
+                            switch (newWorker.state) {
+                                case 'installed':
+
+                                    // There is a new service worker available, show the notification
+                                    if (navigator.serviceWorker.controller) {
+                                        console.log('display notif, new version available')
+                                    }
+
+                                    break;
+                            }
+                        });
+                    });
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+        if (!window.indexedDB) {
+            console.log("Your browser doesn't support a stable version of IndexedDB. Offline Mode will not be available.");
+        }
+    </script>
+    <div id="root"></div>
+</body>
+
+</html>

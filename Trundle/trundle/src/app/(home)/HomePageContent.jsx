@@ -10,6 +10,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ReactPlayer from 'react-player';
+import BlogCard from '../components/blogCard/BlogCard'
 
 const clashDisplay = localFont({
   src: [
@@ -41,7 +42,7 @@ const benefitList = [
   {
     id: 1,
     icon: "/images/japan/benefit-icon-1.png",
-    title: "Have local travel influencers plan your journey",
+    title: "Have local travel experts plan your journey",
     description: "Our team will understand your expectations and provide personalised recommendations and insider tips."
   },
   {
@@ -56,6 +57,12 @@ const benefitList = [
     title: "Get exciting discounts",
     description: "As part of your recommendations, you’ll get discounts on bills or a free drink at restaurants, offers on entrance tickets and more."
   },
+];
+
+const blogCards = [
+  { id: 1, title: "10 hidden cafes in Kamakura", img: "/images/japan/blog-img-1.jpg", blogLink: "/blog/blog-single" },
+  { id: 2, title: "Pokeman manholes in Kyoto", img: "/images/japan/blog-img-2.jpg", blogLink: "/blog/blog-single" },
+  { id: 3, title: "Pokeman manholes in Kyoto", img: "/images/japan/blog-img-3.jpg", blogLink: "/blog/blog-single" },
 ];
 
 export default function HomePageContent() {
@@ -85,25 +92,27 @@ export default function HomePageContent() {
   return (
     <>
       <div className={`lpj-page-wrapper ${clashDisplay.variable} overflow-hidden`}>
-        <header className="lpj-header d-flex align-items-center">
+        <header className="lpj-header d-flex align-items-center lpj-header-white">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
                 <div className="lpj-header-inner d-flex align-items-center justify-content-between">
                   <Link className="lpj-header-logo" href="/">
-                    <Image src="/images/japan/logo.svg" alt="Trundle" width={132} height={100} quality={100} />
+                    <Image src="/images/japan/logo-black.svg" alt="Trundle" width={132} height={100} quality={100} />
                   </Link>
                   <div className="lpj-header-right">
-                    <Link href={whatsAppNavUrl} className="btn btn-outline">Talk to us</Link>
+                    <Link href={whatsAppNavUrl} className="btn btn-pink">Talk to us</Link>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
         </header>
 
         <div className="lpj-hero-container position-relative">
+          <div className="lpj-hero-bg">
+            <Image src="/images/japan/hero-bg.jpg" alt="hero bg" quality={100} fill />
+          </div>
           <div className="lpj-hero-graphic lpj-hero-graphic-1">
             <Image className="d-none d-md-block" src="/images/experience/hero-graphic-1.svg" alt="Trundle" width={197} height={197} quality={100} />
             <Image className="d-md-none" src="/images/experience/hero-graphic-1-mob.svg" alt="Trundle" width={197} height={197} quality={100} />
@@ -116,11 +125,11 @@ export default function HomePageContent() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="lpj-hero-content text-center mx-auto">
-                  <h1>Experience <span>Japan</span> <br /> like never before.</h1>
-                  <p>Get curated recommendations and exclusive discounts from local Japan travel experts for <span>just $10.</span></p>
+                  <h1>Experience Japan’s <br /> Cherry Blossoms</h1>
+                  <p>Get curated recommendations and exclusive <br /> discounts from local Japan travel experts for <span>just $10.</span></p>
                 </div>
                 <div className="lpj-hero-cta d-flex justify-content-center">
-                  <Link href={whatsAppNavUrl} className="btn btn-orange btn-lg">Talk to a Travel Expert</Link>
+                  <Link href={whatsAppNavUrl} className="btn btn-pink btn-lg">Talk to a Travel Expert</Link>
                 </div>
               </div>
             </div>
@@ -192,8 +201,8 @@ export default function HomePageContent() {
             <div className="row">
               <div className="col-lg-10 mx-auto">
                 <div className="lpj-benefit-content text-center">
-                  {/* <div className="para">We’re here to personalise your travel experience. <br /> */}
-                  {/* Trundle is not just your regular travel agent; we're your personal travel assistant.</div> */}
+                  <div className="para">We’re here to personalise your travel experience. <br />
+                    Trundle is not just your regular travel agent; we're your personal travel assistant.</div>
                   <h3>With Trundle, you'll</h3>
 
                   <div className="lpj-benefit-list d-flex flex-wrap">
@@ -228,6 +237,29 @@ export default function HomePageContent() {
 
                   <p className="lpj-benefit-description">Are you ready to start planning your Japan trip?</p>
                   <Link href={whatsAppNavUrl} className="btn btn-white">Talk to us</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="lpj-content-container lpj-blog-container">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-10 mx-auto">
+                <div className="lpj-blog-content-wrapper">
+                  <div className="lpj-blog-head text-center">
+                    <h3>Explore	Japan</h3>
+                    <p>Hidden Gems. Important Information. Recommendations.</p>
+                  </div>
+
+                  <div className="lpj-blog-list d-flex flex-wrap">
+                    {blogCards.map(card => <div key={card.id} className="lpj-blog-item">
+                      <BlogCard title={card.title} img={card.img} blogLink={card.blogLink} />
+                    </div>)}
+                  </div>
+
+                  <div className="lpj-blog-cta text-center"><Link href='/blog' className="btn btn-orange btn-lg">Explore more</Link></div>
                 </div>
               </div>
             </div>

@@ -46,7 +46,6 @@ const TravellerProfileForm = ({
 
   const [loading, setLoading] = useState();
 
-
   const defaultCountry = countriestOptions?.find((data) => data?.id === travellerDetails?.data?.country_id);
 
   const formik = useFormik({
@@ -160,7 +159,7 @@ const TravellerProfileForm = ({
               <div className="form-group mb-4">
                 <label className="form-label">Gender*</label>
                 <div
-                  className="form-radio-check-group mb-4 d-flex flex-wrap align-items-center"
+                  className="form-radio-check-group mb-2 d-flex flex-wrap align-items-center"
                   id="gender"
                 >
                   {genderOptions.map((option) => (
@@ -192,12 +191,12 @@ const TravellerProfileForm = ({
                       </label>
                     </div>
                   ))}
-                  {formik?.touched.gender && formik.errors?.gender && (
-                    <p className="text-danger">
-                      {formik.errors?.gender}
-                    </p>
-                  )}
                 </div>
+                {formik?.touched.gender && formik.errors?.gender && (
+                  <p className="text-danger">
+                    {formik.errors?.gender}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -275,7 +274,7 @@ const TravellerProfileForm = ({
             <div className="col-lg-12">
               <div className="form-group mb-4">
                 <button
-                  disabled={loading || Object.keys(formik.errors)?.length > 0}
+                  disabled={loading}
                   onClick={formik.handleSubmit}
                   type="button"
                   className="btn btn-default btn-block"
