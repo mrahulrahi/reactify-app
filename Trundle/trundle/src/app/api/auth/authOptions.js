@@ -30,4 +30,7 @@ export const authOptions = {
          return session;
       },
    },
+   session: {
+      maxAge: 24 * 60 * 60, // 24 hours in seconds
+   }
 };

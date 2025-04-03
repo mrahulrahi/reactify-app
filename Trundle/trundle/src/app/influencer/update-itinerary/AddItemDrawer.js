@@ -49,13 +49,19 @@ export default function AddItemDrawer({
          }
          return schema.notRequired();
       }),
+      hyper_link_title: Yup.string().when("hyper_link_address", (discount_code, schema) => {
+         if (discount_code?.[0]?.trim().length > 0) {
+            return schema.required("Hyperlink title is required when hyperlink address is provided");
+         }
+         return schema.notRequired();
+      }),
       city: Yup.object().required("City is required"),
-      direction: Yup.string()
-         .matches(
-            /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/,
-            "Invalid URL. Must be a valid URL."
-         )
-         .required("Direction link is required"),
+      // direction: Yup.string()
+      //    .matches(
+      //       /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/,
+      //       "Invalid URL. Must be a valid URL."
+      //    )
+      //    .required("Direction link is required"),
       location_images: Yup.array()
          .min(1, "Please upload at least one image")
          .max(5, "You can upload a maximum of five images"),
@@ -101,6 +107,12 @@ export default function AddItemDrawer({
          post_code: "",
          city: "",
          direction: "",
+
+         route: "",
+         destination: "",
+         hyper_link_title: "",
+         hyper_link_address: "",
+
          open_timing: "",
          // best_time_to_visit: "",
          discount_code: "",
@@ -122,6 +134,12 @@ export default function AddItemDrawer({
             post_code: values.post_code,
             city: values.city?.value,
             direction: values.direction,
+
+            destination: values.destination,
+            route: values.route,
+            hyper_link_title: values.hyper_link_title,
+            hyper_link_address: values.hyper_link_address,
+
             open_timing: values.open_timing,
             // best_time_to_visit: values.best_time_to_visit,
             discount_code: values.discount_code ? values.discount_code : "",
@@ -173,6 +191,13 @@ export default function AddItemDrawer({
             post_code: editableItineraryItem.post_code || "",
             city: defaultCity,
             direction: editableItineraryItem.direction || "",
+
+            destination: editableItineraryItem.destination || "",
+            route: editableItineraryItem.route || "",
+            hyper_link_title: editableItineraryItem.hyper_link_title || "",
+            hyper_link_address: editableItineraryItem.hyper_link_address || "",
+
+
             open_timing: editableItineraryItem.open_timing || "",
             // best_time_to_visit: editableItineraryItem.best_time_to_visit || "",
             discount_code: editableItineraryItem.discount_code ? editableItineraryItem.discount_code : "",
@@ -435,7 +460,7 @@ export default function AddItemDrawer({
                <div className="col-lg-12">
                   <div className="form-group mb-4">
                      <label className="form-label">
-                        Direction* <span>(Copy paste Google Map link here)</span>
+                        Direction <span>(Copy paste Google Map link here)</span>
                      </label>
                      <input
                         type="text"
@@ -449,6 +474,84 @@ export default function AddItemDrawer({
                      <ErrorMessage
                         touched={_formik.touched?.direction}
                         error={_formik.errors?.direction}
+                     />
+                  </div>
+               </div>
+            </div>
+            <div className="row g-3">
+               <div className="col-lg-12">
+                  <div className="form-group mb-4">
+                     <label className="form-label">
+                        Destination <span>(Copy paste Google Map link here)</span>
+                     </label>
+                     <input
+                        type="text"
+                        placeholder="Paste link here"
+                        className="form-control"
+                        name="destination"
+                        onChange={_formik.handleChange}
+                        onBlur={_formik.handleBlur}
+                        value={_formik.values.destination}
+                     />
+                  </div>
+               </div>
+            </div>
+            <div className="row g-3">
+               <div className="col-lg-12">
+                  <div className="form-group mb-4">
+                     <label className="form-label">
+                        Route <span>(Copy paste Google Map Route link here)</span>
+                     </label>
+                     <input
+                        type="text"
+                        placeholder="Paste link here"
+                        className="form-control"
+                        name="route"
+                        onChange={_formik.handleChange}
+                        onBlur={_formik.handleBlur}
+                        value={_formik.values.route}
+                     />
+                     {/* <ErrorMessage
+                        touched={_formik.touched?.route}
+                        error={_formik.errors?.route}
+                     /> */}
+                  </div>
+               </div>
+            </div>
+            <div className="d-flex gap-1">
+               <div className="col-6">
+                  <div className="form-group px-1 mb-4">
+                     <label className="form-label">
+                        Hyperlink title{" "}
+                     </label>
+                     <input
+                        type="text"
+                        placeholder="Enter the title"
+                        className="form-control"
+                        name="hyper_link_title"
+                        onChange={_formik.handleChange}
+                        onBlur={_formik.handleBlur}
+                        value={_formik.values.hyper_link_title}
+                     />
+                     <ErrorMessage
+                        touched={_formik.touched?.hyper_link_title}
+                        error={_formik.errors?.hyper_link_title}
+                     />
+                  </div>
+               </div>
+               <div className="col-6">
+                  <div className="form-group px-1 mb-4">
+                     <label className="form-label">
+                        Hyperlink address{" "}
+                     </label>
+                     <input
+                        type="text"
+                        placeholder="Paste the link here"
+                        className="form-control"
+                        name="hyper_link_address"
+                        onChange={_formik.handleChange}
+                        onBlur={_formik.handleBlur}
+                        value={_formik.values.hyper_link_address}
                      />
                   </div>
                </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import "../../../form.css";
 import "../CreateItinerary.css";
@@ -64,9 +64,9 @@ export default function UpdateItineraryForm({
          .max(200, "Description must be at most 200 characters"),
       price: Yup.number()
          .required("Price is required")
-         .test("is-valid-price", "Price must be a valid number between 1 and 200 or 0 (Free)", function (value) {
+         .test("is-valid-price", "Price must be between 1 and 2000 or 0 (Free)", function (value) {
             const radioOptions = [0, ...priceList?.priceList?.map((p) => p.price)]; // Include 0 and other radio button values
-            return radioOptions.includes(value) || (value >= 1 && value <= 200);
+            return radioOptions.includes(value) || (value >= 1 && value <= 2000);
          })
          .typeError("Price must be a valid number"),
    });
@@ -202,9 +202,9 @@ export default function UpdateItineraryForm({
 
          formData.append("deleted_itineraries", JSON.stringify(deletedItineraries));
 
-         // for (var pair of formData.entries()) {
-         //    console.log(pair[0] + ", " + pair[1]);
-         // }
+         for (var pair of formData.entries()) {
+            console.log(pair[0] + ", " + pair[1]);
+         }
 
          if (!itineraryListErr) {
             setLoading(true);
@@ -288,11 +288,23 @@ export default function UpdateItineraryForm({
             })
          );
       }
-   }, [access_token, dispatch, session?.status]);
+   }, [access_token, dispatch, itinerary?.itinerary?.selected_country?.id, session?.status]);
 
    useEffect(() => {
       setPrevItinerariesItems(addedItineraryList)
-   }, [])
+   }, []);
+
+   const dragItinerary = useRef(0)
+   const draggedOverItinerary = useRef(0)
+
+   function handleSort() {
+      const itinerariesClone = [...addedItineraryList];
+      const temp = itinerariesClone[dragItinerary.current];
+      itinerariesClone[dragItinerary.current] = itinerariesClone[draggedOverItinerary.current];
+      itinerariesClone[draggedOverItinerary.current] = temp;
+      console.log(itinerariesClone);
+      setAddedItineraryList(itinerariesClone);
+   }
 
    return (
       <>
@@ -531,7 +543,10 @@ export default function UpdateItineraryForm({
                                                    name="price"
                                                    id={`${p?.price}${i}`}
                                                    checked={formik?.values?.price == parseInt(p?.price)}
-                                                   onChange={() => formik?.setFieldValue("price", parseInt(p?.price))}
+                                                   onChange={() => {
+                                                      formik?.setFieldValue("price", parseInt(p?.price));
+                                                   }
+                                                   }
                                                 />
                                                 <label className="form-check-label" htmlFor={`${p?.price}${i}`}>
                                                    {p?.price != 0 ? `$${parseInt(p?.price)}` : "Free"}
@@ -547,6 +562,7 @@ export default function UpdateItineraryForm({
                                                    id="priceInput"
                                                    onChange={(e) => {
                                                       const inputValue = e.target.value;
+                                                      formik.setFieldTouched("price", true, false);
 
                                                       if (inputValue === "") {
                                                          // Allow clearing the input
@@ -584,8 +600,17 @@ export default function UpdateItineraryForm({
                                     <ul className="place-list position-relative">
                                        <li
                                           className="place-item position-relative"
+                                          draggable
+                                          onDragStart={() => (dragItinerary.current = index)}
+                                          onDragEnter={() => (draggedOverItinerary.current = index)}
+                                          onDragEnd={handleSort}
+                                          onDragOver={(e) => e.preventDefault()}
                                        >
                                           <ItineraryItemCard
+                                             destination={data?.destination}
+                                             route={data?.route}
+                                             hyperlinkTitle={data?.hyper_link_title}
+                                             hyperlinkAddress={data?.hyper_link_address}
                                              affiliateTitle={data?.affiliate_title}
                                              discountCode={data?.discount_code}
                                              categoryOfLocation={categoryOfLocation?.name}

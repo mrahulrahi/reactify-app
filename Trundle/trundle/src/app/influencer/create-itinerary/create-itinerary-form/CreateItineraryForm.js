@@ -94,9 +94,9 @@ export default function CreateItineraryForm({
       }),
       price: Yup.number()
          .required("Price is required")
-         .test("is-valid-price", "Price must be a valid number between 1 and 200 or 0 (Free)", function (value) {
+         .test("is-valid-price", "Price must be between 1 and 2000 or 0 (Free)", function (value) {
             const radioOptions = [0, ...priceList?.priceList?.map((p) => p.price)]; // Include 0 and other radio button values
-            return radioOptions.includes(value) || (value >= 1 && value <= 200);
+            return radioOptions.includes(value) || (value >= 1 && value <= 2000);
          })
          .typeError("Price must be a valid number"),
    });
@@ -572,6 +572,7 @@ export default function CreateItineraryForm({
                                                    id="priceInput"
                                                    onChange={(e) => {
                                                       const inputValue = e.target.value;
+                                                      formik.setFieldTouched("price", true, false);
 
                                                       if (inputValue === "") {
                                                          // Allow clearing the input
@@ -648,6 +649,10 @@ export default function CreateItineraryForm({
                                           <ItineraryItemCard
                                              affiliateTitle={data?.affiliate_title}
                                              discountCode={data?.discount_code}
+                                             destination={data?.destination}
+                                             route={data?.route}
+                                             hyperlinkTitle={data?.hyper_link_title}
+                                             hyperlinkAddress={data?.hyper_link_address}
                                              categoryOfLocation={categoryOfLocation?.name}
                                              isSeen={data?.is_seen}
                                              nameOfPlace={data?.name_of_place}
@@ -687,6 +692,103 @@ export default function CreateItineraryForm({
                                  </div>
                               );
                            })}
+                        <div className="w-100 mt-4">
+                           <div className="add-itinerary-tab-row d-flex flex-wrap align-items-center gap-2">
+                              <div className="ai-tab-col">
+                                 <div className="ai-tab-btn d-flex align-items-center justify-content-between gap-1 active">Day <span>01</span>
+                                    <button className="ai-tab-icon"><img src="/images/itinerary/close-icon.svg" /></button></div>
+                              </div>
+                              <div className="ai-tab-col">
+                                 <div className="ai-tab-btn d-flex align-items-center justify-content-between gap-1">Day <span>02</span>
+                                    <button className="ai-tab-icon"><img src="/images/itinerary/close-icon.svg" /></button></div>
+                              </div>
+                              <div className="ai-tab-col">
+                                 <div className="ai-tab-btn d-flex align-items-center justify-content-between gap-1">Day <span>03</span>
+                                    <button className="ai-tab-icon"><img src="/images/itinerary/close-icon.svg" /></button></div>
+                              </div>
+                              <div className="ai-tab-col">
+                                 <div className="ai-tab-btn d-flex align-items-center justify-content-between gap-1">Day <span>04</span>
+                                    <button className="ai-tab-icon"><img src="/images/itinerary/close-icon.svg" /></button></div>
+                              </div>
+                              <div className="ai-tab-col">
+                                 <div className="ai-tab-btn d-flex align-items-center justify-content-between gap-1">Day <span>05</span>
+                                    <button className="ai-tab-icon"><img src="/images/itinerary/close-icon.svg" /></button></div>
+                              </div>
+                              <div className="ai-tab-col">
+                                 <div className="ai-tab-btn ai-add-btn d-flex align-items-center justify-content-between gap-1"><span>Add</span>
+                                    <button className="ai-tab-icon"><img src="/images/itinerary/add-icon.svg" /></button></div>
+                              </div>
+                           </div>
+
+                           <div className="ai-item-row">
+                              <div className="ai-item-head">Day 01</div>
+                              <div className="ai-add-item-list position-relative">
+                                 <div className="ai-add-item-box">
+                                    <button type="button" className="add-item-btn w-100 d-flex align-items-center justify-content-between">
+                                       Add items
+                                       <div className="add-item-icon d-flex align-items-center justify-content-center">
+                                          <img alt="" src="/images/itinerary/add-button-icon.svg" />
+                                       </div>
+                                    </button>
+                                 </div>
+                              </div>
+
+                           </div>
+                           <div className="ai-item-row">
+                              <div className="ai-item-head">Day 02</div>
+                              <div className="ai-add-item-list position-relative">
+                                 <div className="ai-add-item-box">
+                                    <button type="button" className="add-item-btn w-100 d-flex align-items-center justify-content-between">
+                                       Add items
+                                       <div className="add-item-icon d-flex align-items-center justify-content-center">
+                                          <img alt="" src="/images/itinerary/add-button-icon.svg" />
+                                       </div>
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div className="ai-item-row">
+                              <div className="ai-item-head">Day 03</div>
+                              <div className="ai-add-item-list position-relative">
+                                 <div className="ai-add-item-box">
+                                    <button type="button" className="add-item-btn w-100 d-flex align-items-center justify-content-between">
+                                       Add items
+                                       <div className="add-item-icon d-flex align-items-center justify-content-center">
+                                          <img alt="" src="/images/itinerary/add-button-icon.svg" />
+                                       </div>
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                           
+                           <div className="ai-item-row">
+                              <div className="ai-item-head">Day 04</div>
+                              <div className="ai-add-item-list position-relative">
+                                 <div className="ai-add-item-box">
+                                    <button type="button" className="add-item-btn w-100 d-flex align-items-center justify-content-between">
+                                       Add items
+                                       <div className="add-item-icon d-flex align-items-center justify-content-center">
+                                          <img alt="" src="/images/itinerary/add-button-icon.svg" />
+                                       </div>
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div className="ai-item-row">
+                              <div className="ai-item-head">Day 05</div>
+                              <div className="ai-add-item-list position-relative">
+                                 <div className="ai-add-item-box">
+                                    <button type="button" className="add-item-btn w-100 d-flex align-items-center justify-content-between">
+                                       Add items
+                                       <div className="add-item-icon d-flex align-items-center justify-content-center">
+                                          <img alt="" src="/images/itinerary/add-button-icon.svg" />
+                                       </div>
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
                         <div className="col-lg-6 mx-auto mt-4">
                            <button
                               type="button"

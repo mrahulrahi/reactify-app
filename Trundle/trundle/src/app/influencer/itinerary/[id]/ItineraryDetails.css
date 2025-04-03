@@ -157,6 +157,48 @@
    min-height: 500px;
 }
 
+
+.itinerary-outcome-wrapper {width: 100%;border-radius: 15px;background: var(--white);border: solid 1px #ebebeb;}
+.itinerary-outcome-head {border-bottom: solid 1px #ebebeb;padding: 18px 16px;position: relative;}
+.itinerary-outcome-icon{width: 16px;margin-right: 10px;}
+.itinerary-outcome-icon img{width: 100%;height: 100%;object-fit: contain;}
+.itinerary-outcome-head h3 {font-size: 18px;line-height: 1;margin-bottom: 0;}
+.itinerary-outcome-body {padding: 21px 28px;}
+
+.io-tab-row{margin-bottom: 12px;}
+.io-tab-btn{padding: 8px 12px;font-size: 14px;font-weight: 400;line-height: 1.25;border: 1px solid #D8D8DF;border-radius: 12px;color: rgba(36, 28, 45, 0.8);}
+.io-tab-btn.active{background: #F3F2FF;border-color: #D8D2FF;}
+.io-tab-btn span{font-weight: 600;}
+
+.io-destination-row + .io-destination-row{margin-top: 13px;}
+
+.io-destination-head{position: relative;padding-left: 28px;font-size: 12px;font-weight: 700;margin-bottom: 7px;color: #413F4D;}
+.io-destination-head:before {content: "";width: 12px;height: 12px;position: absolute;left: 2px;top: 6px;background: #fff;border-radius: 50rem;border: 1px solid #B7B5C4;}
+
+.io-destination-list {padding-left: 28px;}
+.io-destination-item + .io-destination-item {margin-top: 10px;}
+.io-destination-list:before {content: "";width: 1px;height: 100%;position: absolute;left: 8px;top: 0;background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 3px, rgba(255, 255, 255, 0) 0%);background-position: left;background-size: 1px 9px;background-repeat: repeat-y;}
+
+.io-destination-box {border-radius: 15px;padding: 15px 15px 13px;}
+.io-destination-left {width: calc(100% - 152px);padding-right: 15px;color: var(--light-black);}
+.io-destination-content {max-width: 265px;}
+.io-destination-label {font-size: 13px;line-height: 1.4;margin-bottom: 0;color: rgba(0, 0, 0, 0.4);}
+.io-destination-title {font-size: 20px;font-weight: 600;line-height: 1.25;color: #241C2D;margin-bottom: 6px;}
+.iod-desc-list{margin-bottom: 5px;}
+.iod-desc-item + .iod-desc-item {margin-top: 7px;}
+.iod-desc-box {padding-left: 29px;font-size: 15px;line-height: 1.5;color: rgba(36, 28, 45, 0.67);}
+.iod-desc-icon {width: 20px;height: 20px;position: absolute;left: 0;top: 0;}
+.iod-desc-icon > img {width: 100%;height: 100%;object-fit: contain;}
+.io-destination-right {width: 152px;}
+.io-destination-img {position: relative;width: 100%;padding-bottom: 100%;border-radius: 10px;overflow: hidden;}
+.io-destination-img > img {width: 100%;height: 100%;position: absolute;left: 0;right: 0;top: 0;bottom: 0;object-fit: cover;}
+
+
+.io-destination-link {padding-left: 30px;font-size: 14px;font-weight: 600;line-height: 1.5;color: #6F27FF;}
+.iod-link-icon {width: 20px;height: 20px;position: absolute;left: 0;top: 0;}
+.iod-link-icon > img {width: 100%;height: 100%;object-fit: contain;}
+.io-destination-link:hover span{text-decoration: underline;}
+
 /* ========================================== 
 ! Large devices (desktops, less than 1200px)
 =========================================== */
@@ -203,6 +245,11 @@
    .itenerary-details-hero-details {
       padding: 0;
    }
+
+   .itinerary-outcome-body {padding: 15px;}
+
+   .io-destination-left {width: 100%;padding-right: 0;margin-top: 15px;order: 1;}
+   .io-destination-right{order: 2;}
 }
 
 /* ======================================================

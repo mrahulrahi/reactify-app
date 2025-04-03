@@ -26,7 +26,11 @@ export default function ItineraryItemCard({
   isFromItinerary,
   description,
   discountCode,
-  affiliateTitle
+  affiliateTitle,
+  destination,
+  route,
+  hyperlinkTitle,
+  hyperlinkAddress
 }) {
 
   function isUrl(str) {
@@ -121,46 +125,6 @@ export default function ItineraryItemCard({
                 </div>
               </div>
             </li>
-            {/* {isValidURL(discountCode) &&
-              <li>
-                <div className="place-box-desc-text mt-1"
-                >
-                  Affiliate hyperlink address
-                  <Link
-                    style={{ color: "#6F27FF" }}
-                    href={discountCode} target='_blank'>
-                    {discountCode}
-                  </Link>
-                </div>
-              </li>
-            } */}
-            {discountCode &&
-              <li className="place-box-desc-item">
-                <div className="d-flex align-items-center justify-content-start place-box-desc-box w-100 h-100 d-flex flex-wrap position-relative">
-                  <div
-                    style={{ opacity: 1 }}
-                    className="place-box-desc-icon d-flex align-items-center justify-content-center">
-                    <Image
-                      style={{ opacity: 1 }}
-                      src="/images/link.svg"
-                      alt="money"
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                  <div className="place-box-desc-text">
-                    {isValidURL(discountCode) ?
-                      <div className="id-text">
-                        <Link style={{ color: "rgb(111, 39, 255)" }} target="_blank" href={discountCode}>{affiliateTitle}</Link>
-                      </div> :
-                      <div className="id-text">
-                        {affiliateTitle} {" "} {discountCode}
-                      </div>
-                    }
-                  </div>
-                </div>
-              </li>
-            }
             {direction &&
               <li className="place-box-desc-item">
                 <div className="place-box-desc-box w-100 h-100 d-flex flex-wrap position-relative">
@@ -177,6 +141,93 @@ export default function ItineraryItemCard({
                     <Link href={direction} target='_blank'>
                       View direction
                     </Link>
+                  </div>
+                </div>
+              </li>
+            }
+            {destination &&
+              <li className="place-box-desc-item">
+                <div className="place-box-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                  <div className="place-box-desc-icon d-flex align-items-center justify-content-center" style={{ opacity: 1 }}>
+                    <Image
+                      src="/images/directions.svg"
+                      alt="money"
+                      width={17}
+                      height={13}
+                    />
+                  </div>
+                  <div className="place-box-desc-text"
+                    style={{ color: "#6F27FF" }}>
+                    <Link href={destination} target='_blank'>
+                      View destination
+                    </Link>
+                  </div>
+                </div>
+              </li>
+            }
+            {route &&
+              <li className="place-box-desc-item">
+                <div className="place-box-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                  <div className="place-box-desc-icon d-flex align-items-center justify-content-center" style={{ opacity: 1 }}>
+                    <Image
+                      src="/images/directions.svg"
+                      alt="money"
+                      width={17}
+                      height={13}
+                    />
+                  </div>
+                  <div className="place-box-desc-text"
+                    style={{ color: "#6F27FF" }}>
+                    <Link href={route} target='_blank'>
+                      View route
+                    </Link>
+                  </div>
+                </div>
+              </li>
+            }
+            {hyperlinkAddress &&
+              <li className="place-box-desc-item">
+                <div className="d-flex align-items-center justify-content-start place-box-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                  <div
+                    style={{ opacity: 1 }}
+                    className="place-box-desc-icon d-flex align-items-center justify-content-center">
+                  </div>
+                  <div className="place-box-desc-text">
+                    {isValidURL(hyperlinkAddress) ?
+                      <div className="id-text mb-0">
+                        <Link style={{ color: "rgb(111, 39, 255)" }} target="_blank" href={hyperlinkAddress}>{hyperlinkTitle}</Link>
+                      </div> :
+                      <div className="id-text">
+                        {hyperlinkTitle} {" "} {hyperlinkAddress}
+                      </div>
+                    }
+                  </div>
+                </div>
+              </li>
+            }
+            {discountCode &&
+              <li className="place-box-desc-item">
+                <div className="d-flex align-items-center justify-content-start place-box-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                  <div
+                    style={{ opacity: 1 }}
+                    className="place-box-desc-icon d-flex align-items-center justify-content-center">
+                    <Image
+                      style={{ opacity: 1 }}
+                      src="/images/link.svg"
+                      alt="money"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                  <div className="place-box-desc-text">
+                    {isValidURL(discountCode) ?
+                      <div className="id-text mb-0">
+                        <Link style={{ color: "rgb(111, 39, 255)" }} target="_blank" href={discountCode}>{affiliateTitle}</Link>
+                      </div> :
+                      <div className="id-text">
+                        {affiliateTitle} {" "} {discountCode}
+                      </div>
+                    }
                   </div>
                 </div>
               </li>
@@ -216,7 +267,6 @@ export default function ItineraryItemCard({
                             objectFit='cover'
                           />
                         }
-
                       </>
                     )}
                   </Carousel.Item>
@@ -238,19 +288,12 @@ export default function ItineraryItemCard({
         </div>
       </div>
       {!isFromItinerary &&
-        <>
-          {/* {isFromUpdateIitinerary ? */}
-          {/* <div className="place-btn-group d-flex">
-            <button onClick={handleUpdateAnItinerary} className="btn btn-primary w-100">Edit details</button>
-          </div> : */}
-          <div className="place-btn-group d-flex">
-            <button onClick={handleUpdateAnItinerary} className="btn btn-primary w-100">Edit details</button>
-            {deleteOnClick &&
-              <button className="btn btn-default btn-del" onClick={() => deleteOnClick()}>Delete</button>
-            }
-          </div>
-          {/* } */}
-        </>
+        <div className="place-btn-group d-flex">
+          <button onClick={handleUpdateAnItinerary} className="btn btn-primary w-100">Edit details</button>
+          {deleteOnClick &&
+            <button className="btn btn-default btn-del" onClick={() => deleteOnClick()}>Delete</button>
+          }
+        </div>
       }
     </div>)
 }

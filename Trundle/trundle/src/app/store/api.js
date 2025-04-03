@@ -62,4 +62,8 @@ export default class Config {
    static GET_APPROPRIATE_AGES = `${this.BASE_API_URL}/account/get-appropriate-ages`;
    static POST_BUSINESS = `${this.BASE_API_URL}/account/create-business`;
    static RAZOR_PAY_PUBLICK_KEY = `rzp_live_SnRxQoJBcWlivi`;
+
+   static GET_RECENT_BLOGS_API_URL = `${this.BASE_API_URL}/cms/get-home-blogs`;
+   static GET_BLOG_BY_ID_API_URL = `${this.BASE_API_URL}/cms/blog`;
+   static GET_ALL_BLOGS_API_URL = `${this.BASE_API_URL}/cms/get-blogs`;
 }

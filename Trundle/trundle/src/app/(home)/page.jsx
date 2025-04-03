@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePageContent from "./HomePageContent";
 import { OG_IMAGE_HOME, SITE_NAME, _metadata } from '../lib/metadata';
+import { getRecentBlogs } from "../lib/blogs";
 
 export async function generateMetadata(parent) {
 
@@ -34,6 +35,9 @@ export async function generateMetadata(parent) {
     }
 }
 
-export default function HomePage() {
-    return <HomePageContent />
+export default async function HomePage() {
+
+    const recentBlogsList = await getRecentBlogs();
+
+    return <HomePageContent recentBlogsList={recentBlogsList?.data} />
 }

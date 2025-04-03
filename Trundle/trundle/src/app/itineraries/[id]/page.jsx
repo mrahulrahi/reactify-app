@@ -235,6 +235,10 @@ const ItinerarySinglePage = async ({ params }) => {
                                                 className="place-item position-relative"
                                              >
                                                 <ItitneraryItemCard
+                                                   destination={data?.destination}
+                                                   route={data?.route}
+                                                   hyperlinkTitle={data?.hyper_link_title}
+                                                   hyperlinkAddress={data?.hyper_link_address}
                                                    affiliateTitle={data?.affiliate_title}
                                                    discountCode={data?.discount_code}
                                                    categoryOfLocation={categoryOfLocation?.name}

@@ -11,13 +11,15 @@ import toast from "react-hot-toast";
 import { Suspense, useState } from "react";
 import { Loading } from "../loading/Loading";
 import { updateTravellerDetails } from "../../lib/traveller/traveller";
-import Select from "react-select";
 import { setEmail } from "../../store/slices/auth";
 import { useDispatch } from "react-redux";
 import Config from "../../store/api";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
+import { getCountryCallingCode, isValidPhoneNumber } from "react-phone-number-input";
+import PhoneInputField from "../PhoneInputField";
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 const validationSchemaSignup = Yup.object().shape({
   first_name: Yup.string().required("First name is required"),
@@ -27,16 +29,17 @@ const validationSchemaSignup = Yup.object().shape({
     .email("Email must be a valid email")
     .required("Email is required"),
   mobile_no: Yup.string()
-    .min(10, "Phone number must be at least 10 digits")
-    .max(15, "Phone number must be at most 15 digits")
-    .required("Phone number is required"),
-  phone_code: Yup.object().required("Phone code is required"),
+    .required("Phone number is required")
+    .test("is-valid-phone-number", "Please enter a valid phone number", (value, context) => {
+      if (!value) return false;
+      const countryCode = context.parent.countryCode || "";
+      return isValidPhoneNumber(value, countryCode);
+    }),
 });
 
 const TravellerProfileForm = ({
   travellerDetails,
   access_token,
-  countriestOptions,
   formType
 }) => {
 
@@ -46,7 +49,7 @@ const TravellerProfileForm = ({
 
   const [loading, setLoading] = useState();
 
-  const defaultCountry = countriestOptions?.find((data) => data?.id === travellerDetails?.data?.country_id);
+  const countryCode = getCountryCallingCode(travellerDetails?.data?.phone_code ? travellerDetails?.data?.phone_code : "IN");
 
   const formik = useFormik({
     initialValues: {
@@ -54,19 +57,25 @@ const TravellerProfileForm = ({
       last_name: travellerDetails?.data?.last_name || "",
       gender: travellerDetails?.data?.gender || "",
       email: travellerDetails?.data?.email || "",
-      mobile_no: travellerDetails?.data?.mobile_no || "",
-      phone_code: defaultCountry || ""
+      mobile_no: `+${countryCode}${travellerDetails?.data?.mobile_no}` || "",
+      phone_code: travellerDetails?.data?.phone_code || "IN"
     },
     validationSchema: validationSchemaSignup,
     onSubmit: async (values) => {
+
+      // Parse phone number to get only the national number
+      const phoneNumber = parsePhoneNumberFromString(values?.mobile_no);
+      const nationalNumber = phoneNumber ? phoneNumber.nationalNumber : '';
+
+      console.log(nationalNumber);
 
       const travellerDetails = {
         first_name: values?.first_name,
         last_name: values?.last_name,
         gender: values?.gender,
         email: values?.email,
-        mobile_no: values?.mobile_no,
-        phone_code: parseInt(values?.phone_code?.id)
+        mobile_no: nationalNumber,
+        phone_code: values?.phone_code
       }
 
       if (formType === 'create') {
@@ -115,6 +124,8 @@ const TravellerProfileForm = ({
     { id: 2, label: "Female" },
     { id: 3, label: "Other" },
   ];
+
+
 
   return (
     <Suspense fallback={<Loading />}>
@@ -213,41 +224,21 @@ const TravellerProfileForm = ({
             touched={formik.touched.email}
             error={formik.errors.email}
           />
-          <div className="row">
+          <div className="row g-3">
             <div className="col-lg-12">
-              <div className="form-group mb-4">
-                <label className="form-label">Phone no*</label>
-                <div className="phone-select-group">
-                  <Select
-                    placeholder="+1"
-                    onChange={(e) => formik.setFieldValue("phone_code", e)}
-                    options={countriestOptions}
-                    defaultValue={formik?.values?.phone_code}
-                    className="phone-select-container"
-                    classNamePrefix="phone-select"
-                  />
-                  <input
-                    type="number"
-                    name="mobile_no"
-                    id="mobile_no"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.mobile_no}
-                    placeholder="999 999 1010"
-                    className="form-control"
-                  />
-                </div>
-                {formik?.touched.mobile_no && formik.errors?.mobile_no && (
-                  <p className="text-danger mt-2 mb-0">
-                    {formik.errors?.mobile_no}
-                  </p>
-                )}
-                {formik?.touched.phone_code && formik.errors?.phone_code && (
-                  <p className="text-danger">
-                    {formik.errors?.phone_code}
-                  </p>
-                )}
-              </div>
+              <PhoneInputField
+                containerClassNames="form-group mb-4"
+                classNames="form-control"
+                label="Mobile No"
+                labelClassNames="form-label"
+                placeholder="999 999 1010"
+                value={formik?.values?.mobile_no}
+                onChange={(value) => formik?.setFieldValue("mobile_no", value)}
+                onCountryChange={(newCountry) => formik?.setFieldValue("phone_code", newCountry)}
+                error={formik?.errors?.mobile_no}
+                touched={formik?.touched?.mobile_no}
+                defaultCountry={formik?.values?.phone_code}
+              />
             </div>
           </div>
           {formType !== "update" &&

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './LPJapan.css'
 import localFont from 'next/font/local'
 import Link from 'next/link'
@@ -10,7 +10,6 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ReactPlayer from 'react-player';
-import BlogCard from '../components/blogCard/BlogCard'
 
 const clashDisplay = localFont({
   src: [
@@ -38,11 +37,17 @@ const placeCards = [
   { id: 12, title: "Fushimi Inari Taisha", img: "/images/japan/place-img-6.jpg" },
 ]
 
+const blogCards = [
+  { id: 1, title: "10 hidden cafes in Kamakura", img: "/images/japan/blog-img-1.jpg", blogLink: "/blog/blog-single" },
+  { id: 2, title: "Pokeman manholes in Kyoto", img: "/images/japan/blog-img-2.jpg", blogLink: "/blog/blog-single" },
+  { id: 3, title: "Pokeman manholes in Kyoto", img: "/images/japan/blog-img-3.jpg", blogLink: "/blog/blog-single" },
+];
+
 const benefitList = [
   {
     id: 1,
     icon: "/images/japan/benefit-icon-1.png",
-    title: "Have local travel experts plan your journey",
+    title: "Have local travel influencers plan your journey",
     description: "Our team will understand your expectations and provide personalised recommendations and insider tips."
   },
   {
@@ -59,13 +64,7 @@ const benefitList = [
   },
 ];
 
-const blogCards = [
-  { id: 1, title: "10 hidden cafes in Kamakura", img: "/images/japan/blog-img-1.jpg", blogLink: "/blog/blog-single" },
-  { id: 2, title: "Pokeman manholes in Kyoto", img: "/images/japan/blog-img-2.jpg", blogLink: "/blog/blog-single" },
-  { id: 3, title: "Pokeman manholes in Kyoto", img: "/images/japan/blog-img-3.jpg", blogLink: "/blog/blog-single" },
-];
-
-export default function HomePageContent() {
+export default function HomePageContent({ recentBlogsList }) {
 
   /*========================== Header fix ==========================*/
   const handleScroll = () => {
@@ -87,10 +86,42 @@ export default function HomePageContent() {
     };
   }, []);
 
-  const whatsAppNavUrl = "/help-plan-my-trip"
+  const whatsAppNavUrl = "/help-plan-my-trip";
+
+  const [people, setPeople] = useState([
+    { id: 1, name: 'John Doe', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu.', sets: '3x10' },
+    { id: 2, name: 'Max Walters', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu.', sets: '3x10' },
+    { id: 3, name: 'Adam Smith', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu.', sets: '3x10' },
+    { id: 4, name: 'Tom Johnson', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu.', sets: '3x10' },
+  ])
+
+  const dragPerson = useRef(0)
+  const draggedOverPerson = useRef(0)
+
+  function handleSort() {
+    const peopleClone = [...people]
+    const temp = peopleClone[dragPerson.current]
+    peopleClone[dragPerson.current] = peopleClone[draggedOverPerson.current]
+    peopleClone[draggedOverPerson.current] = temp
+    setPeople(peopleClone)
+  }
 
   return (
     <>
+      <main className="flex container min-h-screen flex-col items-center space-y-4 mt-5">
+        <h1 className="text-xl font-bold mt-4">List</h1>
+        {people.map((person, index) => (
+          <div key={index} className="relative my-3 flex space-x-3 border rounded p-2 bg-gray-100"
+            draggable
+            onDragStart={() => (dragPerson.current = index)}
+            onDragEnter={() => (draggedOverPerson.current = index)}
+            onDragEnd={handleSort}
+            onDragOver={(e) => e.preventDefault()}
+          >
+            <p>{person.name}</p>
+          </div>
+        ))}
+      </main>
       <div className={`lpj-page-wrapper ${clashDisplay.variable} overflow-hidden`}>
         <header className="lpj-header d-flex align-items-center lpj-header-white">
           <div className="container">
@@ -104,6 +135,7 @@ export default function HomePageContent() {
                     <Link href={whatsAppNavUrl} className="btn btn-pink">Talk to us</Link>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -201,8 +233,8 @@ export default function HomePageContent() {
             <div className="row">
               <div className="col-lg-10 mx-auto">
                 <div className="lpj-benefit-content text-center">
-                  <div className="para">We’re here to personalise your travel experience. <br />
-                    Trundle is not just your regular travel agent; we're your personal travel assistant.</div>
+                  {/* <div className="para">We’re here to personalise your travel experience. <br /> */}
+                  {/* Trundle is not just your regular travel agent; we're your personal travel assistant.</div> */}
                   <h3>With Trundle, you'll</h3>
 
                   <div className="lpj-benefit-list d-flex flex-wrap">
@@ -243,7 +275,7 @@ export default function HomePageContent() {
           </div>
         </div>
 
-        <div className="lpj-content-container lpj-blog-container">
+        {/* <div className="lpj-content-container lpj-blog-container">
           <div className="container">
             <div className="row">
               <div className="col-lg-10 mx-auto">
@@ -254,17 +286,17 @@ export default function HomePageContent() {
                   </div>
 
                   <div className="lpj-blog-list d-flex flex-wrap">
-                    {blogCards.map(card => <div key={card.id} className="lpj-blog-item">
-                      <BlogCard title={card.title} img={card.img} blogLink={card.blogLink} />
+                    {recentBlogsList?.map(blog => <div key={blog.id} className="lpj-blog-item">
+                      <BlogCard title={blog.title} img={blog.image} blogLink={`/blog/${blog?.slug}`} />
                     </div>)}
                   </div>
-
                   <div className="lpj-blog-cta text-center"><Link href='/blog' className="btn btn-orange btn-lg">Explore more</Link></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+
       </div >
     </>
   )

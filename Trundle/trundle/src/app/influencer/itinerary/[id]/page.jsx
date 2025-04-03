@@ -61,6 +61,8 @@ const ItinerarySinglePage = async ({ params }) => {
 
    const itinerary = await getAnItinerary({ access_token, itinerary_id });
 
+   // console.log(itinerary?.itinerary_items);
+
    function capitalizeName(name) {
       return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
    }
@@ -245,6 +247,10 @@ const ItinerarySinglePage = async ({ params }) => {
                                              >
                                                 <ItineraryItemCard
                                                    affiliateTitle={data?.affiliate_title}
+                                                   destination={data?.destination}
+                                                   route={data?.route}
+                                                   hyperlinkTitle={data?.hyper_link_title}
+                                                   hyperlinkAddress={data?.hyper_link_address}
                                                    discountCode={data?.discount_code}
                                                    categoryOfLocation={categoryOfLocation?.name}
                                                    isSeen={data?.is_seen}
@@ -268,12 +274,301 @@ const ItinerarySinglePage = async ({ params }) => {
                                  </ul>
                               </div>
                            </div>
+
+                           <div className="mt-4">
+                              <div className="itinerary-outcome-wrapper">
+                                 <div className="itinerary-outcome-head d-flex align-items-center">
+                                    <span className="itinerary-outcome-icon d-flex align-items-center justify-content-center">
+                                       <img src="/images/listing-icon.svg" alt="listing icon" />
+                                    </span>
+                                    <h3>Itinerary</h3>
+                                 </div>
+                                 <div className="itinerary-outcome-body position-relative">
+                                    <div className="io-tab-row d-flex flex-wrap align-items-center gap-2">
+                                       <div className="io-tab-col">
+                                          <div className="io-tab-btn active">Day <span>01</span></div>
+                                       </div>
+                                       <div className="io-tab-col">
+                                          <div className="io-tab-btn">Day <span>02</span></div>
+                                       </div>
+                                       <div className="io-tab-col">
+                                          <div className="io-tab-btn">Day <span>03</span></div>
+                                       </div>
+                                       <div className="io-tab-col">
+                                          <div className="io-tab-btn">Day <span>04</span></div>
+                                       </div>
+                                       <div className="io-tab-col">
+                                          <div className="io-tab-btn">Day <span>05</span></div>
+                                       </div>
+                                    </div>
+                                    <div className="io-destination-row">
+                                       <div className="io-destination-head">Day 01</div>
+                                       <ul className="io-destination-list position-relative">
+                                          <li className="io-destination-item position-relative">
+                                             <div className="io-destination-box w-100 h-100 d-flex flex-wrap border flex-column-reverse flex-md-row">
+                                                <div className="io-destination-left">
+                                                   <div className="io-destination-content">
+
+                                                      <div className="io-destination-label">Religious</div>
+                                                      <div className="io-destination-title">Osaka Castle</div>
+                                                      <ul className="iod-desc-list">
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/location-icon.svg" alt="location" />
+                                                               </div>
+                                                               <div className="iod-desc-text"><p className="text-wrap">2 Chome-24-7 Gotokuji, Setagaya City, Tokyo-154-0021</p></div>
+                                                            </div>
+                                                         </li>
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/clock-icon.svg" alt="time" />
+                                                               </div>
+                                                               <div className="iod-desc-text">10:00am - 5:00pm</div>
+                                                            </div>
+                                                         </li>
+                                                      </ul>
+                                                      <a className="io-destination-link position-relative" href="#!">
+                                                         <div className="iod-link-icon d-flex align-items-center justify-content-center">
+                                                            <img src="/images/itinerary/link-icon.svg" alt="link" />
+                                                         </div>
+                                                         <span>View Direction</span>
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                                <div className="io-destination-right">
+                                                   <div className="io-destination-img">
+                                                      <img alt="place img" src="/images/itinerary/place-img-1.jpg" />
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li className="io-destination-item position-relative">
+                                             <div className="io-destination-box w-100 h-100 d-flex flex-wrap border flex-column-reverse flex-md-row">
+                                                <div className="io-destination-left">
+                                                   <div className="io-destination-content">
+
+                                                      <div className="io-destination-label">Religious</div>
+                                                      <div className="io-destination-title">Taisha Shrine</div>
+                                                      <ul className="iod-desc-list">
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/location-icon.svg" alt="location" />
+                                                               </div>
+                                                               <div className="iod-desc-text"><p className="text-wrap">2 Chome-24-7 Gotokuji, Setagaya City, Tokyo-154-0021</p></div>
+                                                            </div>
+                                                         </li>
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/clock-icon.svg" alt="time" />
+                                                               </div>
+                                                               <div className="iod-desc-text">10:00am - 5:00pm</div>
+                                                            </div>
+                                                         </li>
+                                                      </ul>
+                                                      <a className="io-destination-link position-relative" href="#!">
+                                                         <div className="iod-link-icon d-flex align-items-center justify-content-center">
+                                                            <img src="/images/itinerary/link-icon.svg" alt="link" />
+                                                         </div>
+                                                         <span>View Direction</span>
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                                <div className="io-destination-right">
+                                                   <div className="io-destination-img">
+                                                      <img alt="place img" src="/images/itinerary/place-img-2.jpg" />
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <div className="io-destination-row">
+                                       <div className="io-destination-head">Day 02</div>
+                                       <ul className="io-destination-list position-relative">
+                                          <li className="io-destination-item position-relative">
+                                             <div className="io-destination-box w-100 h-100 d-flex flex-wrap border flex-column-reverse flex-md-row">
+                                                <div className="io-destination-left">
+                                                   <div className="io-destination-content">
+
+                                                      <div className="io-destination-label">Nature</div>
+                                                      <div className="io-destination-title">Nara Park</div>
+                                                      <ul className="iod-desc-list">
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/location-icon.svg" alt="location" />
+                                                               </div>
+                                                               <div className="iod-desc-text"><p className="text-wrap">2 Chome-24-7 Gotokuji, Setagaya City, Tokyo-154-0021</p></div>
+                                                            </div>
+                                                         </li>
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/clock-icon.svg" alt="time" />
+                                                               </div>
+                                                               <div className="iod-desc-text">10:00am - 5:00pm</div>
+                                                            </div>
+                                                         </li>
+                                                      </ul>
+                                                      <a className="io-destination-link position-relative" href="#!">
+                                                         <div className="iod-link-icon d-flex align-items-center justify-content-center">
+                                                            <img src="/images/itinerary/link-icon.svg" alt="link" />
+                                                         </div>
+                                                         <span>View Direction</span>
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                                <div className="io-destination-right">
+                                                   <div className="io-destination-img">
+                                                      <img alt="place img" src="/images/itinerary/place-img-3.jpg" />
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li className="io-destination-item position-relative">
+                                             <div className="io-destination-box w-100 h-100 d-flex flex-wrap border flex-column-reverse flex-md-row">
+                                                <div className="io-destination-left">
+                                                   <div className="io-destination-content">
+
+                                                      <div className="io-destination-label">Religious</div>
+                                                      <div className="io-destination-title">Taisha Shrine</div>
+                                                      <ul className="iod-desc-list">
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/location-icon.svg" alt="location" />
+                                                               </div>
+                                                               <div className="iod-desc-text"><p className="text-wrap">2 Chome-24-7 Gotokuji, Setagaya City, Tokyo-154-0021</p></div>
+                                                            </div>
+                                                         </li>
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/clock-icon.svg" alt="time" />
+                                                               </div>
+                                                               <div className="iod-desc-text">10:00am - 5:00pm</div>
+                                                            </div>
+                                                         </li>
+                                                      </ul>
+                                                      <a className="io-destination-link position-relative" href="#!">
+                                                         <div className="iod-link-icon d-flex align-items-center justify-content-center">
+                                                            <img src="/images/itinerary/link-icon.svg" alt="link" />
+                                                         </div>
+                                                         <span>View Direction</span>
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                                <div className="io-destination-right">
+                                                   <div className="io-destination-img">
+                                                      <img alt="place img" src="/images/itinerary/place-img-4.jpg" />
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <div className="io-destination-row">
+                                       <div className="io-destination-head">Day 03</div>
+                                       <ul className="io-destination-list position-relative">
+                                          <li className="io-destination-item position-relative">
+                                             <div className="io-destination-box w-100 h-100 d-flex flex-wrap border flex-column-reverse flex-md-row">
+                                                <div className="io-destination-left">
+                                                   <div className="io-destination-content">
+
+                                                      <div className="io-destination-label">Architecture</div>
+                                                      <div className="io-destination-title">Dotombori</div>
+                                                      <ul className="iod-desc-list">
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/location-icon.svg" alt="location" />
+                                                               </div>
+                                                               <div className="iod-desc-text"><p className="text-wrap">2 Chome-24-7 Gotokuji, Setagaya City, Tokyo-154-0021</p></div>
+                                                            </div>
+                                                         </li>
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/clock-icon.svg" alt="time" />
+                                                               </div>
+                                                               <div className="iod-desc-text">10:00am - 5:00pm</div>
+                                                            </div>
+                                                         </li>
+                                                      </ul>
+                                                      <a className="io-destination-link position-relative" href="#!">
+                                                         <div className="iod-link-icon d-flex align-items-center justify-content-center">
+                                                            <img src="/images/itinerary/link-icon.svg" alt="link" />
+                                                         </div>
+                                                         <span>View Direction</span>
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                                <div className="io-destination-right">
+                                                   <div className="io-destination-img">
+                                                      <img alt="place img" src="/images/itinerary/place-img-5.jpg" />
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li className="io-destination-item position-relative">
+                                             <div className="io-destination-box w-100 h-100 d-flex flex-wrap border flex-column-reverse flex-md-row">
+                                                <div className="io-destination-left">
+                                                   <div className="io-destination-content">
+
+                                                      <div className="io-destination-label">Religious</div>
+                                                      <div className="io-destination-title">Taisha Shrine</div>
+                                                      <ul className="iod-desc-list">
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/location-icon.svg" alt="location" />
+                                                               </div>
+                                                               <div className="iod-desc-text"><p className="text-wrap">2 Chome-24-7 Gotokuji, Setagaya City, Tokyo-154-0021</p></div>
+                                                            </div>
+                                                         </li>
+                                                         <li className="iod-desc-item">
+                                                            <div className="iod-desc-box w-100 h-100 d-flex flex-wrap position-relative">
+                                                               <div className="iod-desc-icon d-flex align-items-center justify-content-center">
+                                                                  <img src="/images/itinerary/clock-icon.svg" alt="time" />
+                                                               </div>
+                                                               <div className="iod-desc-text">10:00am - 5:00pm</div>
+                                                            </div>
+                                                         </li>
+                                                      </ul>
+                                                      <a className="io-destination-link position-relative" href="#!">
+                                                         <div className="iod-link-icon d-flex align-items-center justify-content-center">
+                                                            <img src="/images/itinerary/link-icon.svg" alt="link" />
+                                                         </div>
+                                                         <span>View Direction</span>
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                                <div className="io-destination-right">
+                                                   <div className="io-destination-img">
+                                                      <img alt="place img" src="/images/itinerary/place-img-6.jpg" />
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
+
+
                      </div>
+
                   </div>
                </div>
             </div>
          </div>
+
       </Suspense>
    );
 };
