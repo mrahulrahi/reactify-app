@@ -1,4 +1,0 @@
-.page-item{padding: 0 4px;}
-.page-item:first-child .page-link, .page-item:last-child .page-link{background: #F0E9FF;border-color: #C4A8FF;color: var(--black);font-size: 16px;}
-.page-link, .page-link:focus{padding: 8px;border: 1px solid #DCDBDD;background: var(--white);border-radius: 8px!important;width: 32px;height: 32px;color: var(--black);font-size: 14px;font-weight: 600;line-height: 1;box-shadow: none;}
-.page-item.active .page-link, .page-link:hover{background: var(--purple)!important;border-color: var(--purple)!important;color: var(--white)!important;}

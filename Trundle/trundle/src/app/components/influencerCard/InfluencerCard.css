@@ -1,4 +1,0 @@
-.user-card-box{width: 100%;height: 100%;padding: 17px 35px; border-radius: 15px;background: #F1F0F5;}
-.user-card-img{width: 95px;height: 95px;position: relative;border: 5px solid var(--white);border-radius: 50%;overflow: hidden;margin-bottom: 8px;}
-.user-card-img img{width: 100%;height: 100%;object-fit: cover;}
-.user-card-box h6{color: var(--black);font-size: 14px;font-weight: 500;line-height: 1;margin-bottom: 16px;text-align: center;}

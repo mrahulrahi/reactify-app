@@ -1,6 +1,0 @@
-.confirmation-modal .modal-dialog{max-width: 406px;}
-.confirmation-modal .modal-content{border-radius: 12px;padding: 24px;border: 0;}
-.confirmation-modal .modal-body{font-size: 16px;padding: 0;margin-bottom: 26px;color: var(--lo-black);}
-.confirmation-modal h3{font-size: 16px;font-weight: 600;line-height: 1.5;margin-bottom: 16px;}
-.confirmation-modal .modal-actions{gap: 30px;}
-.confirmation-modal .modal-actions .btn{min-width: calc(50% - 15px);}

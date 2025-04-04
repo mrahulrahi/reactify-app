@@ -1,6 +1,0 @@
-.banner-container {padding: 50px 0;background-color: #D8E8F9;}
-.banner-content h1 {font-size: 24px;line-height: 1.35;margin-bottom: 16px;}
-.breadcrumb-item{font-size: 14px;line-height: 1.5;}
-.breadcrumb-item a {color: var(--lo-grey);}
-.breadcrumb-item.active {color: var(--lo-black);}
-.breadcrumb-item + .breadcrumb-item::before{color: var(--lo-grey);}
