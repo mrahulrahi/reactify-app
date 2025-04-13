@@ -26,7 +26,7 @@ const BlogPage = () => {
 
   return (
     <>
-      <Hero title={post.title} subTitle={`Blog ${post.id}`}  gradientColor1="from-red-400" gradientColor2="to-amber-300" />
+      <Hero title={post.title} subTitle={`Blog ${post.id}`} gradientColor1="from-indigo-600" gradientColor2="to-violet-400" />
 
 
       <div className="content-container">

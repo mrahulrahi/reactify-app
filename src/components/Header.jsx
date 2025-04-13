@@ -4,16 +4,16 @@ const Header = () => {
 
     const links = [
         { label: 'Home', href: '/' },
-        { label: 'Users', href: '/users' },
         { label: 'Blog', href: '/blog' }
     ]
 
     return (
         <header className="w-full fixed font-oswald bg-first z-[99]">
             <div className="container w-full">
-                <div className="navbar flex items-center justify-between h-[80px]">
-                    <a href="/" className="navbar-logo w-40">
-                        <img className="w-full h-full object-contain" src="/vercel.svg" alt="logo" />
+                <div className="navbar h-[80px] flex items-center justify-between gap-2">
+                    <a href="/" className="navbar-brand flex items-center gap-2">
+                        <div className="navbar-logo w-14"><img className="w-full h-full object-contain" src="/react.svg" alt="logo" /></div>
+                        <span className="text-4xl font-semibold leading-1 text-white">Reactify</span>
                     </a>
                     <ul className="nav-menu flex gap-4">
                         {links.map(link =>
@@ -28,8 +28,7 @@ const Header = () => {
                         )}
                     </ul>
                     <div className="flex gap-4">
-                        <span className="h-8"><img className="w-auto h-full object-contain" src="/react.svg" alt="" /></span>
-                        <span className="h-8"><img className="w-auto h-full object-contain" src="/vite.svg" alt="" /></span>
+                        <span className="h-10"><img className="w-auto h-full object-contain" src="/vite.svg" alt="" /></span>
                     </div>
                 </div>
             </div>

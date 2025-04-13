@@ -5,9 +5,7 @@ import './index.css';
 import App from './App.jsx';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import UsersHome from './pages/users/users.jsx';
-import User from './pages/users/userSingle.jsx';
-import Product from './pages/users/productSingle.jsx';
+import Product from './pages/home/productSingle.jsx';
 import Blog from './pages/blog/blogs.jsx';
 import BlogPost from './pages/blog/blogSingle.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -27,13 +25,9 @@ createRoot(document.getElementById('root')).render(
           <Header />
           <Routes>
             {/* Home Route */}
-            <Route path="/" element={<App />} />
-
-            {/* Users Routes */}
-            <Route path="users">
-              <Route index element={<UsersHome />} />  {/* Default Users route */}
-              <Route path=":uid" element={<User />} />  {/* Dynamic user page route */}
-              <Route path=":uid/products/:pid" element={<Product />} />  {/* Dynamic product page route */}
+            <Route path="/">
+              <Route index element={<App />} />
+              <Route path="products/:pid" element={<Product />} />  {/* Dynamic product page route */}
             </Route>
 
             {/* Blog Routes */}

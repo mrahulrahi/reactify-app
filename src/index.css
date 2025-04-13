@@ -106,13 +106,7 @@
   .content h1 {color: var(--color-third);font-size: 60pt;line-height: 1;}
   .content h2 {font-size: 20pt;color: var(--color-first);}
   
-  .custom-table{min-width: 767px;}                                    
-  .custom-table .table > :not(caption) > * > * {border: 2px solid var(--color-second);}
-  .custom-table table thead th {color: var(--color-second);background: var(--color-first);}
-  .custom-table table tbody tr:nth-child(even) td {color: var(--color-second);background: var(--color-first);}
-  .custom-table table tbody tr:nth-child(odd) td{color: var(--color-first);background: var(--color-fourth);}
-  
-  .badge{font-size: 16px;font-weight: 500;background: var(--color-third);color: var(--color-white);padding: 6px 12px;border-radius: 6px;}
+  .badge{font-size: 14px;font-weight: 500;background: var(--color-third);color: var(--color-white);padding: 6px 12px;border-radius: 6px;}
   
   .blog-list{width: calc(100% + 20px);margin-left: -10px;margin-bottom: -20px;}
   .blog-item{width: 33.33%;padding: 0 10px;margin-bottom: 20px;}

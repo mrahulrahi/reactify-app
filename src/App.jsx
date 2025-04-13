@@ -1,50 +1,88 @@
 /* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router'; // If you're using react-router
+import Hero from "./components/Hero";
 import Button from "./components/Button";
-import { FaRegHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa6";
-import { FaRegFaceGrinHearts } from "react-icons/fa6";
-import { FaHeartPulse } from "react-icons/fa6";
 import LikeButton from "./components/LikeButton";
 import ListGroup from "./components/ListGroup";
 import Counter from "./components/Counter";
-import { useState } from "react";
-import ListItemTable from "./components/ListItemTable";
-import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 import Form from "./components/Form";
-import Hero from "./components/Hero";
-
-
+import ListItemTable from "./components/ListItemTable";
+import { FaRegHeart, FaHeart, FaRegFaceGrinHearts, FaHeartPulse } from "react-icons/fa6";
+import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 
 function App() {
   const cards = [
-    { title: 'User', href: '/users' },
     { title: 'Blog', href: '/blog' },
-  ]
+    { title: 'Style Guide', href: '#styleguide' },
+    { title: 'Products', href: '#products' },
+  ];
 
-  const [cities, setCities] = useState([{ id: 1, name: 'Lucknow', distance: 200 }, { id: 2, name: 'Delhi', distance: 600 }, { id: 3, name: 'Kolkata', distance: 900 }, { id: 4, name: 'Mumbai', distance: 1400 }, { id: 5, name: 'Lakhimpur', distance: 100 }])
-  const [foods, setNewFood] = useState([{ id: 1, name: 'Pizza', price: 20 }, { id: 2, name: 'Burger', price: 15 }, { id: 3, name: 'Chilli Potato', price: 10 }, { id: 4, name: 'Momos', price: 5 }])
+  const [cities, setCities] = useState([
+    { id: 1, name: 'Lucknow', distance: 200 },
+    { id: 2, name: 'Delhi', distance: 600 },
+    { id: 3, name: 'Kolkata', distance: 900 },
+    { id: 4, name: 'Mumbai', distance: 1400 },
+    { id: 5, name: 'Lakhimpur', distance: 100 },
+  ]);
+  const [users, setUsers] = useState([]);
 
   const [city, setCity] = useState({});
-  const [food, setFood] = useState({});
+  const [user, setUser] = useState({});
 
-  let [likeBtn1, setLikedBtn1] = useState({ title: 'Like', icon: <FaRegHeart /> })
-  let [likeBtn2, setLikedBtn2] = useState({ title: 'Follow', icon: <SlUserFollow /> })
+  const [products, setProducts] = useState([]);
+
+  // Fetching data when component mounts
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users', { cache: 'no-store' });
+      const data = await res.json();
+      setUsers(data);
+    };
+
+    fetchUsers();
+  }, []); // Empty dependency array means this effect runs only once on mount
+
+  let [likeBtn1, setLikedBtn1] = useState({ title: 'Like', icon: <FaRegHeart /> });
+  let [likeBtn2, setLikedBtn2] = useState({ title: 'Follow', icon: <SlUserFollow /> });
 
   const handleSelectCity = (item) => {
-    setCity(item);
-  }
+    console.log("Selected City:", item);
+    setCity(item); // Set the selected city
+    setUser({});   // Clear the user state
+  };
 
-  const handleSelectFood = (item) => {
-    setFood(item);
-  }
+  const handleSelectUser = (item) => {
+    console.log("Selected User:", item);
+    setUser(item); // Set the selected user
+    setCity({});   // Clear the city state
+  };
 
   function handleLikeItem1() {
-    setLikedBtn1(likeBtn1.title === 'Like' ? { title: 'Liked', icon: <FaHeart /> } : { title: 'Like', icon: <FaRegHeart /> });
+    setLikedBtn1(
+      likeBtn1.title === 'Like'
+        ? { title: 'Liked', icon: <FaHeart /> }
+        : { title: 'Like', icon: <FaRegHeart /> }
+    );
   }
 
   function handleLikeItem2() {
-    setLikedBtn2(likeBtn2.title === 'Follow' ? { title: 'Unfollow', icon: <SlUserUnfollow /> } : { title: 'Follow', icon: <SlUserFollow /> });
+    setLikedBtn2(
+      likeBtn2.title === 'Follow'
+        ? { title: 'Unfollow', icon: <SlUserUnfollow /> }
+        : { title: 'Follow', icon: <SlUserFollow /> }
+    );
   }
+
+  // Fetch products
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch('https://fakestoreapi.com/products', { cache: 'no-store' });
+      const productsData = await res.json();
+      setProducts(productsData);
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <>
@@ -77,7 +115,6 @@ function App() {
             </div>
           </section>
 
-          <a href="#!" className="btn btn-primary">Button</a>
         </div>
       </div>
 
@@ -85,13 +122,10 @@ function App() {
         <div className="container">
           <div className="flex flex-wrap">
             {cards.map((card, index) => (
-              <div className="w-1/2 px-3" key={index}>
-                <div className="card p-8 bg-white/10 border border-[#ccc] rounded-xl">
-                  <h2 className="card-title mb-4">{card.title}</h2>
-                  <div className="card-actions">
-                    <a className='btn btn-primary' href={card.href}>Open</a>
-                  </div>
-                </div>
+              <div className="w-1/4 px-3" key={index}>
+                <Link className="card w-full p-8 bg-white/10 border border-[#ccc] rounded-xl" to={card.href} >
+                  <h2 className="card-title text-white mb-0">{card.title}</h2>
+                </Link>
               </div>
             ))}
           </div>
@@ -148,8 +182,37 @@ function App() {
                 <div className="flex flex-wrap gap-5">
                   <Form />
                 </div>
+
               </div>
 
+            </div>
+
+            <div className="w-6/12 px-3 mt-10">
+              <div className="heading">Book Registration</div>
+              <form className="mt-12" name="Display">
+                <div className="form-group flex items-center justify-between mb-6">
+                  <label className="form-label flex-shrink-0">Member Name</label>
+                  <input type="text" className="form-control flex-grow-1" id="mname" name="mname" placeholder='Enter your name' />
+                </div>
+                <div className="form-group flex items-center justify-between mb-6">
+                  <label className="form-label flex-shrink-0">Email Address</label>
+                  <input type="text" className="form-control flex-grow-1" id="email" name="email" placeholder='Enter your email address' />
+                </div>
+                <div className="form-group flex items-center justify-between mb-6">
+                  <label className="form-label flex-shrink-0">Phone No.</label>
+                  <input type="text" className="form-control flex-grow-1" id="phone" name="phone" placeholder='Enter your phone number' />
+                </div>
+
+                <div className="form-group flex items-center justify-between mb-6">
+                  <label className="form-label flex-shrink-0">No. of Books</label>
+                  <input type="text" className="form-control flex-grow-1" id="noOfBooks" name="noOfBooks" placeholder='Enter no. of books' />
+                </div>
+
+                <div className="errorcss">
+                  <label id="blankLabel"></label>
+                </div>
+                <div className="form-group flex"><input className="btn btn-primary ms-auto" type="submit" value="Create" /></div>
+              </form>
             </div>
 
 
@@ -157,24 +220,48 @@ function App() {
             <div className="w-full mt-10">
               <div className="heading">List Group</div>
               <div className="flex gap-5">
-                <ListGroup items={cities} heading="Cities" onSelectItem={handleSelectCity} />
-                <ListGroup items={foods} heading="Foods" onSelectItem={handleSelectFood} />
+                <ListGroup items={users || []} heading="Users" onSelectItem={handleSelectUser} />
+                <ListGroup items={cities || []} heading="Cities" onSelectItem={handleSelectCity} />
               </div>
               <div className="flex gap-5 mt-10">
-                <div className="w-1/2">
-                  <ListItemTable data={city} />
-                </div>
-                <div className="w-1/2">
-                  <ListItemTable data={food} />
+                <div className="w-full">
+                  <ListItemTable data={Object.keys(city).length > 0 ? city : user} />
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
 
+      <div className="content-container" id="products">
+        <div className="container">
+          <div className="px-4">
+            <h2>Product Page</h2>
+          </div>
+          <div className="flex flex-wrap -mb-6">
+            {products.map((product) => (
+              <div className="w-3/12 px-3 mb-6" key={product.id}>
+                <Link className="card flex flex-col h-full bg-white/10 border border-[#ccc] rounded-xl overflow-hidden" to={`/products/${product.id}`} >
+                  <div className="w-full h-[300px] aspect-square bg-white p-6">
+                    <img className="w-full h-full object-contain" src={product.image} alt="Product" />
+                  </div>
+                  <div className="flex flex-col p-5 grow">
+                    <div className="flex justify-between mb-5">
+                      <div className="badge text-bg-dark">{product.id}</div>
+                      <div className="badge text-bg-dark capitalize">{product.category}</div>
+                      <div className="badge text-bg-dark">{product.price} $</div>
+                    </div>
+                    <div className="mt-auto">
+                      <h5 className="card-title text-white line-clamp-2">{product.title}</h5>
+                      <p className="card-text line-clamp-3">{product.description}</p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   )
 }
