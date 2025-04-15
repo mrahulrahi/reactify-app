@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/forms';
+
   
   @theme {
     --color-black: #18181b;
@@ -86,25 +88,11 @@
   .heading{@apply font-oswald text-[32px] font-bold leading-none mb-6}
 
   
-  .form-label{@apply w-[140px] mb-2}
-  form span {@apply h-10 float-left inline-flex items-center text-first}
-  input.form-control {@apply float-right w-full h-10 rounded-[10px] border text-sm text-center}
-  .errorcss {@apply text-sm text-[red]}
-  input.form-control:focus{@apply shadow-none border-[#C20E0E]}
 
+  
   .brand-head{font-size: 48px;font-weight: 700;line-height: 1.2;margin-bottom: 32px;}
   .landing-content-box h3{font-weight: 500;margin-bottom: 40px;}  
   .landing-btn-wrap{margin-bottom: 32px;}
-  
-  .form-group{position: relative;}
-  .form-group+.form-group{margin-top: 16px;}
-  .form-control, .form-control:focus{padding: 12px 16px;font-size: 16px;font-weight: 500;line-height: 1;color: var(--color-white);background-color: rgba(255, 255, 255, 0.1);border-color: rgba(255, 255, 255, 0.25);box-shadow: none;}
-  .form-control::placeholder {color: var(--color-grey);opacity: 1;}
-  .form-control:focus{background-color: rgba(255, 255, 255, 0.2);border-color: var(--color-white);color: var(--color-white);}
-  
-  
-  .content h1 {color: var(--color-third);font-size: 60pt;line-height: 1;}
-  .content h2 {font-size: 20pt;color: var(--color-first);}
   
   .badge{font-size: 14px;font-weight: 500;background: var(--color-third);color: var(--color-white);padding: 6px 12px;border-radius: 6px;}
   

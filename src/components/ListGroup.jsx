@@ -21,13 +21,13 @@ function ListGroup({ items = [], heading, onSelectItem }) {
   }
 
   return (
-    <div className="w-1/2">
+    <div className="w-full">
       <div className="text-2xl font-bold mb-2">{heading}</div>
-      <ul className="list-group flex flex-col rounded-md">
+      <ul className="list-group flex flex-wrap rounded-md">
         {items.map((item) => (
           <li
             key={item.id}
-            className={`list-group-item relative block py-2 px-4 text-[#dee2e6] bg-[#212529] border border-[#495057] first:rounded-t-[inherit] last:rounded-b-[inherit] not-first:border-t-0 ${selectedIndex === item.id ? 'active text-white bg-third border-third' : ''
+            className={`list-group-item w-1/2 relative block py-2 px-4 text-[#dee2e6] bg-[#212529] border border-[#495057] first:rounded-tl-[inherit] [&:nth-child(2)]:rounded-tr-[inherit] [&:nth-last-child(2)]:rounded-bl-[inherit] last:rounded-br-[inherit] cursor-pointer ${selectedIndex === item.id ? 'active text-white bg-third border-third' : ''
               }`}
             onClick={() => {
               setSelectedIndex(item.id);

@@ -6,7 +6,6 @@ import Button from "./components/Button";
 import LikeButton from "./components/LikeButton";
 import ListGroup from "./components/ListGroup";
 import Counter from "./components/Counter";
-import Form from "./components/Form";
 import ListItemTable from "./components/ListItemTable";
 import { FaRegHeart, FaHeart, FaRegFaceGrinHearts, FaHeartPulse } from "react-icons/fa6";
 import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
@@ -18,18 +17,8 @@ function App() {
     { title: 'Products', href: '#products' },
   ];
 
-  const [cities, setCities] = useState([
-    { id: 1, name: 'Lucknow', distance: 200 },
-    { id: 2, name: 'Delhi', distance: 600 },
-    { id: 3, name: 'Kolkata', distance: 900 },
-    { id: 4, name: 'Mumbai', distance: 1400 },
-    { id: 5, name: 'Lakhimpur', distance: 100 },
-  ]);
   const [users, setUsers] = useState([]);
-
-  const [city, setCity] = useState({});
   const [user, setUser] = useState({});
-
   const [products, setProducts] = useState([]);
 
   // Fetching data when component mounts
@@ -46,16 +35,9 @@ function App() {
   let [likeBtn1, setLikedBtn1] = useState({ title: 'Like', icon: <FaRegHeart /> });
   let [likeBtn2, setLikedBtn2] = useState({ title: 'Follow', icon: <SlUserFollow /> });
 
-  const handleSelectCity = (item) => {
-    console.log("Selected City:", item);
-    setCity(item); // Set the selected city
-    setUser({});   // Clear the user state
-  };
-
   const handleSelectUser = (item) => {
     console.log("Selected User:", item);
     setUser(item); // Set the selected user
-    setCity({});   // Clear the city state
   };
 
   function handleLikeItem1() {
@@ -165,7 +147,6 @@ function App() {
                   </div>
                 </div>
 
-
                 <div className="bg-white/10 p-8 rounded-xl">
                   <div className="heading">Counter</div>
                   <div className="flex flex-wrap gap-5">
@@ -173,59 +154,19 @@ function App() {
                   </div>
                 </div>
               </div>
-
             </div>
 
-            <div className="w-6/12 px-3 mt-10">
+            <div className="w-full px-3 mt-10">
               <div className="bg-white/10 p-8 rounded-xl">
-                <div className="heading">Form</div>
+                <div className="heading">List Group</div>
                 <div className="flex flex-wrap gap-5">
-                  <Form />
-                </div>
-
-              </div>
-
-            </div>
-
-            <div className="w-6/12 px-3 mt-10">
-              <div className="heading">Book Registration</div>
-              <form className="mt-12" name="Display">
-                <div className="form-group flex items-center justify-between mb-6">
-                  <label className="form-label flex-shrink-0">Member Name</label>
-                  <input type="text" className="form-control flex-grow-1" id="mname" name="mname" placeholder='Enter your name' />
-                </div>
-                <div className="form-group flex items-center justify-between mb-6">
-                  <label className="form-label flex-shrink-0">Email Address</label>
-                  <input type="text" className="form-control flex-grow-1" id="email" name="email" placeholder='Enter your email address' />
-                </div>
-                <div className="form-group flex items-center justify-between mb-6">
-                  <label className="form-label flex-shrink-0">Phone No.</label>
-                  <input type="text" className="form-control flex-grow-1" id="phone" name="phone" placeholder='Enter your phone number' />
-                </div>
-
-                <div className="form-group flex items-center justify-between mb-6">
-                  <label className="form-label flex-shrink-0">No. of Books</label>
-                  <input type="text" className="form-control flex-grow-1" id="noOfBooks" name="noOfBooks" placeholder='Enter no. of books' />
-                </div>
-
-                <div className="errorcss">
-                  <label id="blankLabel"></label>
-                </div>
-                <div className="form-group flex"><input className="btn btn-primary ms-auto" type="submit" value="Create" /></div>
-              </form>
-            </div>
-
-
-
-            <div className="w-full mt-10">
-              <div className="heading">List Group</div>
-              <div className="flex gap-5">
-                <ListGroup items={users || []} heading="Users" onSelectItem={handleSelectUser} />
-                <ListGroup items={cities || []} heading="Cities" onSelectItem={handleSelectCity} />
-              </div>
-              <div className="flex gap-5 mt-10">
-                <div className="w-full">
-                  <ListItemTable data={Object.keys(city).length > 0 ? city : user} />
+                  <div className="w-full">
+                    <ListGroup items={users || []} heading="Users" onSelectItem={handleSelectUser} />
+                  </div>
+                  <div className="w-full mt-10">
+                    <div className="text-2xl font-bold mb-2">User Table</div>
+                    <ListItemTable data={user} />
+                  </div>
                 </div>
               </div>
             </div>
